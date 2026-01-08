@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://su71fuarapi3"
+path="res://.godot/imported/initial.dialogue-c549fee061f618e07e0949468c46029e.tres"
+
+[deps]
+
+source_file="res://Dialogues/initial.dialogue"
+dest_files=["res://.godot/imported/initial.dialogue-c549fee061f618e07e0949468c46029e.tres"]
+
+[params]
+
+defaults=true
