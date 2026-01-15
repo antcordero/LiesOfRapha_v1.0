@@ -5709,6 +5709,6 @@ position = Vector2(1045, 596)
 position = Vector2(199, 599)
 
 [node name="Franczius_npc" parent="." groups=["Player"] instance=ExtResource("9_6n1bi")]
-position = Vector2(1616, 672)
+position = Vector2(264, 244)
 
 [connection signal="body_entered" from="level_end_area" to="level_end_area" method="_on_body_entered"]
