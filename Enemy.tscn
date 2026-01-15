@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://xdyl0ij8b4or"]
 
 [ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_s7bn3"]
-[ext_resource type="Texture2D" uid="uid://c678m7lissc74" path="res://Assets_mapas/Characters/Enemy/Franczius_the_sage/Franczius_the_sage.png" id="2_s7bn3"]
+[ext_resource type="Texture2D" uid="uid://c678m7lissc74" path="res://Scenes/personajes/Franczius_the_sage/Franczius_the_sage.png" id="2_s7bn3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7bn3"]
 atlas = ExtResource("2_s7bn3")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bpdgiwkmvms02"]
+[gd_scene load_steps=29 format=4 uid="uid://bpdgiwkmvms02"]
 
 [ext_resource type="TileSet" uid="uid://b1tjvfw24v4ck" path="res://Tile_sets/library.tres" id="1_664i5"]
 [ext_resource type="Script" uid="uid://r03r3dxfuiwh" path="res://Scenes/Level_1_scene/level_end_area.gd" id="1_f7dhy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2r15bujmhbai" path="res://Assets_mapas/TileMaps/Castle Environment 0.3/Assets/Tiles.png" id="5_6vfmc"]
 [ext_resource type="PackedScene" uid="uid://octcv1qf13t8" path="res://Scenes/personajes/npc/guardias/guardia_idle_left.tscn" id="6_l460e"]
 [ext_resource type="PackedScene" uid="uid://bcya2yr8ra61u" path="res://Scenes/personajes/npc/guardias/guardia_idle_right.tscn" id="7_f7dhy"]
+[ext_resource type="PackedScene" uid="uid://bawsvkuh6cqg3" path="res://Scenes/personajes/Franczius_the_sage/franczius_npc.tscn" id="9_6n1bi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l460e"]
 size = Vector2(31, 43)
@@ -5705,5 +5706,8 @@ position = Vector2(1045, 596)
 
 [node name="guardia_idle_right2" parent="." instance=ExtResource("7_f7dhy")]
 position = Vector2(199, 599)
+
+[node name="Franczius_npc" parent="." groups=["Player"] instance=ExtResource("9_6n1bi")]
+position = Vector2(1616, 672)
 
 [connection signal="body_entered" from="level_end_area" to="level_end_area" method="_on_body_entered"]
