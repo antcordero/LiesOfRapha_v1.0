@@ -196,4 +196,5 @@ func end_battle() -> void:
 	if is_instance_valid(_world_cam):
 		_world_cam.make_current()
 	get_tree().paused = false
+	GameManager.start_level(2)
 	queue_free()
