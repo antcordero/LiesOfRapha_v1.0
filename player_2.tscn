@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cda8enytduqoj"]
+
+[ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_8xjnt"]
+[ext_resource type="Texture2D" uid="uid://ctr666dpgl8w0" path="res://Images/Captura de pantalla 2025-12-28 234531.png" id="2_8xjnt"]
+
+[node name="Player1" type="Node2D"]
+script = ExtResource("1_8xjnt")
+hp = 70
+atk = 30
+character_name = "Depressotini"
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_8xjnt")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -81.0
+offset_top = 235.0
+offset_right = 81.0
+offset_bottom = 265.0
+theme_override_colors/font_outline_color = Color(0.7987984, 0.24698165, 0.25042722, 1)
+show_percentage = false
+
+[node name="HPText" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -57.0
+offset_top = -261.0
+offset_right = 62.0
+offset_bottom = -238.0
+text = "Depressotini"
