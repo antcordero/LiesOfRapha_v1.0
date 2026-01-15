@@ -10,13 +10,30 @@ class_name BattleManager
 @onready var result_label: Label = $CanvasLayer/Control/ResultLabel
 @onready var vbox: VBoxContainer = $CanvasLayer/Control/VBoxContainer
 
+# ✅ Cámara de la batalla
+@onready var battle_cam: Camera2D = get_node_or_null("Camera2D")
+
 var players: Array[Character] = []
 var turn_index := 0
 
 const VBOX_Y_OFFSET := -150  # negativo = sube
 
+# ✅ guardamos la cámara anterior del mundo para restaurarla al salir
+var _prev_cam: Camera2D
+
+
+
 
 func _ready() -> void:
+	# ✅ Guardar la cámara que estaba activa ANTES de entrar a la batalla
+	_prev_cam = get_viewport().get_camera_2d()
+
+	# ✅ Forzar cámara de la batalla
+	if battle_cam:
+		battle_cam.make_current()
+		# Si tienes el árbol pausado al entrar en batalla, esto ayuda:
+		# battle_cam.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
 	players = [player1, player2]
 
 	_center_vbox(VBOX_Y_OFFSET)
@@ -84,7 +101,7 @@ func start_battle() -> void:
 
 
 func next_turn() -> void:
-	if check_win_lose():
+	if await check_win_lose():
 		return
 
 	# Turnos de jugadores
@@ -148,8 +165,7 @@ func check_win_lose() -> bool:
 		result_label.text = "¡Victoria!"
 		result_label.visible = true
 		attack_btn.visible = false
-		get_tree().paused = false
-		queue_free()
+		end_battle()
 		return true
 
 	var alive := false
@@ -162,6 +178,16 @@ func check_win_lose() -> bool:
 		result_label.text = "¡Derrota!"
 		result_label.visible = true
 		attack_btn.visible = false
+		await get_tree().create_timer(1.2).timeout
+		end_battle()
 		return true
 
 	return false
+
+
+# ✅ Cerrar batalla bien: restaurar cámara anterior y borrar la batalla
+func end_battle() -> void:
+	if is_instance_valid(_prev_cam):
+		_prev_cam.make_current()
+	get_tree().paused = false
+	queue_free()

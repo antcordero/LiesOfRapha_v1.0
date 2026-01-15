@@ -11,7 +11,7 @@ script = ExtResource("1_ltwlv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1575.0
-offset_bottom = 1123.0
+offset_bottom = 1536.0
 texture = ExtResource("2_tpw6x")
 
 [node name="Player1" parent="." instance=ExtResource("3_tpw6x")]
@@ -26,11 +26,14 @@ scale = Vector2(1.3907086, 1.4150354)
 position = Vector2(1160, 731)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 99
+z_as_relative = false
 position = Vector2(785, 548)
 scale = Vector2(1.7561026, 1.8038155)
 zoom = Vector2(0.735, 0.595)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 99
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
