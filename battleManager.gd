@@ -148,6 +148,7 @@ func check_win_lose() -> bool:
 		result_label.text = "¡Victoria!"
 		result_label.visible = true
 		attack_btn.visible = false
+		queue_free();
 		return true
 
 	var alive := false

@@ -1,66 +1,156 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhjw7jblqk15w"]
+[gd_scene load_steps=21 format=3 uid="uid://dhjw7jblqk15w"]
 
 [ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_squ5q"]
-[ext_resource type="Texture2D" uid="uid://dsdcewsq0a17q" path="res://Images/Captura de pantalla 2025-12-28 234846.png" id="2_bxx23"]
+[ext_resource type="Texture2D" uid="uid://cvosp0nkbg8oi" path="res://Assets_mapas/Characters/Edited Characters Assets/Anton/idle.png" id="2_bxx23"]
+[ext_resource type="Texture2D" uid="uid://cjr060kgmd0wk" path="res://Assets_mapas/Characters/Edited Characters Assets/Anton/attack_axe.png" id="2_qh3su"]
 
-[sub_resource type="Animation" id="Animation_bxx23"]
-resource_name = "aur aur"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.06666666, 0.23333335, 0.43333334, 0.6333333, 0.8333333, 1, 2.1333334, 2.3333333, 2.6333334),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true, false, true, false, true, false]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_72vom"]
+atlas = ExtResource("2_qh3su")
+region = Rect2(0, 64, 48, 64)
 
-[sub_resource type="Animation" id="Animation_qh3su"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugj0w"]
+atlas = ExtResource("2_qh3su")
+region = Rect2(48, 64, 48, 64)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_buxg0"]
-_data = {
-&"RESET": SubResource("Animation_qh3su"),
-&"aur aur": SubResource("Animation_bxx23")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0cnt"]
+atlas = ExtResource("2_qh3su")
+region = Rect2(96, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4m56"]
+atlas = ExtResource("2_qh3su")
+region = Rect2(144, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u34kq"]
+atlas = ExtResource("2_qh3su")
+region = Rect2(192, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vtoj"]
+atlas = ExtResource("2_qh3su")
+region = Rect2(240, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4625"]
+atlas = ExtResource("2_qh3su")
+region = Rect2(288, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tenil"]
+atlas = ExtResource("2_qh3su")
+region = Rect2(336, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh3su"]
+atlas = ExtResource("2_bxx23")
+region = Rect2(0, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buxg0"]
+atlas = ExtResource("2_bxx23")
+region = Rect2(48, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6736r"]
+atlas = ExtResource("2_bxx23")
+region = Rect2(96, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i66ns"]
+atlas = ExtResource("2_bxx23")
+region = Rect2(144, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq3ur"]
+atlas = ExtResource("2_bxx23")
+region = Rect2(192, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txlgs"]
+atlas = ExtResource("2_bxx23")
+region = Rect2(240, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkxmd"]
+atlas = ExtResource("2_bxx23")
+region = Rect2(288, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf2bl"]
+atlas = ExtResource("2_bxx23")
+region = Rect2(336, 64, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72vom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72vom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugj0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0cnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4m56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u34kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vtoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4625")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tenil")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh3su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buxg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6736r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i66ns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq3ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txlgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkxmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf2bl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
 
 [node name="Player1" type="Node2D"]
+position = Vector2(2, 10)
 script = ExtResource("1_squ5q")
 max_hp = 150
 hp = 150
 atk = 20
-character_name = "Freddy Fazbear"
+character_name = "Anton"
 
-[node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_bxx23")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.0000019, -27)
+scale = Vector2(7.0677075, 5.3281245)
+sprite_frames = SubResource("SpriteFrames_72vom")
+animation = &"attack"
+frame = 7
+frame_progress = 1.0
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_buxg0")
-}
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -80.0
-offset_top = 188.0
-offset_right = 82.0
-offset_bottom = 218.0
+offset_left = -72.0
+offset_top = -137.0
+offset_right = 90.0
+offset_bottom = -107.0
 theme_override_colors/font_outline_color = Color(0.7987984, 0.24698165, 0.25042722, 1)
 show_percentage = false
 
@@ -75,8 +165,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NameLabel" type="Label" parent="."]
-offset_left = -57.0
-offset_top = -211.0
-offset_right = 102.0
-offset_bottom = -171.0
-text = "Freddy Fazbear"
+offset_left = -33.0
+offset_top = -174.0
+offset_right = 126.0
+offset_bottom = -134.0
+scale = Vector2(1.5434521, 1.8104703)
+text = "Anton"
