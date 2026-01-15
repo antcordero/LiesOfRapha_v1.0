@@ -1,9 +1,12 @@
-## Descargar Juego
+## 🎮 Ejecutable del Juego
 
-**Instrucciones:** Descarga ambos archivos y colócalos en la misma carpeta para ejecutar el juego.
+### Instrucciones de descarga
 
-<p align="center">
-  <a https://www.mediafire.com/folder/4ofh4wb05ep1w/Lie's_of_Rapha">
-    <img src="https://img.shields.io/badge/🎮_Descargar_Ejecutable-blue?style=for-the-badge" alt="Descargar">
-  </a>
-</p>
+1. Haz clic en el botón de descarga
+2. Descarga **ambos archivos**
+3. Colócalos en la **misma carpeta**
+4. Ejecuta el juego
+
+### 📥 Enlace de descarga
+
+**[⬇️ Descargar Lie's of Rapha desde MediaFire](https://www.mediafire.com/folder/4ofh4wb05ep1w/Lie)**
