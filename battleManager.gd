@@ -1,17 +1,20 @@
 extends Node2D
 class_name BattleManager
 
-@onready var player1: Character = $Player1
-@onready var player2: Character = $Player2
-@onready var enemy: Character = $Enemy
+@onready var player1: Character = $CanvasLayer/Player1
+@onready var player2: Character = $CanvasLayer/Player2
+@onready var enemy: Character = $CanvasLayer/Enemy
+@onready var battle_cam: Camera2D = $CanvasLayer/Camera2D
+
 
 @onready var attack_btn: Button = $CanvasLayer/Control/VBoxContainer/AttackButton
 @onready var turn_label: Label = $CanvasLayer/Control/VBoxContainer/TurnLabel
 @onready var result_label: Label = $CanvasLayer/Control/ResultLabel
 @onready var vbox: VBoxContainer = $CanvasLayer/Control/VBoxContainer
 
-# ✅ Cámara de la batalla
-@onready var battle_cam: Camera2D = get_node_or_null("Camera2D")
+@export var world_camera_path: NodePath
+var _world_cam: Camera2D
+
 
 var players: Array[Character] = []
 var turn_index := 0
@@ -25,6 +28,9 @@ var _prev_cam: Camera2D
 
 
 func _ready() -> void:
+	if world_camera_path != NodePath():
+		_world_cam = get_node_or_null(world_camera_path) as Camera2D
+
 	# ✅ Guardar la cámara que estaba activa ANTES de entrar a la batalla
 	_prev_cam = get_viewport().get_camera_2d()
 
@@ -187,7 +193,7 @@ func check_win_lose() -> bool:
 
 # ✅ Cerrar batalla bien: restaurar cámara anterior y borrar la batalla
 func end_battle() -> void:
-	if is_instance_valid(_prev_cam):
-		_prev_cam.make_current()
+	if is_instance_valid(_world_cam):
+		_world_cam.make_current()
 	get_tree().paused = false
 	queue_free()
