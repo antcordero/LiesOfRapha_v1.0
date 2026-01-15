@@ -213,7 +213,7 @@ animations = [{
 radius = 5.0
 height = 22.0
 
-[node name="Marthea" type="CharacterBody2D"]
+[node name="Marthea" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_qvn45")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
