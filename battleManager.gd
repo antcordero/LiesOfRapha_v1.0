@@ -21,7 +21,7 @@ var turn_index := 0
 
 const VBOX_Y_OFFSET := -150  # negativo = sube
 
-# ✅ guardamos la cámara anterior del mundo para restaurarla al salir
+# guardar la cámara anterior del mundo para restaurarla al salir
 var _prev_cam: Camera2D
 
 
@@ -31,13 +31,13 @@ func _ready() -> void:
 	if world_camera_path != NodePath():
 		_world_cam = get_node_or_null(world_camera_path) as Camera2D
 
-	# ✅ Guardar la cámara que estaba activa ANTES de entrar a la batalla
+	# Guardar la cámara que estaba activa ANTES de entrar a la batalla
 	_prev_cam = get_viewport().get_camera_2d()
 
-	# ✅ Forzar cámara de la batalla
+	# Forzar cámara de la batalla
 	if battle_cam:
 		battle_cam.make_current()
-		# Si tienes el árbol pausado al entrar en batalla, esto ayuda:
+		# Si el árbol está pausado al entrar en batalla, esto ayuda:
 		# battle_cam.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
 	players = [player1, player2]
@@ -191,7 +191,7 @@ func check_win_lose() -> bool:
 	return false
 
 
-# ✅ Cerrar batalla bien: restaurar cámara anterior y borrar la batalla
+# Cerrar batalla bien: restaurar cámara anterior y borrar la batalla
 func end_battle() -> void:
 	if is_instance_valid(_world_cam):
 		_world_cam.make_current()

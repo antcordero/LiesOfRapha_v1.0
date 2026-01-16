@@ -31,7 +31,7 @@ func _on_area_body_entered(body: Node2D) -> void:
 	if not _can_trigger:
 		return
 
-	# Ignorar mapa/paredes (lo que te está entrando ahora)
+	# Ignorar mapa/paredes
 	if body is TileMap or body.get_class() == "TileMapLayer":
 		return
 

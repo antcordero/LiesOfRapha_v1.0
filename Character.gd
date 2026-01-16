@@ -57,7 +57,7 @@ func set_hp(value: int) -> void:
 	update_hp_text()
 	update_visuals()
 
-	# 💀 Si llega a 0 y aún no estaba muerto -> morir
+	# Si llega a 0 y aún no estaba muerto -> morir
 	if hp <= 0 and not _is_dead:
 		die()
 
@@ -143,7 +143,7 @@ func _on_anim_finished() -> void:
 
 	# Si termina death -> opcional: desaparecer
 	if anim.animation == "death":
-		# ✅ Opciones:
+		# Opciones:
 		# 1) ocultarlo:
 		# visible = false
 		# 2) eliminar nodo:
