@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://octcv1qf13t8"]
+[gd_scene load_steps=5 format=3 uid="uid://octcv1qf13t8"]
 
 [ext_resource type="Script" uid="uid://dg28k32nqflm7" path="res://Scenes/personajes/npc/guardias/guardia_idle_left.gd" id="1_ajkq6"]
 [ext_resource type="SpriteFrames" uid="uid://dfabdxcbc71qp" path="res://Scenes/personajes/npc/guardias/guardia_idle_left.tres" id="1_oclmo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajkq6"]
+radius = 27.073973
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oclmo"]
 radius = 8.0
@@ -16,6 +19,14 @@ animation = &"idle_left"
 autoplay = "idle_left"
 frame_progress = 0.053436104
 
+[node name="areaHablar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaHablar"]
+position = Vector2(34, 51)
+shape = SubResource("CircleShape2D_ajkq6")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(34, 51)
 shape = SubResource("CapsuleShape2D_oclmo")
+
+[connection signal="body_entered" from="areaHablar" to="." method="_on_area_body_entered"]
