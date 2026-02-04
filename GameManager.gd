@@ -28,7 +28,7 @@ func show_menu():
 
 func start_dialogue():
 	if current_ui:
-		current_ui.visible = false   # o queue_free() si prefieres
+		current_ui.visible = false
 
 	var game_scene = load("res://game.tscn").instantiate()
 	add_child(game_scene)
