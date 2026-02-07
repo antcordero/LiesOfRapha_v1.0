@@ -41,7 +41,7 @@ func show_static_scene():
 		current_ui = null
 	if current_static_scene:
 		current_static_scene.queue_free()
-
+	#Carga las escenas de las escenas estáticas
 	current_static_scene = load("res://Escenas Estaticas/escenas_estaticas.tscn").instantiate()
 	add_child(current_static_scene)
 
@@ -54,6 +54,7 @@ func start_level(level_number: int):
 		current_level.queue_free()
 
 	var scene_path := ""
+	# Carga de niveles
 	match level_number:
 		1:
 			scene_path = "res://Scenes/Level_1_scene/level_1.tscn"
