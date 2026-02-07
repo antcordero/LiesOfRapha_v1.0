@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxnseklrxqocj"
-path="res://.godot/imported/torre_guerrero.webp-2997bfa01121421c5e3347e0e415a780.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://dq40mfdfl1f5i"
+valid=false
 
 [deps]
 
-source_file="res://Escenas Estaticas/Acto III/torre_guerrero.webp"
-dest_files=["res://.godot/imported/torre_guerrero.webp-2997bfa01121421c5e3347e0e415a780.ctex"]
+source_file="res://Escenas Estaticas/Acto II/1.webp"
 
 [params]
 

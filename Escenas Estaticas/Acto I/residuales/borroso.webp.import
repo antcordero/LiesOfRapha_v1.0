@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1wpvk5on1wyv"
-path="res://.godot/imported/iglesia.webp-c6d549b7979bacc44111c191ce8d7792.ctex"
+uid="uid://bw3a7bsdpb3ym"
+path="res://.godot/imported/borroso.webp-2bab296b2f764deb1b72ec2b83abf143.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Escenas Estaticas/Acto II/iglesia.webp"
-dest_files=["res://.godot/imported/iglesia.webp-c6d549b7979bacc44111c191ce8d7792.ctex"]
+source_file="res://Escenas Estaticas/Acto I/residuales/borroso.webp"
+dest_files=["res://.godot/imported/borroso.webp-2bab296b2f764deb1b72ec2b83abf143.ctex"]
 
 [params]
 

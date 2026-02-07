@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dounjqjditmp6"
-path="res://.godot/imported/bancos (2).webp-6827e0017d0163ae8dfd4865c5fedbb6.ctex"
+uid="uid://rlqwgt5xhyvy"
+path="res://.godot/imported/1.jpg-74894fd75139fb204815cc278d2911cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Escenas Estaticas/Acto II/bancos (2).webp"
-dest_files=["res://.godot/imported/bancos (2).webp-6827e0017d0163ae8dfd4865c5fedbb6.ctex"]
+source_file="res://Escenas Estaticas/Acto I/1.jpg"
+dest_files=["res://.godot/imported/1.jpg-74894fd75139fb204815cc278d2911cf.ctex"]
 
 [params]
 

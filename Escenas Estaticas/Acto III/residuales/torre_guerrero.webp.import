@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://miv0k4ilrlcc"
-path="res://.godot/imported/escena_estatica_1.jpg-286b851d43ef15303852f556e2a9e3c6.ctex"
+uid="uid://ckt74cn1of6bc"
+path="res://.godot/imported/torre_guerrero.webp-cb0c9393e9f792db3bece3ee8fa658c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Escenas Estaticas/Acto I/escena_estatica_1.jpg"
-dest_files=["res://.godot/imported/escena_estatica_1.jpg-286b851d43ef15303852f556e2a9e3c6.ctex"]
+source_file="res://Escenas Estaticas/Acto III/residuales/torre_guerrero.webp"
+dest_files=["res://.godot/imported/torre_guerrero.webp-cb0c9393e9f792db3bece3ee8fa658c2.ctex"]
 
 [params]
 

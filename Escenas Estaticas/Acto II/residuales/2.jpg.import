@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0bwr85r4bshc"
-path="res://.godot/imported/iglesia2.webp-69c643e56537d5352afa942e5635aeb2.ctex"
+uid="uid://py3llrcirryb"
+path="res://.godot/imported/2.jpg-90eb86f000973ce3da8ead7e134b5c43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Escenas Estaticas/Acto II/iglesia2.webp"
-dest_files=["res://.godot/imported/iglesia2.webp-69c643e56537d5352afa942e5635aeb2.ctex"]
+source_file="res://Escenas Estaticas/Acto II/residuales/2.jpg"
+dest_files=["res://.godot/imported/2.jpg-90eb86f000973ce3da8ead7e134b5c43.ctex"]
 
 [params]
 

@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b80vporyqwsex"
-path="res://.godot/imported/2.webp-0057b574db3d767746ea193276f71f35.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://d4ct322uss6gf"
+valid=false
 
 [deps]
 
 source_file="res://Escenas Estaticas/Acto I/2.webp"
-dest_files=["res://.godot/imported/2.webp-0057b574db3d767746ea193276f71f35.ctex"]
 
 [params]
 

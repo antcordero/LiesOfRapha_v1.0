@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuyybv63wl1i3"
-path="res://.godot/imported/mercado.jpg-5509ccb2d9ad185b0b2ed7b353b51615.ctex"
+uid="uid://bs1w8iuke5bsf"
+path="res://.godot/imported/task_01kgcarxb0e41tm3shbek59ez6_1769940535_img_0.webp-68ef2023ab2c796bbfea85d61a44757d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Escenas Estaticas/Acto II/mercado.jpg"
-dest_files=["res://.godot/imported/mercado.jpg-5509ccb2d9ad185b0b2ed7b353b51615.ctex"]
+source_file="res://Escenas Estaticas/Acto I/residuales/task_01kgcarxb0e41tm3shbek59ez6_1769940535_img_0.webp"
+dest_files=["res://.godot/imported/task_01kgcarxb0e41tm3shbek59ez6_1769940535_img_0.webp-68ef2023ab2c796bbfea85d61a44757d.ctex"]
 
 [params]
 
