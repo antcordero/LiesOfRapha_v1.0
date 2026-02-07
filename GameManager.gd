@@ -54,6 +54,7 @@ func start_level(level_number: int):
 		current_level.queue_free()
 
 	var scene_path := ""
+	# Carga de niveles
 	match level_number:
 		1:
 			scene_path = "res://Scenes/Level_1_scene/level_1.tscn"
