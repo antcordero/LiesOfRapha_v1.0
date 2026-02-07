@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccwyqeo2vl55v"]
+
+[ext_resource type="Texture2D" uid="uid://dprrm413bb1e2" path="res://Escenas Estaticas/Acto I/3.jpg" id="1_m8cxq"]
+
+[node name="StaticScene3" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 324)
+
+[node name="3" type="Sprite2D" parent="."]
+position = Vector2(577, 324)
+texture = ExtResource("1_m8cxq")

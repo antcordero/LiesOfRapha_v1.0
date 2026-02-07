@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bjf5jmbi8phjx"
+path="res://.godot/imported/dialogo_sala2.dialogue-d5d05d5045766917476a4118e23f7c06.tres"
+
+[deps]
+
+source_file="res://Dialogues/dialogo_sala2.dialogue"
+dest_files=["res://.godot/imported/dialogo_sala2.dialogue-d5d05d5045766917476a4118e23f7c06.tres"]
+
+[params]
+
+defaults=true

@@ -8,4 +8,4 @@ func _ready():
 	DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
 
 func _on_dialogue_ended(_resource):
-	GameManager.show_static_scene()
+	GameManager.show_static_scene(1)  # ID 1 para escenas_estaticas.tscn
