@@ -41,7 +41,7 @@ func show_static_scene():
 		current_ui = null
 	if current_static_scene:
 		current_static_scene.queue_free()
-
+	#Carga las escenas de las escenas estáticas
 	current_static_scene = load("res://Escenas Estaticas/escenas_estaticas.tscn").instantiate()
 	add_child(current_static_scene)
 
