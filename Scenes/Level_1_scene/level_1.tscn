@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=4 uid="uid://bpdgiwkmvms02"]
+[gd_scene load_steps=31 format=4 uid="uid://bpdgiwkmvms02"]
 
 [ext_resource type="TileSet" uid="uid://b1tjvfw24v4ck" path="res://Tile_sets/library.tres" id="1_664i5"]
+[ext_resource type="Script" uid="uid://b7lahlwfahei6" path="res://Scenes/Level_1_scene/second_area.gd" id="1_btw55"]
 [ext_resource type="Script" uid="uid://r03r3dxfuiwh" path="res://Scenes/Level_1_scene/level_end_area.gd" id="1_f7dhy"]
 [ext_resource type="PackedScene" uid="uid://c35vg1sqkf8ro" path="res://Scenes/personajes/anton/anton.tscn" id="2_2o5ha"]
 [ext_resource type="PackedScene" uid="uid://ioxc7wb28gwd" path="res://Scenes/personajes/marthea/marthea.tscn" id="3_awet4"]
@@ -9,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://octcv1qf13t8" path="res://Scenes/personajes/npc/guardias/guardia_idle_left.tscn" id="6_l460e"]
 [ext_resource type="PackedScene" uid="uid://bcya2yr8ra61u" path="res://Scenes/personajes/npc/guardias/guardia_idle_right.tscn" id="7_f7dhy"]
 [ext_resource type="PackedScene" uid="uid://bawsvkuh6cqg3" path="res://Scenes/personajes/Franczius_the_sage/franczius_npc.tscn" id="9_6n1bi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6n1bi"]
+size = Vector2(35, 53)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l460e"]
 size = Vector2(31, 43)
@@ -5609,6 +5613,14 @@ sources/0 = SubResource("TileSetAtlasSource_a327f")
 
 [node name="Level_1" type="Node2D"]
 
+[node name="second_area" type="Area2D" parent="." groups=["Player"]]
+script = ExtResource("1_btw55")
+
+[node name="staticScene2" type="CollisionShape2D" parent="second_area"]
+z_index = 11
+position = Vector2(1292, 279)
+shape = SubResource("RectangleShape2D_6n1bi")
+
 [node name="level_end_area" type="Area2D" parent="." groups=["Player"]]
 script = ExtResource("1_f7dhy")
 
@@ -5694,7 +5706,7 @@ tile_set = SubResource("TileSet_o6itq")
 position = Vector2(1588, 807)
 
 [node name="Anton" parent="." instance=ExtResource("2_2o5ha")]
-position = Vector2(885, 231)
+position = Vector2(1228, 262)
 
 [node name="guardia_idle_left" parent="." instance=ExtResource("6_l460e")]
 position = Vector2(1789, 782)
@@ -5709,6 +5721,7 @@ position = Vector2(1045, 596)
 position = Vector2(199, 599)
 
 [node name="Franczius_npc" parent="." groups=["Player"] instance=ExtResource("9_6n1bi")]
-position = Vector2(264, 244)
+position = Vector2(264, 149)
 
+[connection signal="body_entered" from="second_area" to="second_area" method="_on_body_entered"]
 [connection signal="body_entered" from="level_end_area" to="level_end_area" method="_on_body_entered"]

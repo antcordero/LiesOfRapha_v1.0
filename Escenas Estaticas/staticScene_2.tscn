@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://doy5adk3jsl1i"]
+
+[ext_resource type="Script" uid="uid://b372cqedbf31w" path="res://Escenas Estaticas/staticScene2.gd" id="1_2ophf"]
+[ext_resource type="Texture2D" uid="uid://ie7jaqi0t475" path="res://Escenas Estaticas/Acto I/2.jpg" id="1_t240u"]
+
+[node name="StaticScene2" type="Node2D"]
+script = ExtResource("1_2ophf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="2" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_t240u")

@@ -1,15 +1,20 @@
 ~ start
-Marthea lee lo inscritos en la placa...
-Marthea: "Que todo espíritu busque la verdad…"
-Marthea: "…siempre que esté guiado por la doctrina."
-...
-Marthea: “Que todo espíritu busque la verdad” está inscrito en una tipografía diferente a la segunda: 
-Marthea: “siempre que esté guiado por la doctrina” que parece mas reciente
-...
-Marthea: ¿Qué decía antes?
-Marthea: ¿Por qué cambiar una frase que habla de “buscar la verdad”?
-...
-Marthea: Parece que el instructor me ha pillado
-Marthea: Debo irme
-... ...
+Marthea stops before one of the statues.
+Her eyes linger on the plaque.
+[a]“Let every spirit seek the truth…”[a]
+The line below feels different.
+Like it was added recently
+[a]“…so long as it is guided by Rapha's word.”[a]
+Marthea narrows her eyes
+What did it say before?
+A shadow falls over the plaque.
+Intructor: “Is something troubling you, Marthea?”
+She straightens immediately.
+Marthea: “No, Instructor.”
+A brief silence.
+Intructor: “Good.”
+Intructor: “Faith leaves no room for doubt.”
+He walks away.
+Marthea looks back at the statue.
+Marthea:[a]Truth should not need permission[a]
 => END
