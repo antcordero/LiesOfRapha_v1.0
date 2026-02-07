@@ -34,20 +34,24 @@ func start_dialogue():
 	add_child(game_scene)
 	current_ui = game_scene
 
-func show_static_scene(static_scene_id: int):  # ← CAMBIADO: ahora acepta ID
+func show_static_scene(static_scene_id: int):
 	print("Mostrando escena estática ID:", static_scene_id)
 	
-	# Limpia todo anterior
+	# 1. PERSISTENCIA: No borramos el nivel, solo lo ocultamos y pausamos
+	if current_level:
+		current_level.visible = false
+		# Usamos DISABLED para que los enemigos y el jugador no se muevan de fondo
+		current_level.process_mode = Node.PROCESS_MODE_DISABLED 
+	
+	# 2. LIMPIEZA: Quitamos interfaces o escenas estáticas previas
 	if current_ui:
 		current_ui.queue_free()
 		current_ui = null
-	if current_level:
-		current_level.queue_free()
-		current_level = null
+	
 	if current_static_scene:
 		current_static_scene.queue_free()
 	
-	# Carga por ID
+	# 3. SELECCIÓN DE RUTA
 	var scene_path := ""
 	match static_scene_id:
 		1:
@@ -62,9 +66,15 @@ func show_static_scene(static_scene_id: int):  # ← CAMBIADO: ahora acepta ID
 	
 	print("Cargando escena estática:", scene_path)
 	
+	# 4. INSTANCIACIÓN
 	if scene_path != "":
-		current_static_scene = load(scene_path).instantiate()
+		var inst = load(scene_path).instantiate()
+		current_static_scene = inst
 		add_child(current_static_scene)
+		
+		# Aseguramos que si es CanvasLayer, tenga una capa alta para no quedar oculta
+		if current_static_scene is CanvasLayer:
+			current_static_scene.layer = 10
 
 func start_level(level_number: int):
 	print("start_level RECIBIDO:", level_number)
@@ -92,3 +102,12 @@ func start_level(level_number: int):
 		var level_scene = load(scene_path).instantiate()
 		add_child(level_scene)
 		current_level = level_scene
+
+func return_to_level():
+	if current_static_scene:
+		current_static_scene.queue_free()
+		current_static_scene = null
+	
+	if current_level:
+		current_level.visible = true
+		current_level.process_mode = Node.PROCESS_MODE_INHERIT # Reactiva el nivel
