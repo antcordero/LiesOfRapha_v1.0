@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bpdgiwkmvms02"]
+[gd_scene load_steps=32 format=4 uid="uid://bpdgiwkmvms02"]
 
 [ext_resource type="TileSet" uid="uid://b1tjvfw24v4ck" path="res://Tile_sets/library.tres" id="1_664i5"]
 [ext_resource type="Script" uid="uid://b7lahlwfahei6" path="res://Scenes/Level_1_scene/second_area.gd" id="1_btw55"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://octcv1qf13t8" path="res://Scenes/personajes/npc/guardias/guardia_idle_left.tscn" id="6_l460e"]
 [ext_resource type="PackedScene" uid="uid://bcya2yr8ra61u" path="res://Scenes/personajes/npc/guardias/guardia_idle_right.tscn" id="7_f7dhy"]
 [ext_resource type="PackedScene" uid="uid://bawsvkuh6cqg3" path="res://Scenes/personajes/Franczius_the_sage/franczius_npc.tscn" id="9_6n1bi"]
+[ext_resource type="PackedScene" uid="uid://l651utfoaqmg" path="res://Scenes/personajes/npc/rodri_NPC/rodri.tscn" id="11_00g58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6n1bi"]
 size = Vector2(35, 53)
@@ -5722,6 +5723,9 @@ position = Vector2(199, 599)
 
 [node name="Franczius_npc" parent="." groups=["Player"] instance=ExtResource("9_6n1bi")]
 position = Vector2(264, 149)
+
+[node name="Rodri" parent="." instance=ExtResource("11_00g58")]
+position = Vector2(1532, 472)
 
 [connection signal="body_entered" from="second_area" to="second_area" method="_on_body_entered"]
 [connection signal="body_entered" from="level_end_area" to="level_end_area" method="_on_body_entered"]
