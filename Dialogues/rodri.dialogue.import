@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d4ela77q45d03"
+path="res://.godot/imported/rodri.dialogue-7d7745e25bae637517c7b4fafdea7679.tres"
+
+[deps]
+
+source_file="res://Dialogues/rodri.dialogue"
+dest_files=["res://.godot/imported/rodri.dialogue-7d7745e25bae637517c7b4fafdea7679.tres"]
+
+[params]
+
+defaults=true
