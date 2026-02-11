@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Configuración del Diálogo
-@export var dialogue_resource: DialogueResource = preload("res://dialogues/rodri.dialogue")
+@export var dialogue_resource: DialogueResource = preload("res://dialogues/jonsBaby.dialogue")
 @export var dialogue_start: String = "start"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -31,11 +31,11 @@ func _process(_delta: float) -> void:
 		cerrar_dialogo_forzado()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("player"):
 		player_in_range = true
 
 func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("player"):
 		player_in_range = false
 		# Opcional: Si el jugador se aleja, cerramos el diálogo automáticamente
 		if dialogue_active:
@@ -70,3 +70,7 @@ func _on_dialogue_finished(_resource: DialogueResource) -> void:
 	await get_tree().process_frame
 	dialogue_active = false
 	current_balloon = null
+
+
+func _on_area_hablar_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

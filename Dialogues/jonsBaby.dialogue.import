@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bt104sa301c4y"
+path="res://.godot/imported/jonsBaby.dialogue-deead769929acaf42541b994d9e499dd.tres"
+
+[deps]
+
+source_file="res://Dialogues/jonsBaby.dialogue"
+dest_files=["res://.godot/imported/jonsBaby.dialogue-deead769929acaf42541b994d9e499dd.tres"]
+
+[params]
+
+defaults=true

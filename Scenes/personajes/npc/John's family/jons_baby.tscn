@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cwhbsm3q6ii4g"]
+[gd_scene load_steps=25 format=3 uid="uid://cwhbsm3q6ii4g"]
 
 [ext_resource type="Script" uid="uid://78rsyx7hbqy3" path="res://Scenes/personajes/npc/John's family/jons_baby.gd" id="1_8hxw2"]
 [ext_resource type="Texture2D" uid="uid://ckjcjw6vghmex" path="res://Scenes/personajes/npc/John's family/Irati/idle_baby.png" id="1_j3qpb"]
@@ -144,6 +144,9 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hxw2"]
+radius = 18.027756
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3qpb"]
 radius = 8.0
 
@@ -156,6 +159,14 @@ sprite_frames = SubResource("SpriteFrames_otn6j")
 animation = &"idle_baby"
 frame_progress = 0.7704948
 
+[node name="areaHablar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaHablar"]
+position = Vector2(17, 18)
+shape = SubResource("CircleShape2D_8hxw2")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(17, 18)
 shape = SubResource("CircleShape2D_j3qpb")
+
+[connection signal="body_entered" from="areaHablar" to="." method="_on_area_hablar_body_entered"]
