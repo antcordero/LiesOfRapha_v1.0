@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://s8tntsgftgnx"]
+[gd_scene load_steps=57 format=4 uid="uid://s8tntsgftgnx"]
 
 [ext_resource type="Script" uid="uid://cw2r5778erxuu" path="res://Scenes/Level_2_scene/level_end_area_2.gd" id="1_6rio3"]
 [ext_resource type="Texture2D" uid="uid://dl8iynnjfsxvl" path="res://Assets_mapas/TileMaps/Garden Environment/Assets/Tiles.png" id="1_yb60p"]
@@ -20,6 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://bcya2yr8ra61u" path="res://Scenes/personajes/npc/guardias/guardia_idle_right.tscn" id="17_236g7"]
 [ext_resource type="PackedScene" uid="uid://dk5u5esox72gs" path="res://Scenes/personajes/npc/goblinMercader/goblinMercader.tscn" id="18_3emr8"]
 [ext_resource type="PackedScene" uid="uid://ioxc7wb28gwd" path="res://Scenes/personajes/marthea/marthea.tscn" id="19_nu20o"]
+[ext_resource type="PackedScene" uid="uid://c1eullxtroo4y" path="res://Scenes/personajes/npc/John's family/jon.tscn" id="21_k8bup"]
+[ext_resource type="PackedScene" uid="uid://cwhbsm3q6ii4g" path="res://Scenes/personajes/npc/John's family/jons_baby.tscn" id="22_wbfqw"]
+[ext_resource type="PackedScene" uid="uid://ohihus2iqkf0" path="res://Scenes/personajes/npc/John's family/jon_wife.tscn" id="23_rx0en"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grf7x"]
 size = Vector2(179, 67)
@@ -4647,5 +4650,14 @@ position = Vector2(623, -468)
 
 [node name="goblinMercader4" parent="." instance=ExtResource("18_3emr8")]
 position = Vector2(620, -384)
+
+[node name="Jon" parent="." instance=ExtResource("21_k8bup")]
+position = Vector2(606, -171)
+
+[node name="Jons_baby" parent="." instance=ExtResource("22_wbfqw")]
+position = Vector2(617, -150)
+
+[node name="Jons_wife" parent="." instance=ExtResource("23_rx0en")]
+position = Vector2(627, -168)
 
 [connection signal="body_entered" from="level_end_area_2" to="level_end_area_2" method="_on_body_entered"]

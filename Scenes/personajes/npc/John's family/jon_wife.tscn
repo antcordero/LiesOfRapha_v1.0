@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ohihus2iqkf0"]
+
+[ext_resource type="Texture2D" uid="uid://bhsgpnuvkrkxe" path="res://Scenes/personajes/npc/John's family/mujer/idle_jons_wife_2.png" id="1_lu8ug"]
+[ext_resource type="Script" uid="uid://txpgcyg5ss6i" path="res://Scenes/personajes/npc/John's family/jon_wife.gd" id="1_m824o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m824o"]
+atlas = ExtResource("1_lu8ug")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnrqa"]
+atlas = ExtResource("1_lu8ug")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcrv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m824o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnrqa")
+}],
+"loop": true,
+"name": &"idle_jons_wife",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lu8ug"]
+radius = 7.0
+height = 22.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_m824o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_pcrv0")
+animation = &"idle_jons_wife"
+frame_progress = 0.75129586
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, 16)
+shape = SubResource("CapsuleShape2D_lu8ug")
