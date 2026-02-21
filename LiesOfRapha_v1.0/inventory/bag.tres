@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Bag" load_steps=2 format=3 uid="uid://cg6creo3pa2y"]
+
+[ext_resource type="Script" uid="uid://c5mgfeig6ineb" path="res://inventory/inventory.gd" id="1_mqaju"]
+
+[resource]
+script = ExtResource("1_mqaju")
+metadata/_custom_type_script = "uid://c5mgfeig6ineb"
