@@ -70,7 +70,3 @@ func _on_dialogue_finished(_resource: DialogueResource) -> void:
 	await get_tree().process_frame
 	dialogue_active = false
 	current_balloon = null
-
-
-func _on_speak_area_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.

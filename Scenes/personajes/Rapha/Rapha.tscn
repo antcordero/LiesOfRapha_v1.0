@@ -54,7 +54,7 @@ position = Vector2(21.5, 21.835938)
 scale = Vector2(0.671875, 0.68237305)
 sprite_frames = SubResource("SpriteFrames_bkv55")
 animation = &"front_idle_rapha"
-frame_progress = 0.53322315
+frame_progress = 0.56424826
 
 [node name="speakArea" type="Area2D" parent="."]
 position = Vector2(32, 32.5)
