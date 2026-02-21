@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bawsvkuh6cqg3"]
+[gd_scene load_steps=11 format=3 uid="uid://bawsvkuh6cqg3"]
 
 [ext_resource type="Texture2D" uid="uid://c678m7lissc74" path="res://Scenes/personajes/Franczius_the_sage/Franczius_the_sage.png" id="1_1jhxe"]
 [ext_resource type="Script" uid="uid://b0p8nqxajnrfr" path="res://Scenes/personajes/Franczius_the_sage/franczius_npc.gd" id="1_mhw27"]
@@ -44,6 +44,9 @@ radius = 35.057095
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bd3hu"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrpw3"]
+radius = 68.007355
+
 [node name="Franczius_npc" type="CharacterBody2D"]
 script = ExtResource("1_mhw27")
 
@@ -59,4 +62,10 @@ shape = SubResource("CircleShape2D_1jhxe")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_bd3hu")
 
+[node name="speakArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="speakArea"]
+shape = SubResource("CircleShape2D_rrpw3")
+
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="body_entered" from="speakArea" to="." method="_on_speak_area_body_entered"]

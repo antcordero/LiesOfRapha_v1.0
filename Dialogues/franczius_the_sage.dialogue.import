@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://7fjgof5o4cau"
+path="res://.godot/imported/franczius_the_sage.dialogue-7bac413d1e6299a129c9d21542fddcc7.tres"
+
+[deps]
+
+source_file="res://Dialogues/franczius_the_sage.dialogue"
+dest_files=["res://.godot/imported/franczius_the_sage.dialogue-7bac413d1e6299a129c9d21542fddcc7.tres"]
+
+[params]
+
+defaults=true

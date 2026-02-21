@@ -5706,7 +5706,7 @@ tile_map_data = PackedByteArray("AABTABEAAAARAA4AAABTABIAAAARAA8AAABTABMAAAARABA
 tile_set = SubResource("TileSet_o6itq")
 
 [node name="book" parent="." instance=ExtResource("13_2ct4r")]
-position = Vector2(257, 266)
+position = Vector2(257, 287)
 
 [node name="Marthea" parent="." groups=["Player"] instance=ExtResource("3_awet4")]
 position = Vector2(1588, 807)
@@ -5724,7 +5724,7 @@ position = Vector2(1045, 596)
 position = Vector2(199, 599)
 
 [node name="Franczius_npc" parent="." groups=["Player"] instance=ExtResource("9_6n1bi")]
-position = Vector2(264, 149)
+position = Vector2(262, 162)
 
 [node name="Rodri" parent="." instance=ExtResource("11_00g58")]
 position = Vector2(1532, 472)
