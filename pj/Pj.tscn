@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://n6n4jg2smnhc"]
+
+[ext_resource type="Script" uid="uid://c5abyi8dde0bk" path="res://pj.gd" id="1_s3vmp"]
+[ext_resource type="Texture2D" uid="uid://dhxx0nlbqgpto" path="res://icon.svg" id="2_csajy"]
+[ext_resource type="Resource" uid="uid://cg6creo3pa2y" path="res://inventory/bag.tres" id="2_q2u2c"]
+[ext_resource type="PackedScene" uid="uid://c4atvoan1h8no" path="res://ui_inventario/ui_inventario.tscn" id="4_q2u2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2u2c"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_s3vmp")
+bag = ExtResource("2_q2u2c")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_q2u2c")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(590, 316)
+texture = ExtResource("2_csajy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("4_q2u2c")]
+offset_left = 2.0
+offset_top = 12.0
+offset_right = 2.0
+offset_bottom = 12.0

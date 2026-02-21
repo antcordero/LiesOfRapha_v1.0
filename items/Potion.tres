@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bttm8hcopng6r"]
+
+[ext_resource type="Script" uid="uid://dmc28a1ooxq2b" path="res://items/Item.gd" id="1_0uldb"]
+[ext_resource type="Texture2D" uid="uid://pyg5s40emtnm" path="res://AssetsInventory/outline_none/meat_small/meat.png" id="1_ryk21"]
+
+[resource]
+script = ExtResource("1_0uldb")
+id = "potion"
+icon = ExtResource("1_ryk21")
+curation = 209
+metadata/_custom_type_script = "uid://dmc28a1ooxq2b"
