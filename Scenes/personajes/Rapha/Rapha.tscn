@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxggdtkvqa8po"]
+
+[ext_resource type="Script" uid="uid://nh1dydynly0u" path="res://Scenes/personajes/Rapha/rapha.gd" id="1_tftfv"]
+[ext_resource type="Texture2D" uid="uid://ce6adfllm7ioo" path="res://Scenes/personajes/Rapha/Rapha_front_idle.png" id="1_w0fm4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tftfv"]
+atlas = ExtResource("1_w0fm4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc7er"]
+atlas = ExtResource("1_w0fm4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muvro"]
+atlas = ExtResource("1_w0fm4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv2lx"]
+atlas = ExtResource("1_w0fm4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkv55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tftfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc7er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muvro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv2lx")
+}],
+"loop": true,
+"name": &"front_idle_rapha",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0fm4"]
+radius = 33.058704
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3cwd"]
+radius = 14.0
+height = 42.0
+
+[node name="Rapha" type="CharacterBody2D"]
+script = ExtResource("1_tftfv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(21.5, 21.835938)
+scale = Vector2(0.671875, 0.68237305)
+sprite_frames = SubResource("SpriteFrames_bkv55")
+animation = &"front_idle_rapha"
+frame_progress = 0.53322315
+
+[node name="speakArea" type="Area2D" parent="."]
+position = Vector2(32, 32.5)
+scale = Vector2(1, 1.015625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="speakArea"]
+position = Vector2(-11, -8.369231)
+shape = SubResource("CircleShape2D_w0fm4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21, 24)
+shape = SubResource("CapsuleShape2D_v3cwd")
+
+[connection signal="body_entered" from="speakArea" to="." method="_on_speak_area_body_entered"]
