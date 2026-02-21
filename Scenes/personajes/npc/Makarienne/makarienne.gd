@@ -11,65 +11,67 @@ var dialogue_active: bool = false
 var current_balloon: Node = null
 
 func _ready() -> void:
+	print("NPC Makarienne listo: ", name)
 	animated_sprite.play("idle_makarienne")
 	
+	# OJO: el nodo se llama speakArea, no areaHablar
 	var area: Area2D = get_node_or_null("speakArea")
+	print("speakArea encontrado: ", area)
 	if area:
-		area.body_entered.connect(_on_body_entered)
-		area.body_exited.connect(_on_body_exited)
-	
-	# IMPORTANTE: No conectamos la señal global aquí para evitar conflictos entre NPCs
-	# Lo manejaremos directamente cuando mostremos el diálogo.
+		area.body_entered.connect(_on_speak_area_body_entered)
+		area.body_exited.connect(_on_speak_area_body_exited)
+
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
 
 func _process(_delta: float) -> void:
-	# Abrir diálogo
+	if Input.is_action_just_pressed("do_something"):
+		print("Tecla de hablar pulsada (Makarienne)")
+
 	if player_in_range and not dialogue_active and Input.is_action_just_pressed("do_something"):
+		print("Intentando mostrar diálogo de Makarienne")
 		mostrar_dialogo()
-	
-	# Cerrar diálogo manualmente
 	elif dialogue_active and Input.is_action_just_pressed("cancel"):
+		print("Cerrando diálogo de Makarienne con cancel")
 		cerrar_dialogo_forzado()
 
-func _on_body_entered(body: Node2D) -> void:
-	print("Body entered: ", body.name)
+func _on_speak_area_body_entered(body: Node2D) -> void:
+	print("speakArea body_entered: ", body.name)
 	if body.is_in_group("player"):
-		print("Jugador en rango")
+		print("Jugador en rango para hablar con Makarienne")
 		player_in_range = true
 
-
-func _on_body_exited(body: Node2D) -> void:
+func _on_speak_area_body_exited(body: Node2D) -> void:
+	print("speakArea body_exited: ", body.name)
 	if body.is_in_group("player"):
+		print("Jugador sale de rango de Makarienne")
 		player_in_range = false
-		# Opcional: Si el jugador se aleja, cerramos el diálogo automáticamente
 		if dialogue_active:
 			cerrar_dialogo_forzado()
 
 func mostrar_dialogo() -> void:
 	if dialogue_resource == null:
-		print("Error: No hay recurso de diálogo")
+		print("Error: No hay recurso de diálogo en ", name)
+		return
+
+	if dialogue_active:
+		print("Ya hay un diálogo activo en Makarienne")
 		return
 		
+	print("Mostrando diálogo de Makarienne:", dialogue_resource.resource_path)
 	dialogue_active = true
 	current_balloon = DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
-	
-	# Conectamos la señal de cierre SOLO para esta instancia y una sola vez (CONNECT_ONE_SHOT)
-	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
-		DialogueManager.dialogue_ended.connect(_on_dialogue_finished, CONNECT_ONE_SHOT)
+	print("Balloon creado para Makarienne: ", current_balloon)
 
 func cerrar_dialogo_forzado() -> void:
+	print("cerrar_dialogo_forzado Makarienne")
 	if current_balloon and is_instance_valid(current_balloon):
 		current_balloon.queue_free()
 		current_balloon = null
-	
-	# Forzamos el reset de la variable por si la señal no llega a tiempo al borrar el nodo
 	dialogue_active = false
-	
-	# Desconectamos la señal si existía para que no se duplique luego
-	if DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
-		DialogueManager.dialogue_ended.disconnect(_on_dialogue_finished)
 
 func _on_dialogue_finished(_resource: DialogueResource) -> void:
-	# Esperamos un frame para evitar que el mismo click que cierra el diálogo lo vuelva a abrir
-	await get_tree().process_frame
-	dialogue_active = false
-	current_balloon = null
+	if current_balloon and not is_instance_valid(current_balloon):
+		print("Se ha cerrado el globo de Makarienne desde DialogueManager")
+		current_balloon = null
+		dialogue_active = false
