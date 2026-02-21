@@ -5,7 +5,7 @@ var player_in_range: bool = false
 var dialogue_active: bool = false
 var current_balloon: Node = null
 
-const MY_DIALOGUE := preload("res://dialogues/soldier.dialogue")
+const MY_DIALOGUE := preload("res://Dialogues/soldier.dialogue")
 
 
 func _ready() -> void:

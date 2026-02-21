@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://c35vg1sqkf8ro"]
+[gd_scene load_steps=73 format=3 uid="uid://c35vg1sqkf8ro"]
 
 [ext_resource type="Script" uid="uid://pi3pyuyfvkab" path="res://Scenes/personajes/anton/anton.gd" id="1_3qkm2"]
 [ext_resource type="Texture2D" uid="uid://cvosp0nkbg8oi" path="res://Assets_mapas/Characters/Edited Characters Assets/Anton/idle.png" id="1_onrkg"]
@@ -496,6 +496,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kd5jf"]
+radius = 33.06055
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_3qkm2"]
 radius = 33.01515
 
@@ -510,7 +513,11 @@ script = ExtResource("1_3qkm2")
 sprite_frames = SubResource("SpriteFrames_ajfva")
 animation = &"idle_down"
 frame_progress = 0.22015125
-metadata/_edit_group_ = true
+
+[node name="speakArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="speakArea"]
+shape = SubResource("CircleShape2D_kd5jf")
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 2
@@ -524,4 +531,5 @@ light_mask = 4
 visibility_layer = 4
 shape = SubResource("CapsuleShape2D_6am2l")
 
+[connection signal="body_entered" from="speakArea" to="." method="_on_speak_area_body_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

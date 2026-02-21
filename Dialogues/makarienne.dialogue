@@ -1,0 +1,15 @@
+~ start
+Makarienne: “You’ve been standing there a while...”
+[a]Marthea straightens[/a]
+Marthea: “I was reading”
+Makarienne: “Good...”
+...
+Makarienne: “Faith requires focus”
+Silence:
+Marthea: “Does truth require supervision?”
+[a]The Instructor steps closer[/a]
+Makarienne: “Questions have consequences.”
+[a]Marthea looks back at the plaque[/a]
+Marthea (thought): “So does silence”
+...
+=> END

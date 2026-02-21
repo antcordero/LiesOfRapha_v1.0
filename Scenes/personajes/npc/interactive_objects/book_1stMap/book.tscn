@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn7myhoprdcxt"]
+
+[ext_resource type="Script" uid="uid://dwlukena5jfe1" path="res://Scenes/personajes/npc/interactive_objects/book_1stMap/book.gd" id="1_s7gfq"]
+[ext_resource type="Texture2D" uid="uid://dhyxkh3qfb7o2" path="res://Assets_mapas/TileMaps/Library/Assets/Tiles.png" id="2_y1fdr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7gfq"]
+atlas = ExtResource("2_y1fdr")
+region = Rect2(32, 288, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1fdr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7gfq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7gfq"]
+radius = 25.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7gfq"]
+size = Vector2(11, 13)
+
+[node name="book" type="CharacterBody2D"]
+script = ExtResource("1_s7gfq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 9)
+sprite_frames = SubResource("SpriteFrames_y1fdr")
+
+[node name="speakArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="speakArea"]
+position = Vector2(8, 10)
+shape = SubResource("CircleShape2D_s7gfq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 8.5)
+shape = SubResource("RectangleShape2D_s7gfq")
+
+[connection signal="body_entered" from="speakArea" to="." method="_on_speak_area_body_entered"]
