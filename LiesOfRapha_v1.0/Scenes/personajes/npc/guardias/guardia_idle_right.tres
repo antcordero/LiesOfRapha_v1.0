@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://c6bcx0udi2xnq"]
+
+[ext_resource type="Texture2D" uid="uid://dkdajv12wcsoq" path="res://Assets_mapas/TileMaps/Castle Environment 0.3/Enemies/Royal Crew/Soldier/Idle-Sheet.png" id="1_1jeay"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4j3l"]
+atlas = ExtResource("1_1jeay")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwywa"]
+atlas = ExtResource("1_1jeay")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dt5n"]
+atlas = ExtResource("1_1jeay")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipfxf"]
+atlas = ExtResource("1_1jeay")
+region = Rect2(192, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4j3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwywa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dt5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipfxf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

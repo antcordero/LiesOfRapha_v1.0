@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://cda8enytduqoj"]
+
+[ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_8xjnt"]
+[ext_resource type="Texture2D" uid="uid://c6u3iajuxw44" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/Idle_Right_Down_4.png" id="2_8xjnt"]
+[ext_resource type="Texture2D" uid="uid://dmsybpnxec00w" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/Marta_attack.png" id="2_ufh5k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jhxp"]
+atlas = ExtResource("2_ufh5k")
+region = Rect2(0, 0, 51, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iqoo"]
+atlas = ExtResource("2_ufh5k")
+region = Rect2(51, 0, 51, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaoer"]
+atlas = ExtResource("2_ufh5k")
+region = Rect2(102, 0, 51, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lhrm"]
+atlas = ExtResource("2_ufh5k")
+region = Rect2(153, 0, 51, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufh5k"]
+atlas = ExtResource("2_8xjnt")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3sgo"]
+atlas = ExtResource("2_8xjnt")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryqyf"]
+atlas = ExtResource("2_8xjnt")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hlws"]
+atlas = ExtResource("2_8xjnt")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jhxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jhxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iqoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaoer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lhrm")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufh5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3sgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryqyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hlws")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player1" type="Node2D"]
+position = Vector2(3, 0)
+script = ExtResource("1_8xjnt")
+hp = 70
+atk = 30
+character_name = "Marthea"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 2.0000038)
+scale = Vector2(8.75, 5.8671875)
+sprite_frames = SubResource("SpriteFrames_0jhxp")
+animation = &"attack"
+frame = 3
+frame_progress = 1.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -73.0
+offset_top = -121.0
+offset_right = 89.0
+offset_bottom = -91.0
+theme_override_colors/font_outline_color = Color(0.7987984, 0.24698165, 0.25042722, 1)
+show_percentage = false
+
+[node name="HPText" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -41.000004
+offset_top = -158.0
+offset_right = 78.0
+offset_bottom = -135.0
+scale = Vector2(1.3169128, 1.5251343)
+text = "Marthea"
