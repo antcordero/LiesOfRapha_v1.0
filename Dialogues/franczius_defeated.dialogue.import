@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bn43vq6yldm2s"
+path="res://.godot/imported/franczius_defeated.dialogue-e5e462c160075c5704a9911c9e86ddaf.tres"
+
+[deps]
+
+source_file="res://Dialogues/franczius_defeated.dialogue"
+dest_files=["res://.godot/imported/franczius_defeated.dialogue-e5e462c160075c5704a9911c9e86ddaf.tres"]
+
+[params]
+
+defaults=true
