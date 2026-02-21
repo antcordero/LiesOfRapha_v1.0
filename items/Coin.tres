@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cfwtlrsd3kcno"]
 
 [ext_resource type="Script" uid="uid://dmc28a1ooxq2b" path="res://items/Item.gd" id="1_lcq72"]
-[ext_resource type="Texture2D" uid="uid://72esgrl2s0m1" path="res://assets/outline_dark/coin_large/frame0000.png" id="1_xf8od"]
+[ext_resource type="Texture2D" uid="uid://72esgrl2s0m1" path="res://AssetsInventory/outline_dark/coin_large/frame0000.png" id="1_xf8od"]
 
 [resource]
 script = ExtResource("1_lcq72")
+id = "coin"
 name = "Moneda"
 icon = ExtResource("1_xf8od")
-sum = 1
 metadata/_custom_type_script = "uid://dmc28a1ooxq2b"

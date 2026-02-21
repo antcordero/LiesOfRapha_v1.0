@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDatabase" load_steps=6 format=3 uid="uid://c5jlmimhweme6"]
+
+[ext_resource type="Script" uid="uid://dmc28a1ooxq2b" path="res://items/Item.gd" id="1_6xtvy"]
+[ext_resource type="Resource" uid="uid://csrgonuhioyh7" path="res://items/Key.tres" id="2_wxuga"]
+[ext_resource type="Resource" uid="uid://cfwtlrsd3kcno" path="res://items/Coin.tres" id="3_wua5d"]
+[ext_resource type="Resource" uid="uid://bttm8hcopng6r" path="res://items/Potion.tres" id="4_hik0w"]
+[ext_resource type="Script" uid="uid://v5csnsldpdot" path="res://items/ItemDatabase.gd" id="5_73brp"]
+
+[resource]
+script = ExtResource("5_73brp")
+items = Array[ExtResource("1_6xtvy")]([ExtResource("2_wxuga"), ExtResource("3_wua5d"), ExtResource("4_hik0w"), null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://v5csnsldpdot"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ioxc7wb28gwd"]
+[gd_scene load_steps=35 format=3 uid="uid://ioxc7wb28gwd"]
 
 [ext_resource type="Script" uid="uid://raircbd3yb3l" path="res://Scenes/personajes/marthea/marthea.gd" id="1_qvn45"]
 [ext_resource type="Texture2D" uid="uid://bxxx3gp60pbwh" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/Idle_Down_4.png" id="1_yp7y0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bwayffjbuvlk1" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/walk_Down.png" id="4_7lmpf"]
 [ext_resource type="Texture2D" uid="uid://dictf6ycd5k26" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/walk_Right_Down.png" id="5_8plf7"]
 [ext_resource type="Texture2D" uid="uid://cqfvbp88lty12" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/walk_Up.png" id="6_8r10w"]
+[ext_resource type="PackedScene" uid="uid://c4atvoan1h8no" path="res://ui_inventario/ui_inventario.tscn" id="8_j662p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jikfh"]
 atlas = ExtResource("1_yp7y0")
@@ -228,3 +229,11 @@ shape = SubResource("CapsuleShape2D_qvn45")
 zoom = Vector2(4, 4)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("8_j662p")]
+offset_left = 2.0
+offset_top = 12.0
+offset_right = 2.0
+offset_bottom = 12.0
