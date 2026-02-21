@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://ioxc7wb28gwd"]
+[gd_scene load_steps=36 format=3 uid="uid://ioxc7wb28gwd"]
 
 [ext_resource type="Script" uid="uid://raircbd3yb3l" path="res://Scenes/personajes/marthea/marthea.gd" id="1_qvn45"]
 [ext_resource type="Texture2D" uid="uid://bxxx3gp60pbwh" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/Idle_Down_4.png" id="1_yp7y0"]
+[ext_resource type="Resource" uid="uid://cg6creo3pa2y" path="res://inventory/bag.tres" id="2_8a22d"]
 [ext_resource type="Texture2D" uid="uid://c6u3iajuxw44" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/Idle_Right_Down_4.png" id="2_nkmkg"]
 [ext_resource type="Texture2D" uid="uid://mdumknlcmlc6" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/Idle_Up_4.png" id="3_847tu"]
 [ext_resource type="Texture2D" uid="uid://bwayffjbuvlk1" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/walk_Down.png" id="4_7lmpf"]
@@ -216,6 +217,7 @@ height = 22.0
 
 [node name="Marthea" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_qvn45")
+bag = ExtResource("2_8a22d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a863f")
