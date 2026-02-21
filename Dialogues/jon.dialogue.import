@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bueq27pndeehv"
+path="res://.godot/imported/jon.dialogue-b62ce8d922a47e2c2c9a6082ed709c04.tres"
+
+[deps]
+
+source_file="res://Dialogues/jon.dialogue"
+dest_files=["res://.godot/imported/jon.dialogue-b62ce8d922a47e2c2c9a6082ed709c04.tres"]
+
+[params]
+
+defaults=true

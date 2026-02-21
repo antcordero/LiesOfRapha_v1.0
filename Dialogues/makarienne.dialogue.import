@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bsqmq06i5mvfj"
+path="res://.godot/imported/makarienne.dialogue-8381f8604d9c2042bcf4da0ebd7ac52b.tres"
+
+[deps]
+
+source_file="res://Dialogues/makarienne.dialogue"
+dest_files=["res://.godot/imported/makarienne.dialogue-8381f8604d9c2042bcf4da0ebd7ac52b.tres"]
+
+[params]
+
+defaults=true

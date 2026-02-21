@@ -63,7 +63,7 @@ cancel={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/initial.dialogue", "res://Dialogues/dialogo_1.dialogue", "res://Dialogues/soldier.dialogue", "res://Dialogues/dialogo_sala2.dialogue", "res://Dialogues/rodri.dialogue", "res://Dialogues/jonsBaby.dialogue", "res://Dialogues/rapha.dialogue", "res://LiesOfRapha_v1.0/Dialogues/dialogo_1.dialogue", "res://LiesOfRapha_v1.0/Dialogues/initial.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/initial.dialogue", "res://Dialogues/dialogo_1.dialogue", "res://Dialogues/soldier.dialogue", "res://Dialogues/dialogo_sala2.dialogue", "res://Dialogues/rodri.dialogue", "res://Dialogues/jonsBaby.dialogue", "res://Dialogues/rapha.dialogue", "res://LiesOfRapha_v1.0/Dialogues/dialogo_1.dialogue", "res://LiesOfRapha_v1.0/Dialogues/initial.dialogue", "res://Dialogues/jon.dialogue", "res://Dialogues/barbara.dialogue", "res://Dialogues/makarienne.dialogue")
 
 [rendering]
 

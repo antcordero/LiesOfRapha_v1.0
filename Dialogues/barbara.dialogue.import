@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://copefvdpd8ymk"
+path="res://.godot/imported/barbara.dialogue-0aa76c58ef461f79ee96cb44882358d1.tres"
+
+[deps]
+
+source_file="res://Dialogues/barbara.dialogue"
+dest_files=["res://.godot/imported/barbara.dialogue-0aa76c58ef461f79ee96cb44882358d1.tres"]
+
+[params]
+
+defaults=true

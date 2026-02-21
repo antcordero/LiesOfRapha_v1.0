@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Configuración del Diálogo
-@export var dialogue_resource: DialogueResource = preload("res://dialogues/rapha.dialogue")
+@export var dialogue_resource: DialogueResource = preload("res://Dialogues/makarienne.dialogue")
 @export var dialogue_start: String = "start"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -11,7 +11,7 @@ var dialogue_active: bool = false
 var current_balloon: Node = null
 
 func _ready() -> void:
-	animated_sprite.play("front_idle_rapha")
+	animated_sprite.play("idle_makarienne")
 	
 	var area: Area2D = get_node_or_null("speakArea")
 	if area:
@@ -38,8 +38,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("pjjkj
-	layer"):
+	if body.is_in_group("player"):
 		player_in_range = false
 		# Opcional: Si el jugador se aleja, cerramos el diálogo automáticamente
 		if dialogue_active:
