@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://bsnbjlq23sfmr"]
+[gd_scene load_steps=82 format=4 uid="uid://bsnbjlq23sfmr"]
 
 [ext_resource type="Texture2D" uid="uid://dl8iynnjfsxvl" path="res://Assets_mapas/TileMaps/Garden Environment/Assets/Tiles.png" id="1_qqdeg"]
 [ext_resource type="Texture2D" uid="uid://2r15bujmhbai" path="res://Assets_mapas/TileMaps/Castle Environment 0.3/Assets/Tiles.png" id="2_j56io"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cbrf7bmq5ncab" path="res://Assets_mapas/TileMaps/Interior/Closet.png" id="28_sug54"]
 [ext_resource type="Texture2D" uid="uid://3pqi7ifwwoyf" path="res://Assets_mapas/TileMaps/Interior/Dressers.png" id="29_3c107"]
 [ext_resource type="PackedScene" uid="uid://ioxc7wb28gwd" path="res://Scenes/personajes/marthea/marthea.tscn" id="30_qqdeg"]
+[ext_resource type="PackedScene" uid="uid://cxggdtkvqa8po" path="res://Scenes/personajes/Rapha/Rapha.tscn" id="31_j56io"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_50qd4"]
 texture = ExtResource("1_qqdeg")
@@ -11947,3 +11948,6 @@ tile_set = SubResource("TileSet_1i8n8")
 
 [node name="Marthea" parent="." instance=ExtResource("30_qqdeg")]
 position = Vector2(248, -41)
+
+[node name="Rapha" parent="." instance=ExtResource("31_j56io")]
+position = Vector2(61, -936)
