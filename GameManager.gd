@@ -1,5 +1,11 @@
 extends Node
 
+@export var boss1_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
+@export var boss1_defeated_start: String = "start"
+
+var boss1_dialogue_active: bool = false
+
+
 static var menu_created := false
 
 var current_level: Node = null
@@ -111,3 +117,32 @@ func return_to_level():
 	if current_level:
 		current_level.visible = true
 		current_level.process_mode = Node.PROCESS_MODE_INHERIT # Reactiva el nivel
+
+###
+func show_boss1_defeated_dialogue() -> void:
+	# Evitar que se dispare dos veces
+	if boss1_dialogue_active:
+		return
+
+	if boss1_defeated_dialogue == null:
+		print("ERROR: boss1_defeated_dialogue es null")
+		# Si hubiera error, al menos pasamos de nivel
+		start_level(2)
+		return
+
+	boss1_dialogue_active = true
+
+	# Conectar UNA vez a la señal global de DialogueManager
+	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
+
+	# Mostrar el diálogo automáticamente sobre el mapa normal
+	DialogueManager.show_dialogue_balloon(boss1_defeated_dialogue, boss1_defeated_start)
+
+
+func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
+	# Esta señal se lanza para cualquier diálogo del juego.
+	# Si el que estaba activo era el del boss1 derrotado, ahora pasamos a nivel 2.
+	if boss1_dialogue_active:
+		boss1_dialogue_active = false
+		start_level(2)

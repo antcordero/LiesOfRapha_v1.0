@@ -193,8 +193,16 @@ func check_win_lose() -> bool:
 
 # Cerrar batalla bien: restaurar cámara anterior y borrar la batalla
 func end_battle() -> void:
+	# Volver a la cámara del mundo y despausar
 	if is_instance_valid(_world_cam):
 		_world_cam.make_current()
 	get_tree().paused = false
-	GameManager.start_level(2)
+
+	# Volver al mapa normal (nivel actual) SIN cambiar aún de nivel
+	GameManager.return_to_level()
+
+	# Mostrar el diálogo de derrota del boss 1
+	GameManager.show_boss1_defeated_dialogue()
+
+	# Cerrar la escena de combate
 	queue_free()
