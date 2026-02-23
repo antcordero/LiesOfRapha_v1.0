@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Configuración del Diálogo
-@export var dialogue_resource: DialogueResource = preload("res://dialogues/rapha.dialogue")
+@export var dialogue_resource: DialogueResource = preload("res://dialogues/beatrix.dialogue")
 @export var dialogue_start: String = "start"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -11,7 +11,7 @@ var dialogue_active: bool = false
 var current_balloon: Node = null
 
 func _ready() -> void:
-	animated_sprite.play("front_idle_rapha")
+	animated_sprite.play("front_idle_beatrix")
 	
 	var area: Area2D = get_node_or_null("speakArea")
 	if area:
@@ -73,3 +73,7 @@ func _on_dialogue_finished(_resource: DialogueResource) -> void:
 	await get_tree().process_frame
 	dialogue_active = false
 	current_balloon = null
+
+
+func _on_speak_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

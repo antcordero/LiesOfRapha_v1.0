@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("do_something"):
-		print("Tecla de hablar pulsada (Makarienne)")
+		print("Tecla de hablar pulsada")
 
 	if player_in_range and not dialogue_active and Input.is_action_just_pressed("do_something"):
 		print("Intentando mostrar diálogo de Makarienne")
