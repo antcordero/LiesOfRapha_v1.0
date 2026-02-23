@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://cky17rfkxa2rq"]
+
+[ext_resource type="Script" uid="uid://c54j4bm0i2n3p" path="res://quiz/beatrix_quiz.gd" id="1_ghpfq"]
+[ext_resource type="Texture2D" uid="uid://bxiy1fk80cqv3" path="res://Escenas Estaticas/Acto III/torre_guerrero-copia.jpg" id="1_gmd3x"]
+[ext_resource type="FontFile" uid="uid://bljq3h4nq2cr1" path="res://fonts/Pixelmax-Regular.otf" id="2_ghpfq"]
+[ext_resource type="FontFile" uid="uid://c405i12ltp3y5" path="res://fonts/pixelmix.ttf" id="3_4gc1s"]
+
+[node name="Control" type="CanvasLayer"]
+process_mode = 2
+layer = 10
+script = ExtResource("1_ghpfq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gmd3x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="DisplayText" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ghpfq")
+theme_override_font_sizes/font_size = 30
+text = "K-HOOT"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="ItemList" type="ItemList" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.777
+anchor_right = 0.5
+anchor_bottom = 0.777
+offset_left = -241.0
+offset_top = -69.496
+offset_right = 238.0
+offset_bottom = 69.504
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+theme_override_constants/line_separation = 10
+theme_override_constants/icon_margin = 10
+theme_override_fonts/font = ExtResource("3_4gc1s")
+item_count = 4
+item_0/text = "item 1"
+item_1/text = "item 2"
+item_2/text = "item 3"
+item_3/text = "item 4"
+
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]

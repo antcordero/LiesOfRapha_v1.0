@@ -1,0 +1,22 @@
+[
+  {
+	"question": "¿Si congelas agua, qué obtienes?",
+	"options": ["Hielo", "Vapor", "Fuego", "Arena"],
+	"correctOptionIndex": 0
+  },
+  {
+	"question": "¿A qué lugar vas a ver muchos animales?",
+	"options": ["Aeropuerto", "Escuela", "Zoo", "Banco"],
+	"correctOptionIndex": 1
+  },
+  {
+	"question": "¿Qué animal tiene alas?",
+	"options": ["Mariposas", "Peces", "Aves", "Ranas"],
+	"correctOptionIndex": 2
+  },
+  {
+	"question": "¿Cuál es el animal terrestre más rápido?",
+	"options": ["Tortuga", "Elefante", "Guepardo", "Caracol"],
+	"correctOptionIndex": 3
+  }
+]
