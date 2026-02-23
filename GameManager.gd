@@ -5,7 +5,6 @@ extends Node
 
 var boss1_dialogue_active: bool = false
 
-
 static var menu_created := false
 
 var current_level: Node = null
@@ -43,13 +42,10 @@ func start_dialogue():
 func show_static_scene(static_scene_id: int):
 	print("Mostrando escena estática ID:", static_scene_id)
 	
-	# 1. PERSISTENCIA: No borramos el nivel, solo lo ocultamos y pausamos
 	if current_level:
 		current_level.visible = false
-		# Usamos DISABLED para que los enemigos y el jugador no se muevan de fondo
 		current_level.process_mode = Node.PROCESS_MODE_DISABLED 
 	
-	# 2. LIMPIEZA: Quitamos interfaces o escenas estáticas previas
 	if current_ui:
 		current_ui.queue_free()
 		current_ui = null
@@ -57,7 +53,6 @@ func show_static_scene(static_scene_id: int):
 	if current_static_scene:
 		current_static_scene.queue_free()
 	
-	# 3. SELECCIÓN DE RUTA
 	var scene_path := ""
 	match static_scene_id:
 		1:
@@ -72,18 +67,18 @@ func show_static_scene(static_scene_id: int):
 	
 	print("Cargando escena estática:", scene_path)
 	
-	# 4. INSTANCIACIÓN
 	if scene_path != "":
 		var inst = load(scene_path).instantiate()
 		current_static_scene = inst
 		add_child(current_static_scene)
 		
-		# Aseguramos que si es CanvasLayer, tenga una capa alta para no quedar oculta
 		if current_static_scene is CanvasLayer:
 			current_static_scene.layer = 10
 
 func start_level(level_number: int):
 	print("start_level RECIBIDO:", level_number)
+	get_tree().paused = false  # doble seguridad
+
 	if current_static_scene:
 		current_static_scene.queue_free()
 		current_static_scene = null
@@ -108,6 +103,13 @@ func start_level(level_number: int):
 		var level_scene = load(scene_path).instantiate()
 		add_child(level_scene)
 		current_level = level_scene
+		
+		# ¡ESTO ES VITAL!
+		# Asegura que el nivel ignore cualquier pausa residual y se active
+		current_level.process_mode = Node.PROCESS_MODE_INHERIT
+		get_tree().paused = false
+
+
 
 func return_to_level():
 	if current_static_scene:
@@ -116,33 +118,99 @@ func return_to_level():
 	
 	if current_level:
 		current_level.visible = true
-		current_level.process_mode = Node.PROCESS_MODE_INHERIT # Reactiva el nivel
+		current_level.process_mode = Node.PROCESS_MODE_INHERIT
 
-###
+### BOSS 1
 func show_boss1_defeated_dialogue() -> void:
-	# Evitar que se dispare dos veces
 	if boss1_dialogue_active:
 		return
 
 	if boss1_defeated_dialogue == null:
 		print("ERROR: boss1_defeated_dialogue es null")
-		# Si hubiera error, al menos pasamos de nivel
 		start_level(2)
 		return
 
 	boss1_dialogue_active = true
 
-	# Conectar UNA vez a la señal global de DialogueManager
 	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
 
-	# Mostrar el diálogo automáticamente sobre el mapa normal
 	DialogueManager.show_dialogue_balloon(boss1_defeated_dialogue, boss1_defeated_start)
 
-
 func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
-	# Esta señal se lanza para cualquier diálogo del juego.
-	# Si el que estaba activo era el del boss1 derrotado, ahora pasamos a nivel 2.
 	if boss1_dialogue_active:
 		boss1_dialogue_active = false
 		start_level(2)
+
+#************************ QUIZ ************************
+var quiz_beatrix_activo: bool = false
+
+func iniciar_quiz_beatrix(nivel_actual: Node):
+	# NPC llama esto al terminar el diálogo
+	if quiz_beatrix_activo:
+		return
+	
+	quiz_beatrix_activo = true
+	
+	# Pausamos lógica del juego
+	get_tree().paused = true
+	if nivel_actual:
+		nivel_actual.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	# Instanciamos el quiz
+	var quiz = load("res://quiz/beatrix_quiz.tscn").instantiate()
+	
+	# Lo añadimos al nivel actual
+	nivel_actual.add_child(quiz)
+	
+	# Aseguramos que salga por encima y centrado
+	if quiz is CanvasLayer:
+		quiz.layer = 10
+	else:
+		quiz.z_index = 100
+		quiz.top_level = true
+		quiz.position = Vector2.ZERO
+	
+	# Conectamos señal de resultado
+	quiz.quiz_completado.connect(_on_quiz_beatrix_completado)
+	
+	print("Quiz Beatrix CARGADO en nivel: ", nivel_actual.name)
+
+func _on_quiz_beatrix_completado(exito: bool):
+	quiz_beatrix_activo = false
+	
+	# 1. Despausamos el árbol principal ANTES de cualquier cambio
+	get_tree().paused = false
+	
+	print("DEBUG QUIZ END: Pausa desactivada. Éxito: ", exito)
+	
+	if exito:
+		print("QUIZ Beatrix OK → Cargando Nivel 3")
+		start_level(3)
+		
+		# Seguridad: Forzamos que el nivel recién creado procese
+		if current_level:
+			current_level.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		print("QUIZ Beatrix FALLIDO → Reiniciando Nivel Actual")
+		# Si falla, reseteamos flags y recargamos para que pueda volver a hablar con el NPC
+		reset_quiz_flags()
+		get_tree().reload_current_scene()
+
+# Para otros bosses/quizzes en futuro
+func iniciar_quiz_generic(quiz_path: String, siguiente_nivel: int):
+	quiz_beatrix_activo = true
+	get_tree().paused = true
+	var quiz = load(quiz_path).instantiate()
+	current_level.add_child(quiz)
+	quiz.quiz_completado.connect(func(exito): _on_quiz_generic_completado(exito, siguiente_nivel))
+
+func _on_quiz_generic_completado(exito: bool, siguiente_nivel: int):
+	quiz_beatrix_activo = false
+	get_tree().paused = false
+	if exito:
+		start_level(siguiente_nivel)
+
+# Reset flags al fallar y recargar nivel
+func reset_quiz_flags():
+	quiz_beatrix_activo = false

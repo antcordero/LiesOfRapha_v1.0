@@ -53,6 +53,10 @@ func _add_and_save(item_id: String) -> void:
 # === MOVIMIENTO DEL PERSONAJE ===
 func _physics_process(delta):
 	player_movement(delta)
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		print("El input del jugador funciona. Pausa: ", get_tree().paused)
 
 func player_movement(delta):
 	if Input.is_action_pressed("right"):

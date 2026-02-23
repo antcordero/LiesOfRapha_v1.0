@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cyjk6mfdsylv6"
+path="res://.godot/imported/beatrix.dialogue-5af0ec8723d1baa26d759dbb9cd563ef.tres"
+
+[deps]
+
+source_file="res://Dialogues/beatrix.dialogue"
+dest_files=["res://.godot/imported/beatrix.dialogue-5af0ec8723d1baa26d759dbb9cd563ef.tres"]
+
+[params]
+
+defaults=true

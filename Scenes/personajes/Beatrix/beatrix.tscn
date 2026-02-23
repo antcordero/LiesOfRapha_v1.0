@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://cspr7cfqcqrs6"]
+
+[ext_resource type="Script" uid="uid://dj7swpk6l4wct" path="res://Scenes/personajes/Beatrix/beatrix.gd" id="1_f5bop"]
+[ext_resource type="Texture2D" uid="uid://crcmf85xbvuav" path="res://Scenes/personajes/Beatrix/Bea.png" id="2_72so1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72so1"]
+atlas = ExtResource("2_72so1")
+region = Rect2(0, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4trig"]
+atlas = ExtResource("2_72so1")
+region = Rect2(32, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q4qp"]
+atlas = ExtResource("2_72so1")
+region = Rect2(64, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbrtj"]
+atlas = ExtResource("2_72so1")
+region = Rect2(96, 40, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pekgr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72so1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4trig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q4qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbrtj")
+}],
+"loop": true,
+"name": &"front_idle_beatrix",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w4nal"]
+radius = 25.019993
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2wya8"]
+radius = 8.0
+height = 26.0
+
+[node name="Beatrix" type="CharacterBody2D" groups=["player"]]
+process_mode = 3
+script = ExtResource("1_f5bop")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 20)
+sprite_frames = SubResource("SpriteFrames_pekgr")
+animation = &"front_idle_beatrix"
+frame_progress = 0.36630723
+
+[node name="speakArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="speakArea"]
+position = Vector2(16, 23)
+shape = SubResource("CircleShape2D_w4nal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 22)
+shape = SubResource("CapsuleShape2D_2wya8")
+
+[connection signal="body_entered" from="speakArea" to="." method="_on_speak_area_body_entered"]
