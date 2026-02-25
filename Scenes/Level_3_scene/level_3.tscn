@@ -11953,4 +11953,4 @@ tile_set = SubResource("TileSet_1i8n8")
 position = Vector2(248, -41)
 
 [node name="Beatrix" parent="." instance=ExtResource("32_4ruca")]
-position = Vector2(231, -210)
+position = Vector2(230, -761)

@@ -77,7 +77,7 @@ func show_static_scene(static_scene_id: int):
 
 func start_level(level_number: int):
 	print("start_level RECIBIDO:", level_number)
-	get_tree().paused = false  # doble seguridad
+	get_tree().paused = false  # doble seguridad # Aseguramos que el motor corra
 
 	if current_static_scene:
 		current_static_scene.queue_free()
@@ -179,7 +179,7 @@ func iniciar_quiz_beatrix(nivel_actual: Node):
 func _on_quiz_beatrix_completado(exito: bool):
 	quiz_beatrix_activo = false
 	
-	# 1. Despausamos el árbol principal ANTES de cualquier cambio
+	# 1. Despausamos SIEMPRE
 	get_tree().paused = false
 	
 	print("DEBUG QUIZ END: Pausa desactivada. Éxito: ", exito)
@@ -188,14 +188,17 @@ func _on_quiz_beatrix_completado(exito: bool):
 		print("QUIZ Beatrix OK → Cargando Nivel 3")
 		start_level(3)
 		
-		# Seguridad: Forzamos que el nivel recién creado procese
 		if current_level:
 			current_level.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
 		print("QUIZ Beatrix FALLIDO → Reiniciando Nivel Actual")
-		# Si falla, reseteamos flags y recargamos para que pueda volver a hablar con el NPC
+		
+		# Reseteamos flag para que el NPC pueda volver a lanzar el quiz
 		reset_quiz_flags()
+		
+		# Reiniciamos el nivel actual por completo
 		get_tree().reload_current_scene()
+
 
 # Para otros bosses/quizzes en futuro
 func iniciar_quiz_generic(quiz_path: String, siguiente_nivel: int):

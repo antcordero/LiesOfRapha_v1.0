@@ -53,29 +53,23 @@ func finalizar_quiz(exito: bool):
 	ListItem.visible = false
 	
 	if exito:
-		DisplayText.text = "¡PERFECTO!\n¡Pasas al siguiente nivel!"
-		# Despausamos ANTES del timer para que el motor siga procesando
-		get_tree().paused = false 
-		
+		DisplayText.text = "¡PERFECTO!\\n¡Pasas al siguiente nivel!"
+		get_tree().paused = false
 		await get_tree().create_timer(2.0).timeout
 		quiz_completado.emit(true)
-		queue_free() 
+		queue_free()
 	else:
-		# Lógica para cuando el jugador falla
-		DisplayText.text = "¡ERROR!\nInténtalo de nuevo..."
+		DisplayText.text = "¡ERROR!\\nInténtalo de nuevo..."
 		
-		# Esperamos un poco para que el jugador vea que falló
+		# Despausamos el árbol para que GameManager pueda recargar
+		get_tree().paused = false
+		
 		await get_tree().create_timer(1.5).timeout
 		
-		# IMPORTANTE: Despausamos el juego y reseteamos el quiz
-		get_tree().paused = false
-		GameManager.reset_quiz_flags()
-		
-		# Emitimos false para que el GameManager sepa que no hubo éxito
+		# Solo avisamos al GameManager de que ha fallado
 		quiz_completado.emit(false)
 		
-		# Recargamos la escena para que el jugador pueda reintentar desde el NPC
-		get_tree().reload_current_scene()
+		# Eliminamos el overlay del quiz
 		queue_free()
 
 func _on_item_list_item_selected(index: int) -> void:
