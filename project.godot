@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Juego_v1.0"
+config/name="animalese"
 run/main_scene="uid://jjln1y0kbim2"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://bu5xtxdxfbb6w"
