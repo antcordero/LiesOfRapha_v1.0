@@ -346,7 +346,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nvl01")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_down",
 "speed": 4.0
 }, {
@@ -375,7 +375,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pylmc")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_side",
 "speed": 2.0
 }, {
@@ -404,7 +404,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qtqh7")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_up",
 "speed": 4.0
 }, {
@@ -433,7 +433,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hl5qd")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_down",
 "speed": 7.0
 }, {
@@ -462,7 +462,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3iwfv")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_side",
 "speed": 5.0
 }, {
@@ -491,7 +491,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oybyf")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_up",
 "speed": 6.0
 }]
@@ -500,19 +500,18 @@ animations = [{
 radius = 33.06055
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3qkm2"]
-radius = 33.01515
+radius = 56.008926
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6am2l"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3qkm2"]
 radius = 6.0
-height = 22.0
+height = 24.0
 
 [node name="player2" type="CharacterBody2D"]
 script = ExtResource("1_3qkm2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ajfva")
-animation = &"idle_down"
-frame_progress = 0.22015125
+animation = &"walk_side"
 
 [node name="speakArea" type="Area2D" parent="."]
 
@@ -520,16 +519,14 @@ frame_progress = 0.22015125
 shape = SubResource("CircleShape2D_kd5jf")
 
 [node name="detection_area" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D_detectionArea" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_3qkm2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 4
-visibility_layer = 4
-shape = SubResource("CapsuleShape2D_6am2l")
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_3qkm2")
 
 [connection signal="body_entered" from="speakArea" to="." method="_on_speak_area_body_entered"]
-[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

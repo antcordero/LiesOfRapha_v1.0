@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cqexcm4ervl3n"
+path="res://.godot/imported/gremling.dialogue-24fb73ed6cfa721e1fa1ffd533d0833c.tres"
+
+[deps]
+
+source_file="res://Dialogues/gremling.dialogue"
+dest_files=["res://.godot/imported/gremling.dialogue-24fb73ed6cfa721e1fa1ffd533d0833c.tres"]
+
+[params]
+
+defaults=true
