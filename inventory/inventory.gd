@@ -67,3 +67,78 @@ static func load_from_disk() -> Bag:
 	if res is Bag:
 		return res
 	return null
+
+
+# --- NUEVO: sumar cantidad de un item (ideal para monedas) ---
+func agregar_cantidad(item_id: String, amount: int) -> void:
+	if amount <= 0:
+		return
+	_ensure_db()
+	if db == null:
+		return
+
+	var def: Item = db.get_item(item_id)
+	if def == null:
+		return
+
+	# Si es apilable y existe el stack principal, suma del tirón
+	if def.stackable and objects.has(item_id):
+		var st: ItemStack = objects[item_id]
+		st.sum = min(def.max_sum, st.sum + amount)
+		return
+
+	# Si no existe todavía, crea stack principal con amount
+	if def.stackable:
+		var new_stack := ItemStack.new()
+		new_stack.item_id = item_id
+		new_stack.sum = min(def.max_sum, amount)
+		objects[item_id] = new_stack
+		return
+
+	# Si no es apilable: crea "amount" unidades separadas
+	for i in range(amount):
+		agregar_item(item_id)
+
+
+# --- NUEVO: consumir/quitar items (para pociones) ---
+func consumir_item(item_id: String, amount: int = 1) -> bool:
+	if amount <= 0:
+		return true
+	_ensure_db()
+	if db == null:
+		return false
+
+	var remaining := amount
+	var keys := objects.keys()
+
+	# Preferimos quitar del stack principal si existe
+	if objects.has(item_id):
+		keys.erase(item_id)
+		keys.insert(0, item_id)
+
+	for k in keys:
+		if remaining <= 0:
+			break
+		var st: ItemStack = objects.get(k)
+		if st == null:
+			continue
+		if st.item_id != item_id:
+			continue
+
+		var take: int = min(st.sum, remaining)
+		st.sum -= take
+		remaining -= take
+
+		if st.sum <= 0:
+			objects.erase(k)
+
+	return remaining == 0
+
+
+func contar_item(item_id: String) -> int:
+	var total := 0
+	for k in objects.keys():
+		var st: ItemStack = objects[k]
+		if st != null and st.item_id == item_id:
+			total += st.sum
+	return total

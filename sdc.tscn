@@ -23,10 +23,12 @@ texture = ExtResource("2_tpw6x")
 [node name="Player1" parent="CanvasLayer" instance=ExtResource("3_tpw6x")]
 position = Vector2(164.38356, 851.76465)
 scale = Vector2(1.63, 2.085)
+hp = 10
 
 [node name="Player2" parent="CanvasLayer" instance=ExtResource("4_q3xt5")]
 position = Vector2(426.02737, 1040.0001)
 scale = Vector2(1.391, 2.27)
+hp = 10
 
 [node name="Enemy" parent="CanvasLayer" instance=ExtResource("5_els5o")]
 position = Vector2(1236.9862, 896.4706)
@@ -68,7 +70,13 @@ layout_mode = 2
 
 [node name="AttackButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
-text = "Atacar"
+text = "Attack
+"
+
+[node name="HealButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Heal
+"
 
 [node name="ResultLabel" type="Label" parent="CanvasLayer/Control"]
 visible = false

@@ -5710,7 +5710,7 @@ tile_set = SubResource("TileSet_o6itq")
 position = Vector2(257, 287)
 
 [node name="Marthea" parent="." groups=["Player"] instance=ExtResource("3_awet4")]
-position = Vector2(1588, 807)
+position = Vector2(264, 363)
 
 [node name="guardia_idle_left" parent="." instance=ExtResource("6_l460e")]
 position = Vector2(1789, 782)

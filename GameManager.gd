@@ -8,6 +8,7 @@ var boss1_dialogue_active: bool = false
 static var menu_created := false
 
 var current_level: Node = null
+var current_level_number: int = 1
 var current_ui: Node = null
 var current_static_scene: Node = null
 
@@ -77,6 +78,7 @@ func show_static_scene(static_scene_id: int):
 
 func start_level(level_number: int):
 	print("start_level RECIBIDO:", level_number)
+	current_level_number = level_number   # 👈 ESTO ES LO QUE FALTABA
 	get_tree().paused = false  # doble seguridad
 
 	if current_static_scene:
@@ -104,11 +106,8 @@ func start_level(level_number: int):
 		add_child(level_scene)
 		current_level = level_scene
 		
-		# ¡ESTO ES VITAL!
-		# Asegura que el nivel ignore cualquier pausa residual y se active
 		current_level.process_mode = Node.PROCESS_MODE_INHERIT
 		get_tree().paused = false
-
 
 
 func return_to_level():
@@ -119,6 +118,10 @@ func return_to_level():
 	if current_level:
 		current_level.visible = true
 		current_level.process_mode = Node.PROCESS_MODE_INHERIT
+
+func restart_current_level():
+	print("Reiniciando nivel:", current_level_number)
+	start_level(current_level_number)
 
 ### BOSS 1
 func show_boss1_defeated_dialogue() -> void:
