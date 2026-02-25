@@ -222,8 +222,7 @@ text = "Response example"
 
 [node name="GibberishPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-volume_db = -22.899
-pitch_scale = 2.46
+pitch_scale = 1.11
 max_polyphony = 4
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
