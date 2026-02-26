@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ntl115epx8gh"]
+[gd_scene load_steps=13 format=3 uid="uid://ntl115epx8gh"]
 
 [ext_resource type="Script" uid="uid://bndh7u8gloqjg" path="res://menu.gd" id="1_ouk20"]
 [ext_resource type="Texture2D" uid="uid://tbynu7rl66xu" path="res://assets/DEFINITIVA.png" id="2_ouk20"]
+[ext_resource type="FontFile" uid="uid://djf800ebw3dcj" path="res://fonts/pixelmix_bold.ttf" id="3_4hy44"]
 [ext_resource type="FontFile" uid="uid://bljq3h4nq2cr1" path="res://fonts/Pixelmax-Regular.otf" id="3_mae5d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lti8b"]
@@ -47,15 +48,16 @@ color = Color(0.03137255, 0.03137255, 0.9607843, 1)
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.171875
-anchor_top = 0.32407406
-anchor_right = 1.1614584
-anchor_bottom = 0.32407406
+anchor_left = -0.0026041667
+anchor_top = -0.19753087
+anchor_right = 0.9973958
+anchor_bottom = -0.19753087
 offset_top = -754.0
 offset_bottom = 782.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ouk20")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -75,6 +77,7 @@ theme_override_constants/separation = 30
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4hy44")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lti8b")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ouk20")
@@ -82,6 +85,7 @@ text = "Start Game"
 
 [node name="Config" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4hy44")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mae5d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4hy44")
@@ -89,6 +93,7 @@ text = "Options"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4hy44")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l48gv")
@@ -99,10 +104,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -201.0
-offset_top = 118.0
-offset_right = 90.41284
-offset_bottom = 155.69897
+offset_left = -198.0
+offset_top = 23.0
+offset_right = 93.41284
+offset_bottom = 60.698975
 grow_horizontal = 2
 scale = Vector2(1.4000754, 1.4058743)
 theme = SubResource("Theme_lti8b")

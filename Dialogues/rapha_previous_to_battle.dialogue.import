@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dgbco5hmcyh4a"
+path="res://.godot/imported/rapha_previous_to_battle.dialogue-12286bd2581e948e5610608f64c37e91.tres"
+
+[deps]
+
+source_file="res://Dialogues/rapha_previous_to_battle.dialogue"
+dest_files=["res://.godot/imported/rapha_previous_to_battle.dialogue-12286bd2581e948e5610608f64c37e91.tres"]
+
+[params]
+
+defaults=true
