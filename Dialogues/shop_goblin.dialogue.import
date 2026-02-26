@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cg5cn2gvyhya6"
+path="res://.godot/imported/shop_goblin.dialogue-9dd2da27db80fad67255eba7a408cc04.tres"
+
+[deps]
+
+source_file="res://Dialogues/shop_goblin.dialogue"
+dest_files=["res://.godot/imported/shop_goblin.dialogue-9dd2da27db80fad67255eba7a408cc04.tres"]
+
+[params]
+
+defaults=true

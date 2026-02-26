@@ -6,5 +6,4 @@
 [resource]
 script = ExtResource("1_mqaju")
 db = ExtResource("1_gyi7u")
-objects = null
 metadata/_custom_type_script = "uid://c5mgfeig6ineb"

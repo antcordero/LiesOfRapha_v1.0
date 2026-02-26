@@ -1,0 +1,10 @@
+~ start
+Goblin: ¿Qué quieres comprar?
+
+- Comprar poción (10 monedas) => buy_potion
+- Salir => END
+
+~ buy_potion
+do Shops.buy_potion()
+Goblin: ¡Hecho!
+=> start
