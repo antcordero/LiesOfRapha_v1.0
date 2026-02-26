@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddo4up7q8cmx2"]
+[gd_scene load_steps=7 format=3 uid="uid://ddo4up7q8cmx2"]
 
 [ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_ff5lm"]
 [ext_resource type="Texture2D" uid="uid://k3n1aikllv52" path="res://Escenas Estaticas/Acto II/3.jpg" id="2_55q70"]
 [ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_j450y"]
 [ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_nx8es"]
 [ext_resource type="PackedScene" uid="uid://b1t5o0lbu3rfb" path="res://Combat/Enemy2.tscn" id="5_55q70"]
+[ext_resource type="AudioStream" uid="uid://b3g47bid5hqp8" path="res://music/💣 Mix de Cumbia-🎹Batalla de Teclados #4🔥2021 [d2ftlQL61TA].mp3" id="6_sith4"]
 
 [node name="SDC" type="Node2D"]
 script = ExtResource("1_ff5lm")
@@ -21,17 +22,17 @@ offset_bottom = 1534.1177
 texture = ExtResource("2_55q70")
 
 [node name="Player1" parent="CanvasLayer" instance=ExtResource("3_j450y")]
-position = Vector2(415.06848, 1371.7646)
-scale = Vector2(0.9027076, 1.3689961)
+position = Vector2(454.79446, 1360.0001)
+scale = Vector2(0.8559005, 1.4002991)
 
 [node name="Player2" parent="CanvasLayer" instance=ExtResource("4_nx8es")]
 position = Vector2(601.3698, 1402.3529)
-scale = Vector2(0.7967044, 1.263294)
+scale = Vector2(0.92948836, 1.5246649)
 hp = 100
 
 [node name="Enemy" parent="CanvasLayer" instance=ExtResource("5_55q70")]
 position = Vector2(1072.6027, 1383.5294)
-scale = Vector2(0.76885694, 0.8486231)
+scale = Vector2(0.71393883, 1.0289555)
 max_hp = 200
 hp = 200
 character_name = "Jhonaidel de la luz"
@@ -87,3 +88,9 @@ offset_left = 748.0
 offset_top = 566.0
 offset_right = 807.0
 offset_bottom = 589.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_sith4")
+volume_db = -18.127
+pitch_scale = 1.25
+autoplay = true

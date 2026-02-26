@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3g47bid5hqp8"
+path="res://.godot/imported/💣 Mix de Cumbia-🎹Batalla de Teclados #4🔥2021 [d2ftlQL61TA].mp3-315282537696cdaca15f0391e4eca1dc.mp3str"
+
+[deps]
+
+source_file="res://music/💣 Mix de Cumbia-🎹Batalla de Teclados #4🔥2021 [d2ftlQL61TA].mp3"
+dest_files=["res://.godot/imported/💣 Mix de Cumbia-🎹Batalla de Teclados #4🔥2021 [d2ftlQL61TA].mp3-315282537696cdaca15f0391e4eca1dc.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

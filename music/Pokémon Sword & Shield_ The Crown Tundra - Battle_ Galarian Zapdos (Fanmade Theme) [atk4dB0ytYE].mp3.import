@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7hp57vq1wavu"
+path="res://.godot/imported/Pokémon Sword & Shield_ The Crown Tundra - Battle_ Galarian Zapdos (Fanmade Theme) [atk4dB0ytYE].mp3-b24a54819c1712f2eaf5722bde76d007.mp3str"
+
+[deps]
+
+source_file="res://music/Pokémon Sword & Shield_ The Crown Tundra - Battle_ Galarian Zapdos (Fanmade Theme) [atk4dB0ytYE].mp3"
+dest_files=["res://.godot/imported/Pokémon Sword & Shield_ The Crown Tundra - Battle_ Galarian Zapdos (Fanmade Theme) [atk4dB0ytYE].mp3-b24a54819c1712f2eaf5722bde76d007.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

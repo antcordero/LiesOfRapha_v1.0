@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2a07gljh8ijh"]
+[gd_scene load_steps=7 format=3 uid="uid://c2a07gljh8ijh"]
 
 [ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_ltwlv"]
 [ext_resource type="Texture2D" uid="uid://cgix216yiisgu" path="res://Images/3.jpg" id="2_tpw6x"]
 [ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_tpw6x"]
 [ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_q3xt5"]
 [ext_resource type="PackedScene" uid="uid://xdyl0ij8b4or" path="res://Combat/Enemy.tscn" id="5_els5o"]
+[ext_resource type="AudioStream" uid="uid://c7hp57vq1wavu" path="res://music/Pokémon Sword & Shield_ The Crown Tundra - Battle_ Galarian Zapdos (Fanmade Theme) [atk4dB0ytYE].mp3" id="6_v76rv"]
 
 [node name="SDC" type="Node2D"]
 script = ExtResource("1_ltwlv")
@@ -84,3 +85,8 @@ offset_left = 748.0
 offset_top = 566.0
 offset_right = 807.0
 offset_bottom = 589.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_v76rv")
+volume_db = -22.898
+autoplay = true
