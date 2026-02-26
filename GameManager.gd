@@ -3,9 +3,17 @@ extends Node
 @export var boss1_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
 @export var boss1_defeated_start: String = "start"
 
+@export var boss2_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
+@export var boss2_defeated_start: String = "start"
+
+@export var boss3_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
+@export var boss3_defeated_start: String = "start"
+
 static var menu_created := false
 
 var boss1_dialogue_active: bool = false
+var boss2_dialogue_active: bool = false
+var boss3_dialogue_active: bool = false
 
 var current_level: Node = null
 var current_level_number: int = 1
@@ -138,7 +146,7 @@ func show_static_scene(static_scene_id: int) -> void:
 		current_static_scene.layer = 10
 
 
-# ===================== DIÁLOGO GLOBAL BOSS 1 =====================
+# ===================== DIÁLOGO GLOBAL BOSS 1/2/3 =====================
 
 func show_boss1_defeated_dialogue() -> void:
 	if boss1_dialogue_active:
@@ -156,10 +164,56 @@ func show_boss1_defeated_dialogue() -> void:
 
 	DialogueManager.show_dialogue_balloon(boss1_defeated_dialogue, boss1_defeated_start)
 
+
+func show_boss2_defeated_dialogue() -> void:
+	if boss2_dialogue_active:
+		return
+
+	if boss2_defeated_dialogue == null:
+		print("ERROR: boss2_defeated_dialogue es null -> salto a Nivel 3")
+		start_level(3)
+		return
+
+	boss2_dialogue_active = true
+
+	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
+
+	DialogueManager.show_dialogue_balloon(boss2_defeated_dialogue, boss2_defeated_start)
+
+
+func show_boss3_defeated_dialogue() -> void:
+	if boss3_dialogue_active:
+		return
+
+	if boss3_defeated_dialogue == null:
+		print("ERROR: boss3_defeated_dialogue es null -> vuelvo al menú")
+		show_menu()
+		return
+
+	boss3_dialogue_active = true
+
+	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
+
+	DialogueManager.show_dialogue_balloon(boss3_defeated_dialogue, boss3_defeated_start)
+
+
 func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
 	if boss1_dialogue_active:
 		boss1_dialogue_active = false
 		start_level(2)
+		return
+
+	if boss2_dialogue_active:
+		boss2_dialogue_active = false
+		start_level(3)
+		return
+
+	if boss3_dialogue_active:
+		boss3_dialogue_active = false
+		show_menu() # final del juego (cámbialo si quieres otra cosa)
+		return
 
 
 # ===================== QUIZ BEATRIX =====================

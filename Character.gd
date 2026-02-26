@@ -37,7 +37,7 @@ func _ready() -> void:
 
 	if is_enemy:
 		if sprite:
-			sprite.flip_h = true
+			sprite.flip_h = false
 		if anim:
 			anim.flip_h = true
 

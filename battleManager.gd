@@ -15,6 +15,9 @@ class_name BattleManager
 @export var world_camera_path: NodePath
 @export var reward_coins: int = 10  # ✅ monedas que das al ganar
 
+# ✅ identifica qué SDC es esta batalla (ponerlo en el inspector en cada escena)
+@export_enum("sdc", "sdc2", "sdc3") var sdc_id: String = "sdc"
+
 var _world_cam: Camera2D
 var players: Array[Character] = []
 var turn_index: int = 0
@@ -110,7 +113,7 @@ func _connect_signals() -> void:
 
 
 func start_battle() -> void:
-	print("¡Combate iniciado!")
+	print("¡Combate iniciado!", " (", sdc_id, ")")
 	turn_index = 0
 	next_turn()
 
@@ -154,6 +157,7 @@ func _on_attack_pressed() -> void:
 	attack_btn.disabled = true
 	if heal_btn:
 		heal_btn.disabled = true
+
 	var current_player: Character = players[turn_index]
 	current_player.attack(enemy)
 
@@ -184,7 +188,7 @@ func _on_heal_pressed() -> void:
 
 	bag.save_to_disk()
 
-	# termina turno tras curar (si no lo quieres, borra estas 2 líneas)
+	# termina turno tras curar
 	turn_index += 1
 	await get_tree().create_timer(0.4).timeout
 	next_turn()
@@ -263,14 +267,21 @@ func end_battle_victory() -> void:
 		bag.agregar_cantidad("coin", reward_coins)
 		bag.save_to_disk()
 
-	# volver al mapa + tu diálogo actual
+	# volver al mapa
 	GameManager.return_to_level()
-	GameManager.show_boss1_defeated_dialogue()
+
+	# ✅ diálogo según qué SDC era
+	match sdc_id:
+		"sdc2":
+			GameManager.show_boss2_defeated_dialogue()
+		"sdc3":
+			GameManager.show_boss3_defeated_dialogue()
+		_:
+			GameManager.show_boss1_defeated_dialogue()
 
 	_restore_world_and_close()
 
 
 func end_battle_defeat() -> void:
-	# ✅ reiniciar el nivel actual (volver al inicio)
 	GameManager.restart_current_level()
 	_restore_world_and_close()
