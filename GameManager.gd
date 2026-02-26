@@ -4,7 +4,7 @@ extends Node
 @export var boss1_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
 @export var boss1_defeated_start: String = "start"
 
-@export var boss2_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
+@export var boss2_defeated_dialogue: DialogueResource = preload("res://Dialogues/jhonaidel_defeated.dialogue")
 @export var boss2_defeated_start: String = "start"
 
 @export var boss3_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
@@ -80,13 +80,28 @@ func start_dialogue() -> void:
 
 
 # ===================== GESTIÓN DE NIVELES =====================
-
+var last_level_change_time: float = 0.0
 func start_level(level_number: int) -> void:
-	print("CARGANDO NIVEL:", level_number)
+	# --- 1. FRENO DE SEGURIDAD (ANTI-SALTOS POR COLISIÓN) ---
+	var current_time = Time.get_ticks_msec() / 1000.0
+	if current_time - last_level_change_time < 0.5: # 0.5 segundos de margen
+		print("⚠️ Intento de cambio de nivel demasiado rápido. Ignorado.")
+		return
+	last_level_change_time = current_time
+
+	print("🚀 CARGANDO NIVEL:", level_number)
 	current_level_number = level_number
+	
+	# --- 2. LIMPIEZA DE ESTADOS ANTERIORES ---
+	# Reseteamos flags de quizzes y diálogos para que no afecten al nuevo nivel
+	quiz_beatrix_activo = false
+	boss1_dialogue_active = false
+	boss2_dialogue_active = false
+	boss3_dialogue_active = false
+	
 	get_tree().paused = false
 
-	# Limpia UI/estática, y también el nivel anterior
+	# Limpieza de nodos (tu código original)
 	if current_static_scene:
 		current_static_scene.queue_free()
 		current_static_scene = null
@@ -97,19 +112,23 @@ func start_level(level_number: int) -> void:
 		current_level.queue_free()
 		current_level = null
 
+	# --- 3. SELECCIÓN DE ESCENA ---
 	var scene_path := ""
 	match level_number:
 		1: scene_path = "res://Scenes/Level_1_scene/level_1.tscn"
 		2: scene_path = "res://Scenes/Level_2_scene/level_2.tscn"
 		3: scene_path = "res://Scenes/Level_3_scene/level_3.tscn"
 		_:
-			print("ERROR: Nivel no encontrado:", level_number)
+			print("❌ ERROR: Nivel no encontrado:", level_number)
 			return
 
+	# --- 4. INSTANCIACIÓN ---
 	var level_scene = load(scene_path).instantiate()
 	add_child(level_scene)
 	current_level = level_scene
 	current_level.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	# Aseguramos que el juego ruede
 	get_tree().paused = false
 
 func restart_current_level() -> void:
@@ -212,13 +231,20 @@ func show_boss3_defeated_dialogue() -> void:
 
 
 func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
+	print("DEBUG: Diálogo terminado. Banderas: B1:", boss1_dialogue_active, " B2:", boss2_dialogue_active)
+	
 	if boss1_dialogue_active:
 		boss1_dialogue_active = false
+		boss2_dialogue_active = false # Limpieza de seguridad
+		boss3_dialogue_active = false # Limpieza de seguridad
+		print("DEBUG: Pasando al Nivel 2")
 		start_level(2)
 		return
 
 	if boss2_dialogue_active:
 		boss2_dialogue_active = false
+		boss1_dialogue_active = false # Limpieza de seguridad
+		print("DEBUG: Pasando al Nivel 3")
 		start_level(3)
 		return
 
