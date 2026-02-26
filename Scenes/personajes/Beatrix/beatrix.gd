@@ -62,9 +62,10 @@ func cerrar_dialogo_forzado() -> void:
 
 # ⭐ AL TERMINAR DIALOGO → GAME MANAGER CARGA QUIZ
 func _on_dialogue_finished(_resource: DialogueResource) -> void:
-	print("Diálogo Beatrix → Iniciando QUIZ via GameManager")
-	await get_tree().process_frame
+	if not dialogue_active: return # Evita ejecuciones extra
 	dialogue_active = false
+	print("Diálogo Beatrix → Iniciando QUIZ")
+	GameManager.iniciar_quiz_beatrix(get_parent())
 	
 	# Error probable: GameManager.iniciar_quiz_beatrix(null) 
 	# Solución: Pasar el padre (que debería ser el nivel)

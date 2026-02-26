@@ -272,23 +272,28 @@ func _restore_world_and_close() -> void:
 
 
 func end_battle_victory() -> void:
-	# ✅ sumar monedas y guardar
+	# 1. Guardar recompensas
 	if bag != null and reward_coins > 0:
 		bag.agregar_cantidad("coin", reward_coins)
 		bag.save_to_disk()
 
-	# volver al mapa
+	# 2. Volver a mostrar el mapa (pero no cerramos el manager aún)
 	GameManager.return_to_level()
 
-	# ✅ diálogo según qué SDC era
+	# 3. Disparar el diálogo correspondiente
 	match sdc_id:
+		"sdc":
+			GameManager.show_boss1_defeated_dialogue()
 		"sdc2":
 			GameManager.show_boss2_defeated_dialogue()
 		"sdc3":
 			GameManager.show_boss3_defeated_dialogue()
 		_:
+			# Por si acaso sdc_id está vacío o mal escrito
 			GameManager.show_boss1_defeated_dialogue()
-
+	
+	# 4. Limpiar la escena de batalla y restaurar cámara
+	# Solo UNA VEZ y al final de la función
 	_restore_world_and_close()
 
 
