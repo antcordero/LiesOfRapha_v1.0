@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c5ut4ks104vpm"
+path="res://.godot/imported/rocio.dialogue-cbdb8c375ae460225edc8513c424a56a.tres"
+
+[deps]
+
+source_file="res://Dialogues/rocio.dialogue"
+dest_files=["res://.godot/imported/rocio.dialogue-cbdb8c375ae460225edc8513c424a56a.tres"]
+
+[params]
+
+defaults=true
