@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1t5o0lbu3rfb" path="res://Combat/Enemy2.tscn" id="5_55q70"]
 [ext_resource type="AudioStream" uid="uid://b3g47bid5hqp8" path="res://music/💣 Mix de Cumbia-🎹Batalla de Teclados #4🔥2021 [d2ftlQL61TA].mp3" id="6_sith4"]
 
-[node name="SDC" type="Node2D"]
+[node name="SDC2" type="Node2D"]
 script = ExtResource("1_ff5lm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
