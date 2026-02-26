@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var battle_scene: PackedScene = preload("res://sdc.tscn")
+@export var battle_scene: PackedScene = preload("res://Combat/sdc.tscn")
 @export var one_time_only: bool = true
 @export var start_delay: float = 0.2
 

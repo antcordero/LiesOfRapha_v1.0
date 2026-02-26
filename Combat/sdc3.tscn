@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2a07gljh8ijh"]
+[gd_scene load_steps=6 format=3 uid="uid://gc5kutp7eqwh"]
 
-[ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_ltwlv"]
-[ext_resource type="Texture2D" uid="uid://cgix216yiisgu" path="res://Images/3.jpg" id="2_tpw6x"]
-[ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://player_1.tscn" id="3_tpw6x"]
-[ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://player_2.tscn" id="4_q3xt5"]
-[ext_resource type="PackedScene" uid="uid://xdyl0ij8b4or" path="res://Enemy.tscn" id="5_els5o"]
+[ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_og0kd"]
+[ext_resource type="Texture2D" uid="uid://cgix216yiisgu" path="res://Images/3.jpg" id="2_hy31s"]
+[ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_rx130"]
+[ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_votrr"]
+[ext_resource type="PackedScene" uid="uid://xdyl0ij8b4or" path="res://Combat/Enemy.tscn" id="5_tdx2r"]
 
 [node name="SDC" type="Node2D"]
-script = ExtResource("1_ltwlv")
+script = ExtResource("1_og0kd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 99
@@ -18,19 +18,19 @@ transform = Transform2D(0.73, 0, 0, 0.425, 0, 0)
 offset_left = -260.274
 offset_right = 1575.0
 offset_bottom = 1847.059
-texture = ExtResource("2_tpw6x")
+texture = ExtResource("2_hy31s")
 
-[node name="Player1" parent="CanvasLayer" instance=ExtResource("3_tpw6x")]
+[node name="Player1" parent="CanvasLayer" instance=ExtResource("3_rx130")]
 position = Vector2(164.38356, 851.76465)
 scale = Vector2(1.63, 2.085)
 hp = 10
 
-[node name="Player2" parent="CanvasLayer" instance=ExtResource("4_q3xt5")]
+[node name="Player2" parent="CanvasLayer" instance=ExtResource("4_votrr")]
 position = Vector2(426.02737, 1040.0001)
 scale = Vector2(1.391, 2.27)
 hp = 10
 
-[node name="Enemy" parent="CanvasLayer" instance=ExtResource("5_els5o")]
+[node name="Enemy" parent="CanvasLayer" instance=ExtResource("5_tdx2r")]
 position = Vector2(1236.9862, 896.4706)
 scale = Vector2(1, 1.895)
 
