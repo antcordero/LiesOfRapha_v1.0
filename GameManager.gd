@@ -41,7 +41,6 @@ func _ready() -> void:
 		return
 	menu_created = true
 	
-	# AÑADE ESTA LÍNEA AQUÍ:
 	_setup_global_inventory()
 	
 	show_menu()
@@ -69,7 +68,6 @@ func show_menu() -> void:
 	add_child(menu_scene)
 	current_ui = menu_scene
 
-# (Opcional) Si lo sigues usando para pasar a "game.tscn"
 func start_dialogue() -> void:
 	if current_ui:
 		current_ui.visible = false
@@ -81,6 +79,7 @@ func start_dialogue() -> void:
 
 # ===================== GESTIÓN DE NIVELES =====================
 var last_level_change_time: float = 0.0
+
 func start_level(level_number: int) -> void:
 	# --- 1. FRENO DE SEGURIDAD (ANTI-SALTOS POR COLISIÓN) ---
 	var current_time = Time.get_ticks_msec() / 1000.0
@@ -93,7 +92,6 @@ func start_level(level_number: int) -> void:
 	current_level_number = level_number
 	
 	# --- 2. LIMPIEZA DE ESTADOS ANTERIORES ---
-	# Reseteamos flags de quizzes y diálogos para que no afecten al nuevo nivel
 	quiz_beatrix_activo = false
 	boss1_dialogue_active = false
 	boss2_dialogue_active = false
@@ -101,7 +99,6 @@ func start_level(level_number: int) -> void:
 	
 	get_tree().paused = false
 
-	# Limpieza de nodos (tu código original)
 	if current_static_scene:
 		current_static_scene.queue_free()
 		current_static_scene = null
@@ -128,7 +125,6 @@ func start_level(level_number: int) -> void:
 	current_level = level_scene
 	current_level.process_mode = Node.PROCESS_MODE_INHERIT
 	
-	# Aseguramos que el juego ruede
 	get_tree().paused = false
 
 func restart_current_level() -> void:
@@ -233,24 +229,35 @@ func show_boss3_defeated_dialogue() -> void:
 func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
 	print("DEBUG: Diálogo terminado. Banderas: B1:", boss1_dialogue_active, " B2:", boss2_dialogue_active)
 	
+	# ==============================
+	# BOSS 1: Franczius (Pasa al Nivel 2)
+	# ==============================
 	if boss1_dialogue_active:
 		boss1_dialogue_active = false
-		boss2_dialogue_active = false # Limpieza de seguridad
-		boss3_dialogue_active = false # Limpieza de seguridad
-		print("DEBUG: Pasando al Nivel 2")
+		print("DEBUG: Boss 1 derrotado. Pasando al Nivel 2")
 		start_level(2)
 		return
-
+	
+	# ==============================
+	# BOSS 2: Jhonaidel (Se queda en el sitio)
+	# ==============================
 	if boss2_dialogue_active:
 		boss2_dialogue_active = false
-		boss1_dialogue_active = false # Limpieza de seguridad
-		print("DEBUG: Pasando al Nivel 3")
-		start_level(3)
-		return
+		print("DEBUG: Jhonaidel derrotado. El jugador se queda en el nivel 2.")
+		
+		# Reactivamos el mapa actual
+		if current_level:
+			current_level.process_mode = Node.PROCESS_MODE_INHERIT
+		get_tree().paused = false
+		
+		return # <--- Este return DEBE estar dentro del if (indentado)
 
+	# ==============================
+	# BOSS 3: Final
+	# ==============================
 	if boss3_dialogue_active:
 		boss3_dialogue_active = false
-		show_menu() # final del juego (cámbialo si quieres otra cosa)
+		show_menu()
 		return
 
 
@@ -260,7 +267,6 @@ func iniciar_quiz_beatrix(nivel_actual: Node) -> void:
 	if quiz_beatrix_activo:
 		return
 
-	# si viene null, usamos el nivel que tenga el manager guardado
 	var target_node: Node = nivel_actual if nivel_actual != null else current_level
 	if target_node == null:
 		print("ERROR: No hay nivel donde instanciar el quiz")
@@ -268,7 +274,6 @@ func iniciar_quiz_beatrix(nivel_actual: Node) -> void:
 
 	quiz_beatrix_activo = true
 
-	# Pausa el juego
 	get_tree().paused = true
 	target_node.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -288,20 +293,16 @@ func iniciar_quiz_beatrix(nivel_actual: Node) -> void:
 
 func _on_quiz_beatrix_completado(exito: bool) -> void:
 	quiz_beatrix_activo = false
-	
-	# Aseguramos que el juego no se quede pausado
 	get_tree().paused = false
 
 	if exito:
-		print("¡GANASTE! Cargando siguiente nivel.")
-		start_level(3)
+		print("¡GANASTE! El jugador continúa en el nivel actual.")
+		if current_level:
+			current_level.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
-		print("¡PERDISTE! Reiniciando nivel actual...")
+		print("¡PERDISTE! Reiniciando nivel por fallo en quiz...")
 		reset_quiz_flags()
-		
-		# ⭐ Usamos tu propia función que ya limpia todo correctamente
-		# Esto evita el error de reload_current_scene
-		restart_current_level()
+		restart_current_level() 
 
 func reset_quiz_flags() -> void:
 	quiz_beatrix_activo = false
