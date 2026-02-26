@@ -58,11 +58,11 @@ animation = &"idle_makarienne"
 [node name="speakArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="speakArea"]
-position = Vector2(26, 36)
+position = Vector2(24, 37)
 shape = SubResource("CircleShape2D_mv3gb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(26, 37)
+position = Vector2(25, 37)
 shape = SubResource("CapsuleShape2D_8vgkx")
 
 [connection signal="body_entered" from="speakArea" to="." method="_on_speak_area_body_entered"]
