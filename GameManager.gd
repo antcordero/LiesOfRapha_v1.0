@@ -196,6 +196,8 @@ func iniciar_quiz_beatrix(nivel_actual: Node) -> void:
 
 func _on_quiz_beatrix_completado(exito: bool) -> void:
 	quiz_beatrix_activo = false
+	
+	# Aseguramos que el juego no se quede pausado
 	get_tree().paused = false
 
 	if exito:
@@ -204,7 +206,10 @@ func _on_quiz_beatrix_completado(exito: bool) -> void:
 	else:
 		print("¡PERDISTE! Reiniciando nivel actual...")
 		reset_quiz_flags()
-		get_tree().reload_current_scene()
+		
+		# ⭐ Usamos tu propia función que ya limpia todo correctamente
+		# Esto evita el error de reload_current_scene
+		restart_current_level()
 
 func reset_quiz_flags() -> void:
 	quiz_beatrix_activo = false

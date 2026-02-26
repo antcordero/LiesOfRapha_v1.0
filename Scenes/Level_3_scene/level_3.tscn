@@ -11950,7 +11950,7 @@ tile_map_data = PackedByteArray("AAAEAPr/AAAAAAIAAAAEAPv/AAAAAAMAAAABAPj/AAAAAAI
 tile_set = SubResource("TileSet_1i8n8")
 
 [node name="Marthea" parent="." instance=ExtResource("30_qqdeg")]
-position = Vector2(248, -41)
+position = Vector2(248, -42)
 
 [node name="Beatrix" parent="." instance=ExtResource("32_4ruca")]
-position = Vector2(231, -210)
+position = Vector2(232, -768)
