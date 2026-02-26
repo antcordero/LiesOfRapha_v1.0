@@ -1,0 +1,165 @@
+[gd_scene load_steps=20 format=3 uid="uid://ckhqonnl4na83"]
+
+[ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_o5gfx"]
+[ext_resource type="Texture2D" uid="uid://cufwt2t8apcbm" path="res://Scenes/personajes/Rapha/crow_attack1.png" id="2_o5gfx"]
+[ext_resource type="Texture2D" uid="uid://ba7kgm5vgueca" path="res://Scenes/personajes/Rapha/crow_death2.png" id="3_o5gfx"]
+[ext_resource type="Texture2D" uid="uid://cwyjlayk3mky1" path="res://Scenes/personajes/Rapha/crow_idle .png" id="4_ax5gx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beolk"]
+atlas = ExtResource("2_o5gfx")
+region = Rect2(0, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx13m"]
+atlas = ExtResource("2_o5gfx")
+region = Rect2(76, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iduxs"]
+atlas = ExtResource("2_o5gfx")
+region = Rect2(152, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23nni"]
+atlas = ExtResource("2_o5gfx")
+region = Rect2(228, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0y21"]
+atlas = ExtResource("2_o5gfx")
+region = Rect2(304, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax5gx"]
+atlas = ExtResource("3_o5gfx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nfex"]
+atlas = ExtResource("3_o5gfx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt3ii"]
+atlas = ExtResource("3_o5gfx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n1v6"]
+atlas = ExtResource("3_o5gfx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgmpy"]
+atlas = ExtResource("3_o5gfx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pjxc"]
+atlas = ExtResource("4_ax5gx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvnrf"]
+atlas = ExtResource("4_ax5gx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q14u"]
+atlas = ExtResource("4_ax5gx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56f0v"]
+atlas = ExtResource("4_ax5gx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvmyp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beolk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx13m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iduxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23nni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0y21")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax5gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nfex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt3ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n1v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgmpy")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pjxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvnrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q14u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56f0v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Player1" type="Node2D"]
+script = ExtResource("1_o5gfx")
+atk = 30
+character_name = "Franczius The sage"
+is_enemy = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(31, 130)
+scale = Vector2(8.6107235, 8.520847)
+sprite_frames = SubResource("SpriteFrames_rvmyp")
+animation = &"death"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -244.0
+offset_top = -149.0
+offset_right = 270.0
+offset_bottom = -119.0
+theme_override_colors/font_outline_color = Color(0.7987984, 0.24698165, 0.25042722, 1)
+show_percentage = false
+
+[node name="HPText" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -237.0
+offset_top = -217.0
+offset_right = -118.0
+offset_bottom = -194.0
+scale = Vector2(3.4887516, 2.6540644)
+text = "Enemigo"

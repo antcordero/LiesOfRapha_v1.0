@@ -98,19 +98,27 @@ func _setup_result_label() -> void:
 
 
 func _connect_signals() -> void:
+	# players
 	for p in players:
+		if p == null:
+			push_error("BattleManager: Un player es null (revisa rutas Player1/Player2)")
+			continue
 		if not p.turn_ended.is_connected(_on_player_turn_ended):
 			p.turn_ended.connect(_on_player_turn_ended)
 
-	if not enemy.turn_ended.is_connected(_on_enemy_turn_ended):
-		enemy.turn_ended.connect(_on_enemy_turn_ended)
+	# enemy
+	if enemy == null:
+		push_error("BattleManager: Enemy es null. Revisa que exista CanvasLayer/Enemy en esta escena.")
+	else:
+		if not enemy.turn_ended.is_connected(_on_enemy_turn_ended):
+			enemy.turn_ended.connect(_on_enemy_turn_ended)
 
-	if not attack_btn.pressed.is_connected(_on_attack_pressed):
+	# botones
+	if attack_btn != null and not attack_btn.pressed.is_connected(_on_attack_pressed):
 		attack_btn.pressed.connect(_on_attack_pressed)
 
-	if heal_btn and not heal_btn.pressed.is_connected(_on_heal_pressed):
+	if heal_btn != null and not heal_btn.pressed.is_connected(_on_heal_pressed):
 		heal_btn.pressed.connect(_on_heal_pressed)
-
 
 func start_battle() -> void:
 	print("¡Combate iniciado!", " (", sdc_id, ")")
@@ -223,6 +231,10 @@ func enemy_attack() -> void:
 
 
 func check_win_lose() -> bool:
+	if enemy == null:
+		push_error("BattleManager: enemy es null en check_win_lose(). Revisa la ruta CanvasLayer/Enemy.")
+		return false
+
 	if enemy.hp <= 0:
 		result_label.text = "¡Victoria!"
 		result_label.visible = true
@@ -234,7 +246,7 @@ func check_win_lose() -> bool:
 
 	var alive := false
 	for p in players:
-		if p.hp > 0:
+		if p != null and p.hp > 0:
 			alive = true
 			break
 
@@ -249,8 +261,6 @@ func check_win_lose() -> bool:
 		return true
 
 	return false
-
-
 func _restore_world_and_close() -> void:
 	if is_instance_valid(_world_cam):
 		_world_cam.make_current()
