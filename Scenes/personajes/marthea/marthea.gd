@@ -10,13 +10,7 @@ var inventory_control  # Se asigna en _ready()
 
 func _ready() -> void:
 	# 1. Inicializar Bag (carga guardado o crea nueva)
-	var loaded := Bag.load_from_disk()
-	if loaded != null:
-		bag = loaded
-	elif bag == null:
-		bag = Bag.new()
-
-	bag.db = DB
+	bag = GameManager.player_bag
 
 	# 2. Buscar UI del inventario por grupo (¡nunca falla!)
 	inventory_control = get_tree().get_first_node_in_group("inventory_ui")
