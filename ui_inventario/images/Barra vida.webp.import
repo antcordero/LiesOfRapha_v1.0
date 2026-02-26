@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btlu0uw2j1rcb"
-path="res://.godot/imported/Captura de pantalla 2026-01-14 182830.png-0a67c3fc64a42aeea9d388a0c29481a9.ctex"
+uid="uid://dalweqxtvysh8"
+path="res://.godot/imported/Barra vida.webp-2a02cf3fc662701c92ac47a0bc299de0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Captura de pantalla 2026-01-14 182830.png"
-dest_files=["res://.godot/imported/Captura de pantalla 2026-01-14 182830.png-0a67c3fc64a42aeea9d388a0c29481a9.ctex"]
+source_file="res://ui_inventario/images/Barra vida.webp"
+dest_files=["res://.godot/imported/Barra vida.webp-2a02cf3fc662701c92ac47a0bc299de0.ctex"]
 
 [params]
 

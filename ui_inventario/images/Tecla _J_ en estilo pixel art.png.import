@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsdcewsq0a17q"
-path="res://.godot/imported/Captura de pantalla 2025-12-28 234846.png-5d2deb844da64617654bf52547883d43.ctex"
+uid="uid://d214qp6p87cxb"
+path="res://.godot/imported/Tecla _J_ en estilo pixel art.png-1df309153537b986194dbb9db672ff12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Captura de pantalla 2025-12-28 234846.png"
-dest_files=["res://.godot/imported/Captura de pantalla 2025-12-28 234846.png-5d2deb844da64617654bf52547883d43.ctex"]
+source_file="res://ui_inventario/images/Tecla _J_ en estilo pixel art.png"
+dest_files=["res://.godot/imported/Tecla _J_ en estilo pixel art.png-1df309153537b986194dbb9db672ff12.ctex"]
 
 [params]
 
