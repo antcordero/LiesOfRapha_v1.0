@@ -11,10 +11,16 @@ func setup(_bag: Bag, _unused_coins: int = 0) -> void:
 	print("SHOPS> setup OK | bag:", bag)
 
 func buy_item(item_id: String, amount: int, cost_coins: int) -> bool:
+	# --- 🛠️ FIX: VINCULACIÓN AUTOMÁTICA AL GAMEMANAGER ---
 	if bag == null:
-		shop_message.emit("❌ bag es null (falta Shops.setup)")
-		print("SHOPS> ERROR: bag == null")
-		return false
+		if GameManager.player_bag != null:
+			bag = GameManager.player_bag
+			print("SHOPS> Bag vinculada automáticamente al GameManager")
+		else:
+			shop_message.emit("❌ Error: No se encuentra el inventario global")
+			print("SHOPS> ERROR: bag es null y GameManager.player_bag también")
+			return false
+	# ----------------------------------------------------
 
 	# ✅ Monedas = item "coin" dentro del inventario
 	var have := bag.contar_item("coin")
@@ -36,8 +42,12 @@ func buy_item(item_id: String, amount: int, cost_coins: int) -> bool:
 	for i in range(amount):
 		bag.agregar_item(item_id)
 
-	# guardar y refrescar UI
+	# --- 💾 GUARDADO Y REFRESCO ---
 	bag.save_to_disk()
+	
+	# ✅ Avisamos a la UI del inventario que se actualice
+	get_tree().call_group("inventory_ui", "refresh_from_bag")
+	
 	shop_changed.emit()
 	shop_message.emit("✅ Compra OK: +" + str(amount) + " " + item_id)
 	return true
