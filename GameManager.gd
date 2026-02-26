@@ -7,7 +7,7 @@ extends Node
 @export var boss2_defeated_dialogue: DialogueResource = preload("res://Dialogues/jhonaidel_defeated.dialogue")
 @export var boss2_defeated_start: String = "start"
 
-@export var boss3_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
+@export var boss3_defeated_dialogue: DialogueResource = preload("res://Dialogues/rapha_defeated.dialogue")
 @export var boss3_defeated_start: String = "start"
 
 # menu
@@ -158,14 +158,22 @@ func show_static_scene(static_scene_id: int) -> void:
 
 	var scene_path := ""
 	match static_scene_id:
-		1: scene_path = "res://Escenas Estaticas/escenas_estaticas.tscn"
+		1: scene_path = "res://Escenas Estaticas/escenas_estaticas_1.tscn"
 		2: scene_path = "res://Escenas Estaticas/staticScene_2.tscn"
 		3: scene_path = "res://Escenas Estaticas/staticScene_3.tscn"
+		4: scene_path = "res://Escenas Estaticas/staticScene_rapha_tower.tscn"
 		_:
 			print("ERROR: ID de escena estática no encontrado:", static_scene_id)
 			return
 
-	var inst = load(scene_path).instantiate()
+	var escena_cargada = load(scene_path)
+	
+	# Freno de seguridad: Si la ruta está mal, avisa en consola pero NO explota
+	if escena_cargada == null:
+		push_error("❌ ERROR: No se encontró la escena en la ruta: " + scene_path)
+		return
+		
+	var inst = escena_cargada.instantiate()
 	current_static_scene = inst
 	add_child(current_static_scene)
 
@@ -219,6 +227,10 @@ func show_boss3_defeated_dialogue() -> void:
 		return
 
 	boss3_dialogue_active = true
+
+	# --- NUEVO: Mostrar escena estática final (Victoria) ---
+	# Cambia este '3' por el ID de la escena estática que quieras usar de fondo
+	show_static_scene(3) 
 
 	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)

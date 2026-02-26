@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8f3g6pdvd1v3"]
+
+[ext_resource type="Script" uid="uid://dar2mjnii5ydu" path="res://Escenas Estaticas/escenas_estaticas_1.gd" id="1_8atwb"]
+[ext_resource type="Texture2D" uid="uid://du3eohept5j8y" path="res://Escenas Estaticas/Acto I/MartheaMacarena_I.png" id="2_6bug2"]
+
+[node name="staticScene_rapha_tower" type="Node2D"]
+script = ExtResource("1_8atwb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(575.00006, 325.00003)
+scale = Vector2(0.9965278, 0.9969137)
+texture = ExtResource("2_6bug2")
+
+[node name="Node2D" type="Node2D" parent="."]
