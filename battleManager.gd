@@ -259,15 +259,20 @@ func check_win_lose() -> bool:
 		await get_tree().create_timer(1.2).timeout
 		end_battle_defeat()
 		return true
-
 	return false
+	
+#################  Cambios al finalizar batalla ####################
 func _restore_world_and_close() -> void:
 	if is_instance_valid(_world_cam):
 		_world_cam.make_current()
 	elif is_instance_valid(_prev_cam):
 		_prev_cam.make_current()
 
+	# Restauramos el nivel visualmente y quitamos la pausa
+	GameManager.return_to_level()
 	get_tree().paused = false
+	
+	# Destruimos la escena de batalla
 	queue_free()
 
 
@@ -277,24 +282,24 @@ func end_battle_victory() -> void:
 		bag.agregar_cantidad("coin", reward_coins)
 		bag.save_to_disk()
 
-	# 2. Volver a mostrar el mapa (pero no cerramos el manager aún)
-	GameManager.return_to_level()
+	print("DEBUG BattleManager: Finalizando batalla con ID: ", sdc_id)
 
-	# 3. Disparar el diálogo correspondiente
-	match sdc_id:
-		"sdc":
-			GameManager.show_boss1_defeated_dialogue()
-		"sdc2":
-			GameManager.show_boss2_defeated_dialogue()
-		"sdc3":
-			GameManager.show_boss3_defeated_dialogue()
-		_:
-			# Por si acaso sdc_id está vacío o mal escrito
-			GameManager.show_boss1_defeated_dialogue()
-	
-	# 4. Limpiar la escena de batalla y restaurar cámara
-	# Solo UNA VEZ y al final de la función
+	# 2. Guardamos el ID en una variable temporal porque vamos a destruir este nodo
+	var current_sdc = sdc_id
+
+	# 3. Restauramos el mundo y nos destruimos PRIMERO
 	_restore_world_and_close()
+
+	# 4. Disparamos el diálogo usando "call_deferred" para que sea seguro
+	match current_sdc:
+		"sdc":
+			GameManager.call_deferred("show_boss1_defeated_dialogue")
+		"sdc2":
+			GameManager.call_deferred("show_boss2_defeated_dialogue")
+		"sdc3":
+			GameManager.call_deferred("show_boss3_defeated_dialogue")
+		_:
+			GameManager.call_deferred("show_boss1_defeated_dialogue")
 
 
 func end_battle_defeat() -> void:

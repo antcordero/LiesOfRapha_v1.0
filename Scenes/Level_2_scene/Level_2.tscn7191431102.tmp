@@ -4655,8 +4655,6 @@ position = Vector2(627, -168)
 
 [node name="Jhonaidel" parent="." instance=ExtResource("24_wbfqw")]
 position = Vector2(403, -1000)
-collision_layer = 8
-collision_mask = 8
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("25_rx0en")

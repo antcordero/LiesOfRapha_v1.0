@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ucvua7agmkb3"]
 
-[ext_resource type="Script" path="res://Scenes/personajes/Jhonaidel/jhonaidel.gd" id="1_ddesh"]
+[ext_resource type="Script" uid="uid://c8cnffil5c31r" path="res://Scenes/personajes/Jhonaidel/jhonaidel.gd" id="1_ddesh"]
 [ext_resource type="Texture2D" uid="uid://pj58lqemliyq" path="res://Scenes/personajes/Jhonaidel/assetDerecha.png" id="2_j8n7n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_msfkw"]
@@ -32,14 +32,14 @@ radius = 27.073973
 radius = 6.0
 height = 28.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ddesh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(33, 32)
 sprite_frames = SubResource("SpriteFrames_2tb24")
 animation = &"idle_front_jhonaidel"
-frame_progress = 0.088247865
+frame_progress = 0.3993003
 
 [node name="speakArea" type="Area2D" parent="AnimatedSprite2D"]
 
@@ -51,3 +51,4 @@ position = Vector2(32, 31)
 shape = SubResource("CapsuleShape2D_3tqhu")
 
 [connection signal="body_entered" from="AnimatedSprite2D/speakArea" to="." method="_on_speak_area_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/speakArea" to="." method="_on_speak_area_body_exited"]

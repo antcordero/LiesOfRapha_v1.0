@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cohnj5q0ukbn4"
+path="res://.godot/imported/jhonaidel.dialogue-bd963b5bafca0eb7ef59176b1af8ad4e.tres"
+
+[deps]
+
+source_file="res://Dialogues/jhonaidel.dialogue"
+dest_files=["res://.godot/imported/jhonaidel.dialogue-bd963b5bafca0eb7ef59176b1af8ad4e.tres"]
+
+[params]
+
+defaults=true
