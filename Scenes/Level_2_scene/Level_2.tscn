@@ -4589,7 +4589,7 @@ script = ExtResource("1_6rio3")
 
 [node name="GoalArea" type="CollisionShape2D" parent="level_end_area_2"]
 z_index = 10
-position = Vector2(408, -1129)
+position = Vector2(398, -1265)
 shape = SubResource("RectangleShape2D_grf7x")
 
 [node name="Fondo" type="TileMapLayer" parent="."]
