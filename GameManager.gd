@@ -243,9 +243,9 @@ func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
 
 	if boss2_dialogue_active:
 		boss2_dialogue_active = false
-		boss1_dialogue_active = false # Limpieza de seguridad
-		print("DEBUG: Pasando al Nivel 3")
-		start_level(3)
+		print("DEBUG: Jefe intermedio 2 derrotado. Permaneciendo en nivel actual.")
+		# start_level(3). 
+		# Simplemente dejamos que el jugador siga explorando.
 		return
 
 	if boss3_dialogue_active:

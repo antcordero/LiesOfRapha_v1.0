@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://k3n1aikllv52" path="res://Escenas Estaticas/Acto II/3.jpg" id="2_55q70"]
 [ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_j450y"]
 [ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_nx8es"]
-[ext_resource type="PackedScene" uid="uid://b1t5o0lbu3rfb" path="res://Combat/Enemy2.tscn" id="5_55q70"]
+[ext_resource type="PackedScene" path="res://Combat/Enemy2.tscn" id="5_55q70"]
 
 [node name="SDC" type="Node2D"]
 script = ExtResource("1_ff5lm")
