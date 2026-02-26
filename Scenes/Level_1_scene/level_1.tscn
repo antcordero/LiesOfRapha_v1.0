@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bpdgiwkmvms02"]
+[gd_scene load_steps=37 format=4 uid="uid://bpdgiwkmvms02"]
 
 [ext_resource type="TileSet" uid="uid://b1tjvfw24v4ck" path="res://Tile_sets/library.tres" id="1_664i5"]
 [ext_resource type="Script" uid="uid://b7lahlwfahei6" path="res://Scenes/Level_1_scene/second_area.gd" id="1_btw55"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://8qmvbu3cteua" path="res://Scenes/personajes/npc/Makarienne/makarienne.tscn" id="12_5xbx5"]
 [ext_resource type="PackedScene" uid="uid://cn7myhoprdcxt" path="res://Scenes/personajes/npc/interactive_objects/book_1stMap/book.tscn" id="13_2ct4r"]
 [ext_resource type="AudioStream" uid="uid://b0bsrokjfk37d" path="res://music/03 - Definitely Our Town.wav" id="14_a327f"]
+[ext_resource type="PackedScene" uid="uid://cgqh0v6k5jqo6" path="res://Scenes/personajes/npc/rocio/rocio.tscn" id="15_o6itq"]
+[ext_resource type="PackedScene" uid="uid://0epbgu1lwiif" path="res://Scenes/personajes/npc/dani/dani.tscn" id="16_7oie6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6n1bi"]
 size = Vector2(35, 53)
@@ -5710,7 +5712,7 @@ tile_set = SubResource("TileSet_o6itq")
 position = Vector2(257, 287)
 
 [node name="Marthea" parent="." groups=["Player"] instance=ExtResource("3_awet4")]
-position = Vector2(264, 363)
+position = Vector2(-19, 498)
 
 [node name="guardia_idle_left" parent="." instance=ExtResource("6_l460e")]
 position = Vector2(1789, 782)
@@ -5728,18 +5730,24 @@ position = Vector2(199, 599)
 position = Vector2(262, 162)
 
 [node name="Rodri" parent="." instance=ExtResource("11_00g58")]
-position = Vector2(1532, 472)
+position = Vector2(1538, 346)
 
 [node name="Makarienne" parent="." instance=ExtResource("12_5xbx5")]
-position = Vector2(1552, 699)
+position = Vector2(1494, 788)
 
 [node name="Anton" parent="." instance=ExtResource("2_2o5ha")]
-position = Vector2(1228, 262)
+position = Vector2(1175, 301)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_a327f")
 volume_db = -17.174
 autoplay = true
+
+[node name="rocio" parent="." instance=ExtResource("15_o6itq")]
+position = Vector2(161, 373)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("16_7oie6")]
+position = Vector2(312, 385)
 
 [connection signal="body_entered" from="second_area" to="second_area" method="_on_body_entered"]
 [connection signal="body_entered" from="level_end_area" to="level_end_area" method="_on_body_entered"]
