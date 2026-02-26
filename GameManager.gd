@@ -1,5 +1,6 @@
 extends Node
 
+# Boss battles instances
 @export var boss1_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
 @export var boss1_defeated_start: String = "start"
 
@@ -9,16 +10,24 @@ extends Node
 @export var boss3_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
 @export var boss3_defeated_start: String = "start"
 
+# menu
 static var menu_created := false
 
+# Boss battles variables
 var boss1_dialogue_active: bool = false
 var boss2_dialogue_active: bool = false
 var boss3_dialogue_active: bool = false
 
+# levels variables
 var current_level: Node = null
 var current_level_number: int = 1
 var current_ui: Node = null
 var current_static_scene: Node = null
+
+# --- NUEVO: PERSISTENCIA DE INVENTARIO ---
+var player_bag: Bag = null
+const DB: ItemDatabase = preload("res://items/items_db.tres") 
+# ^ Asegúrate de que esa ruta (it_db.tres) sea la correcta en tu carpeta items
 
 # ************************ QUIZ ************************
 var quiz_beatrix_activo: bool = false
@@ -31,8 +40,11 @@ func _ready() -> void:
 		queue_free()
 		return
 	menu_created = true
+	
+	# AÑADE ESTA LÍNEA AQUÍ:
+	_setup_global_inventory()
+	
 	show_menu()
-
 
 # ===================== UTILIDADES =====================
 
@@ -299,3 +311,16 @@ func _on_quiz_generic_completado(exito: bool, siguiente_nivel: int) -> void:
 	else:
 		reset_quiz_flags()
 		get_tree().reload_current_scene()
+
+# ===================== INVENTORY =====================
+
+func _setup_global_inventory() -> void:
+	var loaded := Bag.load_from_disk()
+	if loaded != null:
+		player_bag = loaded
+		print("Inventario global cargado.")
+	else:
+		player_bag = Bag.new()
+		print("Nuevo inventario global creado.")
+	
+	player_bag.db = DB

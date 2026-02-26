@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ckpb3wwb4utst"
+path="res://.godot/imported/jhonaidel_defeated.dialogue-412377708a57b03ce3d18ca81dbbe39b.tres"
+
+[deps]
+
+source_file="res://Dialogues/jhonaidel_defeated.dialogue"
+dest_files=["res://.godot/imported/jhonaidel_defeated.dialogue-412377708a57b03ce3d18ca81dbbe39b.tres"]
+
+[params]
+
+defaults=true
