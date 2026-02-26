@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2a07gljh8ijh"]
 
 [ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_ltwlv"]
-[ext_resource type="Texture2D" uid="uid://cgix216yiisgu" path="res://Images/3.jpg" id="2_tpw6x"]
+[ext_resource type="Texture2D" uid="uid://dprrm413bb1e2" path="res://Escenas Estaticas/Acto I/3.jpg" id="2_v76rv"]
 [ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_tpw6x"]
 [ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_q3xt5"]
 [ext_resource type="PackedScene" uid="uid://xdyl0ij8b4or" path="res://Combat/Enemy.tscn" id="5_els5o"]
@@ -16,10 +16,11 @@ scale = Vector2(0.73, 0.425)
 transform = Transform2D(0.73, 0, 0, 0.425, 0, 0)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_left = -260.274
-offset_right = 1575.0
-offset_bottom = 1847.059
-texture = ExtResource("2_tpw6x")
+offset_left = -83.56163
+offset_top = -336.4706
+offset_right = 1751.7123
+offset_bottom = 1510.5884
+texture = ExtResource("2_v76rv")
 
 [node name="Player1" parent="CanvasLayer" instance=ExtResource("3_tpw6x")]
 position = Vector2(164.38356, 851.76465)

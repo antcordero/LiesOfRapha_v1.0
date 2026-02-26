@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://mgevnaclrpw6"]
+
+[ext_resource type="Texture2D" uid="uid://8vptdi567yms" path="res://Escenas Estaticas/Acto III/torre_Rapha.jpg" id="1_knv5n"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 325)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.00006, 324.99997)
+scale = Vector2(0.2761407, 0.25462958)
+texture = ExtResource("1_knv5n")
+
+[node name="Node2D" type="Node2D" parent="."]

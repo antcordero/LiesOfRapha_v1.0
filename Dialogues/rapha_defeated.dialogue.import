@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dstg8htfhjc4y"
+path="res://.godot/imported/rapha_defeated.dialogue-0ca6ddf4f62f8b03c7f36410eabb3e5e.tres"
+
+[deps]
+
+source_file="res://Dialogues/rapha_defeated.dialogue"
+dest_files=["res://.godot/imported/rapha_defeated.dialogue-0ca6ddf4f62f8b03c7f36410eabb3e5e.tres"]
+
+[params]
+
+defaults=true

@@ -7,7 +7,7 @@ extends Node
 @export var boss2_defeated_dialogue: DialogueResource = preload("res://Dialogues/jhonaidel_defeated.dialogue")
 @export var boss2_defeated_start: String = "start"
 
-@export var boss3_defeated_dialogue: DialogueResource = preload("res://Dialogues/franczius_defeated.dialogue")
+@export var boss3_defeated_dialogue: DialogueResource = preload("res://Dialogues/rapha_defeated.dialogue")
 @export var boss3_defeated_start: String = "start"
 
 # menu
@@ -161,11 +161,18 @@ func show_static_scene(static_scene_id: int) -> void:
 		1: scene_path = "res://Escenas Estaticas/escenas_estaticas.tscn"
 		2: scene_path = "res://Escenas Estaticas/staticScene_2.tscn"
 		3: scene_path = "res://Escenas Estaticas/staticScene_3.tscn"
+		4: scene_path = "res://Escenas Estaticas/staticScene_rapha_tower.tscn"
 		_:
 			print("ERROR: ID de escena estática no encontrado:", static_scene_id)
 			return
 
-	var inst = load(scene_path).instantiate()
+	# ESCUDO ANTI-CRASHEOS: Cargamos la escena de forma segura
+	var escena_cargada = load(scene_path)
+	if escena_cargada == null:
+		push_error("❌ ERROR CRÍTICO: No se encontró la escena en la ruta: " + scene_path)
+		return
+
+	var inst = escena_cargada.instantiate()
 	current_static_scene = inst
 	add_child(current_static_scene)
 
@@ -176,53 +183,45 @@ func show_static_scene(static_scene_id: int) -> void:
 # ===================== DIÁLOGO GLOBAL BOSS 1/2/3 =====================
 
 func show_boss1_defeated_dialogue() -> void:
-	if boss1_dialogue_active:
-		return
+	if boss1_dialogue_active: return
 
 	if boss1_defeated_dialogue == null:
-		print("ERROR: boss1_defeated_dialogue es null -> salto a Nivel 2")
 		start_level(2)
 		return
 
 	boss1_dialogue_active = true
-
 	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
-
 	DialogueManager.show_dialogue_balloon(boss1_defeated_dialogue, boss1_defeated_start)
 
 
 func show_boss2_defeated_dialogue() -> void:
-	if boss2_dialogue_active:
-		return
+	if boss2_dialogue_active: return
 
 	if boss2_defeated_dialogue == null:
-		print("ERROR: boss2_defeated_dialogue es null -> salto a Nivel 3")
 		start_level(3)
 		return
 
 	boss2_dialogue_active = true
-
 	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
-
 	DialogueManager.show_dialogue_balloon(boss2_defeated_dialogue, boss2_defeated_start)
 
 
 func show_boss3_defeated_dialogue() -> void:
-	if boss3_dialogue_active:
-		return
+	if boss3_dialogue_active: return
 
 	if boss3_defeated_dialogue == null:
-		print("ERROR: boss3_defeated_dialogue es null -> vuelvo al menú")
 		show_menu()
 		return
 
 	boss3_dialogue_active = true
 
+	# --- Mostrar escena estática final (Victoria) ---
+	show_static_scene(3) 
+
 	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
-
 	DialogueManager.show_dialogue_balloon(boss3_defeated_dialogue, boss3_defeated_start)
 
 
@@ -245,12 +244,10 @@ func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
 		boss2_dialogue_active = false
 		print("DEBUG: Jhonaidel derrotado. El jugador se queda en el nivel 2.")
 		
-		# Reactivamos el mapa actual
 		if current_level:
 			current_level.process_mode = Node.PROCESS_MODE_INHERIT
 		get_tree().paused = false
-		
-		return # <--- Este return DEBE estar dentro del if (indentado)
+		return 
 
 	# ==============================
 	# BOSS 3: Final
@@ -264,16 +261,12 @@ func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
 # ===================== QUIZ BEATRIX =====================
 
 func iniciar_quiz_beatrix(nivel_actual: Node) -> void:
-	if quiz_beatrix_activo:
-		return
+	if quiz_beatrix_activo: return
 
 	var target_node: Node = nivel_actual if nivel_actual != null else current_level
-	if target_node == null:
-		print("ERROR: No hay nivel donde instanciar el quiz")
-		return
+	if target_node == null: return
 
 	quiz_beatrix_activo = true
-
 	get_tree().paused = true
 	target_node.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -289,18 +282,15 @@ func iniciar_quiz_beatrix(nivel_actual: Node) -> void:
 			quiz.position = Vector2.ZERO
 
 	quiz.quiz_completado.connect(_on_quiz_beatrix_completado)
-	print("Quiz Beatrix iniciado correctamente en:", target_node.name)
 
 func _on_quiz_beatrix_completado(exito: bool) -> void:
 	quiz_beatrix_activo = false
 	get_tree().paused = false
 
 	if exito:
-		print("¡GANASTE! El jugador continúa en el nivel actual.")
 		if current_level:
 			current_level.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
-		print("¡PERDISTE! Reiniciando nivel por fallo en quiz...")
 		reset_quiz_flags()
 		restart_current_level() 
 
@@ -308,15 +298,11 @@ func reset_quiz_flags() -> void:
 	quiz_beatrix_activo = false
 
 
-# ===================== QUIZ GENÉRICO (FUTURO) =====================
+# ===================== QUIZ GENÉRICO =====================
 
 func iniciar_quiz_generic(quiz_path: String, siguiente_nivel: int) -> void:
-	if quiz_beatrix_activo:
-		return
-
-	if current_level == null:
-		print("ERROR: No hay current_level para quiz genérico")
-		return
+	if quiz_beatrix_activo: return
+	if current_level == null: return
 
 	quiz_beatrix_activo = true
 	get_tree().paused = true

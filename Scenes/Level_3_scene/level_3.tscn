@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://bsnbjlq23sfmr"]
+[gd_scene load_steps=85 format=4 uid="uid://bsnbjlq23sfmr"]
 
 [ext_resource type="Script" uid="uid://dlshg1562exhd" path="res://Scenes/Level_3_scene/level_3.gd" id="1_4ruca"]
 [ext_resource type="Texture2D" uid="uid://dl8iynnjfsxvl" path="res://Assets_mapas/TileMaps/Garden Environment/Assets/Tiles.png" id="1_qqdeg"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://ioxc7wb28gwd" path="res://Scenes/personajes/marthea/marthea.tscn" id="30_qqdeg"]
 [ext_resource type="PackedScene" uid="uid://cspr7cfqcqrs6" path="res://Scenes/personajes/Beatrix/beatrix.tscn" id="32_4ruca"]
 [ext_resource type="AudioStream" uid="uid://dqef0fsirdvjw" path="res://music/22 - The Final of The Fantasy.wav" id="33_1i8n8"]
+[ext_resource type="PackedScene" uid="uid://cxggdtkvqa8po" path="res://Scenes/personajes/Rapha/Rapha.tscn" id="33_hdks3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_50qd4"]
 texture = ExtResource("1_qqdeg")
@@ -11951,10 +11952,13 @@ tile_map_data = PackedByteArray("AAAEAPr/AAAAAAIAAAAEAPv/AAAAAAMAAAABAPj/AAAAAAI
 tile_set = SubResource("TileSet_1i8n8")
 
 [node name="Marthea" parent="." instance=ExtResource("30_qqdeg")]
-position = Vector2(248, -42)
+position = Vector2(-37, -27)
 
 [node name="Beatrix" parent="." instance=ExtResource("32_4ruca")]
 position = Vector2(232, -768)
+
+[node name="Rapha" parent="." instance=ExtResource("33_hdks3")]
+position = Vector2(59, -933)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("33_1i8n8")

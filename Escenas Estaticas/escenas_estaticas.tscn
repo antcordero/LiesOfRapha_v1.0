@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8f3g6pdvd1v3"]
 
 [ext_resource type="Script" uid="uid://dar2mjnii5ydu" path="res://Escenas Estaticas/escenas_estaticas_1.gd" id="1_xonjs"]
-[ext_resource type="Texture2D" uid="uid://rlqwgt5xhyvy" path="res://Escenas Estaticas/Acto I/1.jpg" id="2_xonjs"]
+[ext_resource type="Texture2D" uid="uid://du3eohept5j8y" path="res://Escenas Estaticas/Acto I/MartheaMacarena_I.png" id="2_xonjs"]
 
 [node name="Escenas_Estaticas" type="Node2D"]
 script = ExtResource("1_xonjs")
