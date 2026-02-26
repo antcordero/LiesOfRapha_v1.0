@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsfod7ebl71s0"]
+[gd_scene load_steps=13 format=3 uid="uid://dsfod7ebl71s0"]
 
 [ext_resource type="Script" uid="uid://bv62ei7g3ssaw" path="res://options.gd" id="1_yia4p"]
-[ext_resource type="Texture2D" uid="uid://bxaxhxe2c7kn" path="res://assets/imagen portada juego.webp" id="2_ywiuv"]
+[ext_resource type="Texture2D" uid="uid://tbynu7rl66xu" path="res://assets/DEFINITIVA.png" id="2_ywiuv"]
+[ext_resource type="FontFile" uid="uid://djf800ebw3dcj" path="res://fonts/pixelmix_bold.ttf" id="3_2r1l1"]
+[ext_resource type="FontFile" uid="uid://bljq3h4nq2cr1" path="res://fonts/Pixelmax-Regular.otf" id="4_2r1l1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lti8b"]
 bg_color = Color(0, 0, 0, 0.84313726)
@@ -22,9 +24,6 @@ bg_color = Color(0, 0, 0, 0.77254903)
 bg_color = Color(0, 0, 0, 0.77254903)
 
 [sub_resource type="Theme" id="Theme_lti8b"]
-
-[sub_resource type="SystemFont" id="SystemFont_ouk20"]
-font_weight = 525
 
 [sub_resource type="LabelSettings" id="LabelSettings_mae5d"]
 
@@ -48,15 +47,16 @@ color = Color(0.03137255, 0.03137255, 0.9607843, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = -1
+anchor_top = 0.9768519
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = -0.20833333
 offset_top = -754.0
 offset_bottom = 782.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ywiuv")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -76,6 +76,7 @@ theme_override_constants/separation = 30
 
 [node name="Volume" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2r1l1")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lti8b")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ouk20")
@@ -83,6 +84,7 @@ text = "Volume"
 
 [node name="Resolution" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2r1l1")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mae5d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4hy44")
@@ -90,6 +92,7 @@ text = "Resolution"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2r1l1")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l48gv")
@@ -100,15 +103,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -68.99997
-offset_top = 76.0
-offset_right = 51.005005
-offset_bottom = 99.0
+offset_left = -78.00003
+offset_top = 20.0
+offset_right = 46.0
+offset_bottom = 42.999996
 grow_horizontal = 2
 scale = Vector2(1.4000754, 1.4058743)
 theme = SubResource("Theme_lti8b")
 theme_override_colors/font_color = Color(0.24334309, 0.8637965, 0.6624737, 1)
-theme_override_fonts/font = SubResource("SystemFont_ouk20")
+theme_override_fonts/font = ExtResource("4_2r1l1")
 theme_override_font_sizes/font_size = 70
 text = "Lie's Of Rapha"
 label_settings = SubResource("LabelSettings_mae5d")
@@ -116,6 +119,6 @@ uppercase = true
 
 [connection signal="pressed" from="VBoxContainer/Volume" to="." method="_on_volume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Volume" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Resolution" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="VBoxContainer/Resolution" to="." method="_on_resolution_pressed"]
+[connection signal="pressed" from="VBoxContainer/Resolution" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

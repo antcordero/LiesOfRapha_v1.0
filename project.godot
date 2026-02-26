@@ -17,9 +17,9 @@ config/icon="uid://bu5xtxdxfbb6w"
 
 [autoload]
 
-Shops="*res://shop/shop.gd"
 GameManager="*res://GameManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Shops="*res://shop/shop.gd"
 
 [editor_plugins]
 
