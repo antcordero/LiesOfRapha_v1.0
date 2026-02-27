@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2a07gljh8ijh"]
 
 [ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_ltwlv"]
-[ext_resource type="Texture2D" uid="uid://dprrm413bb1e2" path="res://Escenas Estaticas/Acto I/3.jpg" id="2_v76rv"]
+[ext_resource type="Texture2D" uid="uid://83k4fmmu3ugb" path="res://Combat/bliblioteca pixel.webp" id="2_18rkj"]
 [ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_tpw6x"]
 [ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_q3xt5"]
 [ext_resource type="PackedScene" uid="uid://xdyl0ij8b4or" path="res://Combat/Enemy.tscn" id="5_els5o"]
@@ -21,20 +21,20 @@ offset_left = -83.56163
 offset_top = -336.4706
 offset_right = 1751.7123
 offset_bottom = 1510.5884
-texture = ExtResource("2_v76rv")
+texture = ExtResource("2_18rkj")
 
 [node name="Player1" parent="CanvasLayer" instance=ExtResource("3_tpw6x")]
-position = Vector2(164.38356, 851.76465)
-scale = Vector2(1.63, 2.085)
+position = Vector2(439.726, 809.41174)
+scale = Vector2(1.4165477, 2.8208823)
 
 [node name="Player2" parent="CanvasLayer" instance=ExtResource("4_q3xt5")]
-position = Vector2(426.02737, 1040.0001)
-scale = Vector2(1.391, 2.27)
+position = Vector2(182.19177, 1018.82355)
+scale = Vector2(1.4129303, 2.88817)
 hp = 100
 
 [node name="Enemy" parent="CanvasLayer" instance=ExtResource("5_els5o")]
 position = Vector2(1236.9862, 896.4706)
-scale = Vector2(1, 1.895)
+scale = Vector2(1.1331604, 2.172317)
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
 z_index = 99

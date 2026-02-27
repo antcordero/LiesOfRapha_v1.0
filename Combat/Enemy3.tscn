@@ -1,32 +1,33 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckhqonnl4na83"]
+[gd_scene load_steps=23 format=3 uid="uid://ckhqonnl4na83"]
 
 [ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_o5gfx"]
 [ext_resource type="Texture2D" uid="uid://cufwt2t8apcbm" path="res://Scenes/personajes/Rapha/crow_attack1.png" id="2_o5gfx"]
+[ext_resource type="Texture2D" uid="uid://bhq6yq3106f6m" path="res://Scenes/personajes/Rapha/crow_attack.png" id="3_beolk"]
 [ext_resource type="Texture2D" uid="uid://ba7kgm5vgueca" path="res://Scenes/personajes/Rapha/crow_death2.png" id="3_o5gfx"]
 [ext_resource type="Texture2D" uid="uid://cwyjlayk3mky1" path="res://Scenes/personajes/Rapha/crow_idle .png" id="4_ax5gx"]
 [ext_resource type="FontFile" uid="uid://c405i12ltp3y5" path="res://fonts/pixelmix.ttf" id="5_ax5gx"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_beolk"]
-atlas = ExtResource("2_o5gfx")
-region = Rect2(0, 0, 76, 76)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jx13m"]
 atlas = ExtResource("2_o5gfx")
-region = Rect2(76, 0, 76, 76)
+region = Rect2(0, 0, 63, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iduxs"]
 atlas = ExtResource("2_o5gfx")
-region = Rect2(152, 0, 76, 76)
+region = Rect2(74, 0, 74, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23nni"]
-atlas = ExtResource("2_o5gfx")
-region = Rect2(228, 0, 76, 76)
+atlas = ExtResource("3_beolk")
+region = Rect2(136, 0, 64, 63)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0y21"]
-atlas = ExtResource("2_o5gfx")
-region = Rect2(304, 0, 76, 76)
+atlas = ExtResource("3_beolk")
+region = Rect2(212, 0, 53, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ax5gx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g6wy"]
+atlas = ExtResource("3_beolk")
+region = Rect2(265, 0, 53, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beolk"]
 atlas = ExtResource("3_o5gfx")
 region = Rect2(0, 0, 64, 64)
 
@@ -45,6 +46,10 @@ region = Rect2(192, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgmpy"]
 atlas = ExtResource("3_o5gfx")
 region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2rcq"]
+atlas = ExtResource("3_o5gfx")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pjxc"]
 atlas = ExtResource("4_ax5gx")
@@ -66,9 +71,6 @@ region = Rect2(192, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_beolk")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_jx13m")
 }, {
 "duration": 1.0,
@@ -79,6 +81,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o0y21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g6wy")
 }],
 "loop": false,
 "name": &"attack",
@@ -86,7 +91,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ax5gx")
+"texture": SubResource("AtlasTexture_beolk")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6nfex")
@@ -99,6 +104,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cgmpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2rcq")
 }],
 "loop": false,
 "name": &"death",
@@ -134,10 +142,9 @@ character_name = "Franczius The sage"
 is_enemy = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(31, 130)
+position = Vector2(31.000002, 126)
 scale = Vector2(8.6107235, 8.520847)
 sprite_frames = SubResource("SpriteFrames_rvmyp")
-animation = &"death"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -244.0

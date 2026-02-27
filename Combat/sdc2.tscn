@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddo4up7q8cmx2"]
 
 [ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_ff5lm"]
-[ext_resource type="Texture2D" uid="uid://k3n1aikllv52" path="res://Escenas Estaticas/Acto II/3.jpg" id="2_55q70"]
+[ext_resource type="Texture2D" uid="uid://hx00b05ir0wi" path="res://Combat/iglesia pixel.png" id="2_wbl37"]
 [ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_j450y"]
 [ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_nx8es"]
 [ext_resource type="PackedScene" uid="uid://b1t5o0lbu3rfb" path="res://Combat/Enemy2.tscn" id="5_55q70"]
@@ -21,20 +21,20 @@ transform = Transform2D(0.73, 0, 0, 0.425, 0, 0)
 offset_left = 8.219177
 offset_right = 1576.7124
 offset_bottom = 1534.1177
-texture = ExtResource("2_55q70")
+texture = ExtResource("2_wbl37")
 
 [node name="Player1" parent="CanvasLayer" instance=ExtResource("3_j450y")]
-position = Vector2(454.79446, 1360.0001)
-scale = Vector2(0.8559005, 1.4002991)
+position = Vector2(623.28766, 1334.1174)
+scale = Vector2(0.9547007, 1.9653001)
 
 [node name="Player2" parent="CanvasLayer" instance=ExtResource("4_nx8es")]
-position = Vector2(601.3698, 1402.3529)
-scale = Vector2(0.92948836, 1.5246649)
+position = Vector2(457.53427, 1348.2352)
+scale = Vector2(0.79019177, 1.8910109)
 hp = 100
 
 [node name="Enemy" parent="CanvasLayer" instance=ExtResource("5_55q70")]
-position = Vector2(1072.6027, 1383.5294)
-scale = Vector2(0.71393883, 1.0289555)
+position = Vector2(1023.2878, 1331.7646)
+scale = Vector2(0.8732837, 1.2196777)
 max_hp = 200
 hp = 200
 character_name = "Jhonaidel de la luz"
@@ -52,10 +52,10 @@ anchor_left = -0.202
 anchor_top = 0.004
 anchor_right = 1.36
 anchor_bottom = 2.821
-offset_left = -22.090515
-offset_top = -0.23905873
-offset_right = -14.665161
-offset_bottom = 0.22729492
+offset_left = 39.553345
+offset_top = 6.819765
+offset_right = 46.97876
+offset_bottom = 7.286133
 grow_horizontal = 2
 grow_vertical = 2
 

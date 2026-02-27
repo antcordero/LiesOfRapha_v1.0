@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://gc5kutp7eqwh"]
 
 [ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_og0kd"]
-[ext_resource type="Texture2D" uid="uid://8vptdi567yms" path="res://Escenas Estaticas/Acto III/torre_Rapha.jpg" id="2_5tr5r"]
+[ext_resource type="Texture2D" uid="uid://boy5mk2at8cyg" path="res://Combat/espejito.webp" id="2_vu0je"]
 [ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_rx130"]
 [ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_votrr"]
 [ext_resource type="PackedScene" uid="uid://ckhqonnl4na83" path="res://Combat/Enemy3.tscn" id="5_xl8wl"]
@@ -22,23 +22,31 @@ offset_left = 13.698669
 offset_top = -127.05882
 offset_right = 1561.6438
 offset_bottom = 1555.2942
-texture = ExtResource("2_5tr5r")
+texture = ExtResource("2_vu0je")
 expand_mode = 1
 
 [node name="Player1" parent="CanvasLayer" instance=ExtResource("3_rx130")]
-position = Vector2(149.31505, 1096.4706)
-scale = Vector2(1.63, 2.085)
+position = Vector2(442.46576, 1061.1764)
+scale = Vector2(1.3301109, 2.6489615)
 atk = 40
 
 [node name="Player2" parent="CanvasLayer" instance=ExtResource("4_votrr")]
-position = Vector2(390.41095, 1235.2941)
-scale = Vector2(1.391, 2.27)
+position = Vector2(227.39726, 1251.7646)
+scale = Vector2(1.4002309, 2.5960224)
 hp = 100
 atk = 40
 
 [node name="Enemy" parent="CanvasLayer" instance=ExtResource("5_xl8wl")]
-position = Vector2(1294.5206, 823.52936)
-scale = Vector2(0.5588549, 1.1595272)
+position = Vector2(1269.8629, 724.7058)
+scale = Vector2(1.18135, 2.0100195)
+max_hp = 250
+hp = 250
+atk = 40
+character_name = "Rapha the Liar"
+
+[node name="Enemy2" parent="CanvasLayer" instance=ExtResource("5_xl8wl")]
+position = Vector2(1269.8629, 724.7058)
+scale = Vector2(1.18135, 2.0100195)
 max_hp = 250
 hp = 250
 atk = 40

@@ -47,16 +47,17 @@ color = Color(0.03137255, 0.03137255, 0.9607843, 1)
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.171875
-anchor_top = 0.32407406
-anchor_right = 1.1614584
-anchor_bottom = 0.32407406
-offset_top = -754.0
-offset_bottom = 782.0
+anchor_left = -0.08506945
+anchor_top = -0.044839505
+anchor_right = 1.0677084
+anchor_bottom = 1.1419755
+offset_left = -1.0
+offset_top = 0.055999994
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ouk20")
-expand_mode = 1
+expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
