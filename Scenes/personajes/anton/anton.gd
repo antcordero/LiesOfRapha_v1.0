@@ -1,148 +1,90 @@
 extends CharacterBody2D
 
-@export var speed: float = 200.0
-@export var max_history_size: int = 7
-
-# Sistema de rastro
-var position_history: Array[Vector2] = []
-
-# Configuración del diálogo
+# Configuración del Diálogo
 @export var dialogue_resource: DialogueResource = preload("res://Dialogues/dialogo_sala2_anton.dialogue")
 @export var dialogue_start: String = "start"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var player: Node2D = null
-var is_following: bool = false
-var last_dir: Vector2 = Vector2.DOWN
-
 var player_in_range: bool = false
 var dialogue_active: bool = false
-var dialogue_done: bool = false
+var current_balloon: Node = null
 
-# 🔥 Animación independiente del movimiento/velocity
-var current_anim: StringName = &""
+# --- NUEVO: Variables de control ---
+var puede_detectar: bool = false 
+var dialogue_completed: bool = false # <-- Recuerda si ya hemos hablado con él
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("player")
+	if animated_sprite:
+		# Pon aquí el nombre de la animación idle que prefieras que tenga
+		animated_sprite.play("idle_down")
+	
+	# Escudo de 0.5 segundos al cargar el mapa
+	await get_tree().create_timer(0.5).timeout
+	puede_detectar = true
 
-	# Arranca idle fijo (no depende de velocity)
-	_set_anim_idle(last_dir)
-
-	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
-		DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
-
-func _physics_process(_delta: float) -> void:
-	# 1) Si no sigue o el jugador no existe: se para, pero la animación NO se toca
-	if not is_following or player == null:
-		velocity = Vector2.ZERO
-		move_and_slide()
-		return
-
-	# 2) Actualizamos rastro
-	actualizar_rastro()
-
-	# 3) Movimiento hacia la posición vieja del jugador
-	var target_pos: Vector2 = position_history[0]
-	var to_target: Vector2 = target_pos - global_position
-
-	if to_target.length() > 8.0:
-		var dir: Vector2 = to_target.normalized()
-		velocity = dir * speed
-
-		# ✅ Solo si cambia la dirección, cambiamos animación (independiente del movimiento)
-		if _dir_changed_enough(dir):
-			last_dir = dir
-			_set_anim_walk(last_dir)
-	else:
-		velocity = Vector2.ZERO
-		# ✅ NO cambiamos a idle aquí (por eso es independiente y no parpadea)
-
-	move_and_slide()
 
 func _process(_delta: float) -> void:
-	# Diálogos
-	if not dialogue_done:
-		if player_in_range and not dialogue_active and Input.is_action_just_pressed("do_something"):
-			mostrar_dialogo()
+	# Abrir diálogo (Añadimos la condición "not dialogue_completed")
+	if player_in_range and not dialogue_active and not dialogue_completed and Input.is_action_just_pressed("do_something"):
+		mostrar_dialogo()
+	
+	# Cerrar diálogo manualmente
+	elif dialogue_active and Input.is_action_just_pressed("cancel"):
+		cerrar_dialogo_forzado()
 
-# ---------- RASTRO ----------
 
-func actualizar_rastro() -> void:
-	if position_history.is_empty() or player.global_position.distance_to(position_history.back()) > 5.0:
-		position_history.append(player.global_position)
-
-	if position_history.size() > max_history_size:
-		position_history.remove_at(0)
-
-# ---------- ANIMACIÓN (INDEPENDIENTE) ----------
-
-func _dir_changed_enough(new_dir: Vector2) -> bool:
-	# Evita micro-cambios que te reinicien animaciones
-	# Si la dirección cambia poco, no actualizamos animación.
-	return new_dir.dot(last_dir) < 0.92  # cuanto más cerca de 1, más "estricto"
-
-func _play_anim(anim_name: StringName) -> void:
-	# ✅ Nunca reinicia la animación si ya está puesta
-	if animated_sprite.animation == String(anim_name) and animated_sprite.is_playing():
-		return
-	current_anim = anim_name
-	animated_sprite.play(String(anim_name))
-
-func _set_anim_walk(dir: Vector2) -> void:
-	var anim: StringName
-
-	if abs(dir.x) > abs(dir.y):
-		anim = &"walk_side"
-		animated_sprite.flip_h = (dir.x > 0)
-	elif dir.y > 0:
-		anim = &"walk_down"
-		animated_sprite.flip_h = false
-	else:
-		anim = &"walk_up"
-		animated_sprite.flip_h = false
-
-	_play_anim(anim)
-
-func _set_anim_idle(dir: Vector2) -> void:
-	var anim: StringName
-
-	if abs(dir.x) > abs(dir.y):
-		anim = &"idle_side"
-		animated_sprite.flip_h = (dir.x > 0)
-	elif dir.y > 0:
-		anim = &"idle_down"
-		animated_sprite.flip_h = false
-	else:
-		anim = &"idle_up"
-		animated_sprite.flip_h = false
-
-	_play_anim(anim)
-
-# ---------- INTERACCIÓN ----------
+# =========================================================
+# SEÑALES DEL EDITOR (Asegúrate de que están conectadas)
+# =========================================================
 
 func _on_speak_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	# Si el nivel acaba de cargar, ignoramos la colisión
+	if not puede_detectar: return 
+	
+	# Comprobamos ambas (mayúscula y minúscula) por si acaso
+	if body.is_in_group("Player") or body.is_in_group("player"):
 		player_in_range = true
 
 func _on_speak_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("Player") or body.is_in_group("player"):
 		player_in_range = false
+		# Si el jugador se aleja, cerramos el diálogo automáticamente
+		if dialogue_active:
+			cerrar_dialogo_forzado()
+
+
+# =========================================================
+# LÓGICA DE DIÁLOGOS
+# =========================================================
 
 func mostrar_dialogo() -> void:
+	if dialogue_resource == null:
+		print("Error: No hay recurso de diálogo")
+		return
+		
 	dialogue_active = true
-	DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
+	current_balloon = DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
+	
+	# Conectamos la señal de cierre SOLO para esta instancia y una sola vez (CONNECT_ONE_SHOT)
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_finished, CONNECT_ONE_SHOT)
+
+func cerrar_dialogo_forzado() -> void:
+	if current_balloon and is_instance_valid(current_balloon):
+		current_balloon.queue_free()
+		current_balloon = null
+	
+	dialogue_active = false
+	
+	if DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
+		DialogueManager.dialogue_ended.disconnect(_on_dialogue_finished)
 
 func _on_dialogue_finished(_resource: DialogueResource) -> void:
-	if _resource == dialogue_resource:
-		dialogue_done = true
-		dialogue_active = false
-		is_following = true
-
-		# Inicializa el rastro para que no pegue tirón al empezar a seguir
-		position_history.clear()
-		for i in range(max_history_size):
-			position_history.append(global_position)
-
-		# Al empezar a seguir, ponemos walk con la dir actual (independiente)
-		_set_anim_walk(last_dir)
+	# Esperamos un frame para evitar que el mismo click que cierra el diálogo lo vuelva a abrir
+	await get_tree().process_frame
+	dialogue_active = false
+	current_balloon = null
+	
+	# --- NUEVO: Marcamos el diálogo como completado ---
+	dialogue_completed = true

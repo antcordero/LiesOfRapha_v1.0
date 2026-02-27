@@ -67,3 +67,4 @@ position = Vector2(16, 22)
 shape = SubResource("CapsuleShape2D_2wya8")
 
 [connection signal="body_entered" from="speakArea" to="." method="_on_speak_area_body_entered"]
+[connection signal="body_exited" from="speakArea" to="." method="_on_speak_area_body_exited"]

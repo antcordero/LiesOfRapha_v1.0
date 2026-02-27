@@ -10,5 +10,6 @@ script = ExtResource("1_xonjs")
 position = Vector2(576, 324)
 
 [node name="1" type="Sprite2D" parent="."]
-position = Vector2(576, 325)
+position = Vector2(576, 326)
+scale = Vector2(1, 1.0030864)
 texture = ExtResource("2_xonjs")

@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://cg6creo3pa2y" path="res://inventory/bag.tres" id="2_8a22d"]
 [ext_resource type="Texture2D" uid="uid://c4raaf7ey3t0k" path="res://Scenes/personajes/marthea/Idle_Down_4.png" id="3_qvn45"]
 [ext_resource type="Texture2D" uid="uid://djyk3ph1x4wxg" path="res://Scenes/personajes/marthea/Idle_Right_Down_4.png" id="4_8a22d"]
-[ext_resource type="Texture2D" uid="uid://cl5y7vfct733c" path="res://Scenes/personajes/marthea/Idle_Up_4.png" id="4_j662p"]
+[ext_resource type="Texture2D" uid="uid://bvtg4bfx50au3" path="res://Scenes/personajes/marthea/Idle_Up_4.png" id="4_j662p"]
 [ext_resource type="Texture2D" uid="uid://bs5qa8erh1rc4" path="res://Scenes/personajes/marthea/walk_Right_Down.png" id="5_8a22d"]
 [ext_resource type="Texture2D" uid="uid://dkgegsn8nogmq" path="res://Scenes/personajes/marthea/walk_Up.png" id="6_4eymf"]
 [ext_resource type="Texture2D" uid="uid://c2hd77m1m8q3t" path="res://Scenes/personajes/marthea/walk_Down.png" id="6_8a22d"]
@@ -226,6 +226,7 @@ sprite_frames = SubResource("SpriteFrames_a863f")
 animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 3
 position = Vector2(284, -20)
 shape = SubResource("CapsuleShape2D_qvn45")
 

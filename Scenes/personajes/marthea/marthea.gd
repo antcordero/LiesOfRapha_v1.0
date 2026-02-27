@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200
+const SPEED = 90
 var current_dir = "none"
 
 # === INVENTARIO ===

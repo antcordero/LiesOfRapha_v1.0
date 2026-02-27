@@ -10,16 +10,17 @@ var player_in_range: bool = false
 var dialogue_active: bool = false
 var current_balloon: Node = null
 
+# --- NUEVO: Escudo anti-cargas rápidas ---
+var puede_detectar: bool = false 
+
 func _ready() -> void:
-	animated_sprite.play("idle")
+	if animated_sprite:
+		animated_sprite.play("idle")
 	
-	var area: Area2D = get_node_or_null("areaHablar")
-	if area:
-		area.body_entered.connect(_on_body_entered)
-		area.body_exited.connect(_on_body_exited)
-	
-	# IMPORTANTE: No conectamos la señal global aquí para evitar conflictos entre NPCs
-	# Lo manejaremos directamente cuando mostremos el diálogo.
+	# Escudo de 0.5 segundos al cargar el mapa
+	await get_tree().create_timer(0.5).timeout
+	puede_detectar = true
+
 
 func _process(_delta: float) -> void:
 	# Abrir diálogo
@@ -30,16 +31,31 @@ func _process(_delta: float) -> void:
 	elif dialogue_active and Input.is_action_just_pressed("cancel"):
 		cerrar_dialogo_forzado()
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+
+# =========================================================
+# SEÑALES DEL EDITOR (Asegúrate de que están conectadas)
+# =========================================================
+
+func _on_areahablar_body_entered(body: Node2D) -> void:
+	# Si el nivel acaba de cargar, ignoramos la colisión
+	if not puede_detectar: return 
+	
+	# Comprobamos ambas (mayúscula y minúscula) por si acaso
+	if body.is_in_group("player"):
 		player_in_range = true
 
-func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+
+func _on_areahablar_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
 		player_in_range = false
 		# Opcional: Si el jugador se aleja, cerramos el diálogo automáticamente
 		if dialogue_active:
 			cerrar_dialogo_forzado()
+
+
+# =========================================================
+# LÓGICA DE DIÁLOGOS
+# =========================================================
 
 func mostrar_dialogo() -> void:
 	if dialogue_resource == null:

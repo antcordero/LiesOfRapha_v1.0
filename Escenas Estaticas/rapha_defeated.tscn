@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://caiehk2ev6fam"]
+
+[ext_resource type="Texture2D" uid="uid://c07otmwuyk0b0" path="res://Escenas Estaticas/Acto III/torre_Marta_Rafa_2.png" id="1_4gky6"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4gky6")
+expand_mode = 1

@@ -1,9 +1,85 @@
 extends CharacterBody2D
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  #Ruta al AnimatedSprite2D
+# Configuración del Diálogo (¡Cambia la ruta por la de tu archivo real!)
+@export var dialogue_resource: DialogueResource = preload("res://Dialogues/soldier.dialogue")
+@export var dialogue_start: String = "start"
 
-func _ready():
-	animated_sprite.play("goblinMercader_idle")  # Reproduce idle en loop infinito
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-func _physics_process(delta):
-	pass  # Mantiene posición fija
+var player_in_range: bool = false
+var dialogue_active: bool = false
+var current_balloon: Node = null
+
+# --- NUEVO: Escudo anti-cargas rápidas ---
+var puede_detectar: bool = false 
+
+func _ready() -> void:
+	if animated_sprite:
+		animated_sprite.play("goblinMercader_idle") # Reproduce idle en loop infinito
+	
+	# Escudo de 0.5 segundos al cargar el mapa
+	await get_tree().create_timer(0.5).timeout
+	puede_detectar = true
+
+
+func _process(_delta: float) -> void:
+	# Abrir diálogo
+	if player_in_range and not dialogue_active and Input.is_action_just_pressed("do_something"):
+		mostrar_dialogo()
+	
+	# Cerrar diálogo manualmente
+	elif dialogue_active and Input.is_action_just_pressed("cancel"):
+		cerrar_dialogo_forzado()
+
+
+# =========================================================
+# SEÑALES DEL EDITOR (Asegúrate de que están conectadas)
+# =========================================================
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	# Si el nivel acaba de cargar, ignoramos la colisión
+	if not puede_detectar: return 
+	
+	# Comprobamos ambas (mayúscula y minúscula) por si acaso
+	if body.is_in_group("Player"):
+		player_in_range = true
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		player_in_range = false
+		# Si el jugador se aleja, cerramos el diálogo automáticamente
+		if dialogue_active:
+			cerrar_dialogo_forzado()
+
+
+# =========================================================
+# LÓGICA DE DIÁLOGOS
+# =========================================================
+
+func mostrar_dialogo() -> void:
+	if dialogue_resource == null:
+		print("Error: No hay recurso de diálogo")
+		return
+		
+	dialogue_active = true
+	current_balloon = DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
+	
+	# Conectamos la señal de cierre SOLO para esta instancia y una sola vez (CONNECT_ONE_SHOT)
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_finished, CONNECT_ONE_SHOT)
+
+func cerrar_dialogo_forzado() -> void:
+	if current_balloon and is_instance_valid(current_balloon):
+		current_balloon.queue_free()
+		current_balloon = null
+	
+	dialogue_active = false
+	
+	if DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
+		DialogueManager.dialogue_ended.disconnect(_on_dialogue_finished)
+
+func _on_dialogue_finished(_resource: DialogueResource) -> void:
+	# Esperamos un frame para evitar que el mismo click que cierra el diálogo lo vuelva a abrir
+	await get_tree().process_frame
+	dialogue_active = false
+	current_balloon = null

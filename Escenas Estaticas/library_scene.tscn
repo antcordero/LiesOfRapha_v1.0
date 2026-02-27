@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dddcnbyl63j7a"]
+
+[ext_resource type="Texture2D" uid="uid://c5njb1h87b0n6" path="res://Escenas Estaticas/Acto I/martaFrancisco.png" id="1_xdvfo"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.99700004
+offset_right = 4.0
+offset_bottom = 13.94397
+texture = ExtResource("1_xdvfo")
+expand_mode = 1

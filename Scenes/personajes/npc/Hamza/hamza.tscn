@@ -39,10 +39,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7r63n"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_7r63n"]
 radius = 37.215588
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7r63n"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_7r63n")
@@ -52,10 +52,13 @@ sprite_frames = SubResource("SpriteFrames_74rt5")
 animation = &"idle"
 frame_progress = 0.27556476
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_7r63n")
-
 [node name="areahablar" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areahablar"]
 shape = SubResource("CircleShape2D_7r63n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7r63n")
+
+[connection signal="body_entered" from="areahablar" to="." method="_on_areahablar_body_entered"]
+[connection signal="body_exited" from="areahablar" to="." method="_on_areahablar_body_exited"]

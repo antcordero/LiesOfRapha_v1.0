@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dndxt4th2keq6"]
+
+[ext_resource type="Texture2D" uid="uid://cvfimhn1ryyia" path="res://Escenas Estaticas/Acto II/martaJhonaider.png" id="1_vja6k"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 0.9990001
+anchor_bottom = 1.0
+offset_right = 0.15185547
+offset_bottom = 13.0
+texture = ExtResource("1_vja6k")
+expand_mode = 1

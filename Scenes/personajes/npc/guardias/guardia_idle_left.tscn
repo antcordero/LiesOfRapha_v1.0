@@ -9,7 +9,7 @@ radius = 27.073973
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oclmo"]
 radius = 8.0
 
-[node name="guardia_idle_left" type="CharacterBody2D"]
+[node name="guardia_idle_left" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ajkq6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -20,6 +20,7 @@ autoplay = "idle_left"
 
 [node name="areaHablar" type="Area2D" parent="."]
 position = Vector2(1, 1)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaHablar"]
 position = Vector2(30, 47)

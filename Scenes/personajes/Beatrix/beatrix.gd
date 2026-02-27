@@ -10,13 +10,17 @@ var player_in_range: bool = false
 var dialogue_active: bool = false
 var current_balloon: Node = null
 
+# --- NUEVO: Escudo anti-cargas rápidas ---
+var puede_detectar: bool = false 
+
 func _ready() -> void:
-	animated_sprite.play("front_idle_beatrix")
+	if animated_sprite:
+		animated_sprite.play("front_idle_beatrix")
 	
-	var area: Area2D = get_node_or_null("speakArea")
-	if area:
-		area.body_entered.connect(_on_body_entered)
-		area.body_exited.connect(_on_body_exited)
+	# Escudo de 0.5 segundos al cargar el mapa
+	await get_tree().create_timer(0.5).timeout
+	puede_detectar = true
+
 
 func _process(_delta: float) -> void:
 	# Abrir diálogo
@@ -27,17 +31,29 @@ func _process(_delta: float) -> void:
 	elif dialogue_active and Input.is_action_just_pressed("cancel"):
 		cerrar_dialogo_forzado()
 
-func _on_body_entered(body: Node2D) -> void:
-	print("Body entered: ", body.name)
+
+# =========================================================
+# SEÑALES DEL EDITOR (Asegúrate de que están conectadas)
+# =========================================================
+
+func _on_speak_area_body_entered(body: Node2D) -> void:
+	# Si el nivel acaba de cargar, ignoramos la colisión
+	if not puede_detectar: return 
+	
 	if body.is_in_group("player"):
-		print("Jugador en rango")
+		print("Jugador en rango de Beatrix")
 		player_in_range = true
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_speak_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
 		if dialogue_active:
 			cerrar_dialogo_forzado()
+
+
+# =========================================================
+# LÓGICA DE DIÁLOGOS
+# =========================================================
 
 func mostrar_dialogo() -> void:
 	if dialogue_resource == null:
@@ -65,11 +81,6 @@ func _on_dialogue_finished(_resource: DialogueResource) -> void:
 	if not dialogue_active: return # Evita ejecuciones extra
 	dialogue_active = false
 	print("Diálogo Beatrix → Iniciando QUIZ")
-	GameManager.iniciar_quiz_beatrix(get_parent())
 	
-	# Error probable: GameManager.iniciar_quiz_beatrix(null) 
-	# Solución: Pasar el padre (que debería ser el nivel)
+	# Llamar solo UNA vez al GameManager pasando el nivel padre
 	GameManager.iniciar_quiz_beatrix(get_parent())
-
-func _on_speak_area_body_entered(body: Node2D) -> void:
-	pass

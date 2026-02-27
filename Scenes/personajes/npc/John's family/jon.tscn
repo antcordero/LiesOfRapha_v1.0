@@ -39,15 +39,14 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_yqy2m"]
-script/source = "extends AnimatedSprite2D
-"
+[sub_resource type="CircleShape2D" id="CircleShape2D_xana0"]
+radius = 15.132746
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0nnif"]
 radius = 6.0
 height = 22.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_xana0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -55,8 +54,16 @@ position = Vector2(17, 17)
 sprite_frames = SubResource("SpriteFrames_ixx27")
 animation = &"idle_jon"
 frame_progress = 0.96599305
-script = SubResource("GDScript_yqy2m")
+
+[node name="areaHablar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaHablar"]
+position = Vector2(18, 17)
+shape = SubResource("CircleShape2D_xana0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(18, 19)
 shape = SubResource("CapsuleShape2D_0nnif")
+
+[connection signal="body_entered" from="areaHablar" to="." method="_on_area_hablar_body_entered"]
+[connection signal="body_exited" from="areaHablar" to="." method="_on_area_hablar_body_exited"]

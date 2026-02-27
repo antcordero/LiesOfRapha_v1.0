@@ -515,8 +515,10 @@ animation = &"idle_down"
 frame_progress = 0.22015125
 
 [node name="speakArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="speakArea"]
+visibility_layer = 3
 shape = SubResource("CircleShape2D_kd5jf")
 
 [node name="detection_area" type="Area2D" parent="."]

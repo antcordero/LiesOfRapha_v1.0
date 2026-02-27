@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Configuración del Diálogo
-@export var dialogue_resource: DialogueResource = preload("res://dialogues/rodri.dialogue")
+@export var dialogue_resource: DialogueResource = preload("res://dialogues/jon.dialogue")
 @export var dialogue_start: String = "start"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -10,16 +10,17 @@ var player_in_range: bool = false
 var dialogue_active: bool = false
 var current_balloon: Node = null
 
+# --- NUEVO: Escudo anti-cargas rápidas ---
+var puede_detectar: bool = false 
+
 func _ready() -> void:
-	animated_sprite.play("idle_jon")
+	if animated_sprite:
+		animated_sprite.play("idle_jon")
 	
-	var area: Area2D = get_node_or_null("areaHablar")
-	if area:
-		area.body_entered.connect(_on_body_entered)
-		area.body_exited.connect(_on_body_exited)
-	
-	# IMPORTANTE: No conectamos la señal global aquí para evitar conflictos entre NPCs
-	# Lo manejaremos directamente cuando mostremos el diálogo.
+	# Escudo de 0.5 segundos al cargar el mapa
+	await get_tree().create_timer(0.5).timeout
+	puede_detectar = true
+
 
 func _process(_delta: float) -> void:
 	# Abrir diálogo
@@ -30,14 +31,18 @@ func _process(_delta: float) -> void:
 	elif dialogue_active and Input.is_action_just_pressed("cancel"):
 		cerrar_dialogo_forzado()
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+func _on_area_hablar_body_entered(body: Node2D) -> void:
+	# Si el nivel acaba de cargar, ignoramos la colisión
+	if not puede_detectar: return 
+	
+	# Comprobamos ambas (mayúscula y minúscula) por si acaso
+	if body.is_in_group("Player") or body.is_in_group("Player"):
 		player_in_range = true
 
-func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+func _on_area_hablar_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player") or body.is_in_group("Player"):
 		player_in_range = false
-		# Opcional: Si el jugador se aleja, cerramos el diálogo automáticamente
+		# Si el jugador se aleja, cerramos el diálogo automáticamente
 		if dialogue_active:
 			cerrar_dialogo_forzado()
 
@@ -58,10 +63,8 @@ func cerrar_dialogo_forzado() -> void:
 		current_balloon.queue_free()
 		current_balloon = null
 	
-	# Forzamos el reset de la variable por si la señal no llega a tiempo al borrar el nodo
 	dialogue_active = false
 	
-	# Desconectamos la señal si existía para que no se duplique luego
 	if DialogueManager.dialogue_ended.is_connected(_on_dialogue_finished):
 		DialogueManager.dialogue_ended.disconnect(_on_dialogue_finished)
 

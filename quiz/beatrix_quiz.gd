@@ -43,7 +43,7 @@ func show_questions():
 	ListItem.clear()
 	
 	var item = items[index_item]
-	DisplayText.text = "Pregunta %d/4\n%s" % [index_item + 1, item.question]
+	DisplayText.text = "Question %d/4\n%s" % [index_item + 1, item.question]
 	
 	var options = item.options
 	for option in options:
@@ -53,12 +53,12 @@ func finalizar_quiz(exito: bool):
 	ListItem.visible = false
 	
 	if exito:
-		DisplayText.text = "¡PERFECTO!\n¡Pasas al siguiente nivel!"
+		DisplayText.text = "¡PERFECT!\nGood Luck against Rapha.."
 		await get_tree().create_timer(1.5).timeout
 		quiz_completado.emit(true)
 		queue_free() 
 	else:
-		DisplayText.text = "¡ERROR!\nInténtalo de nuevo..."
+		DisplayText.text = "¡ERROR!\nTry again..."
 		
 		# Esperamos a que el jugador lea el error
 		await get_tree().create_timer(1.5).timeout
