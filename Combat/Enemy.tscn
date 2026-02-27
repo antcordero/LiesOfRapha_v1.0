@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://xdyl0ij8b4or"]
+[gd_scene load_steps=24 format=3 uid="uid://xdyl0ij8b4or"]
 
 [ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_s7bn3"]
 [ext_resource type="Texture2D" uid="uid://c678m7lissc74" path="res://Scenes/personajes/Franczius_the_sage/Franczius_the_sage.png" id="2_s7bn3"]
+[ext_resource type="FontFile" uid="uid://c405i12ltp3y5" path="res://fonts/pixelmix.ttf" id="3_b4lsj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7bn3"]
 atlas = ExtResource("2_s7bn3")
@@ -162,7 +163,7 @@ animations = [{
 [node name="Player2" type="Node2D"]
 script = ExtResource("1_s7bn3")
 atk = 30
-character_name = "Franczius The sage"
+character_name = "Franczius The Sage"
 is_enemy = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -186,6 +187,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_b4lsj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -195,4 +197,6 @@ offset_top = -217.0
 offset_right = -118.0
 offset_bottom = -194.0
 scale = Vector2(3.4887516, 2.6540644)
+theme_override_fonts/font = ExtResource("3_b4lsj")
+theme_override_font_sizes/font_size = 12
 text = "Enemigo"

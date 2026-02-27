@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckhqonnl4na83"]
+[gd_scene load_steps=21 format=3 uid="uid://ckhqonnl4na83"]
 
 [ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_o5gfx"]
 [ext_resource type="Texture2D" uid="uid://cufwt2t8apcbm" path="res://Scenes/personajes/Rapha/crow_attack1.png" id="2_o5gfx"]
 [ext_resource type="Texture2D" uid="uid://ba7kgm5vgueca" path="res://Scenes/personajes/Rapha/crow_death2.png" id="3_o5gfx"]
 [ext_resource type="Texture2D" uid="uid://cwyjlayk3mky1" path="res://Scenes/personajes/Rapha/crow_idle .png" id="4_ax5gx"]
+[ext_resource type="FontFile" uid="uid://c405i12ltp3y5" path="res://fonts/pixelmix.ttf" id="5_ax5gx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_beolk"]
 atlas = ExtResource("2_o5gfx")
@@ -153,6 +154,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ax5gx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -162,4 +164,5 @@ offset_top = -217.0
 offset_right = -118.0
 offset_bottom = -194.0
 scale = Vector2(3.4887516, 2.6540644)
+theme_override_fonts/font = ExtResource("5_ax5gx")
 text = "Enemigo"

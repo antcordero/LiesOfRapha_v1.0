@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2a07gljh8ijh"]
+[gd_scene load_steps=8 format=3 uid="uid://c2a07gljh8ijh"]
 
 [ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_ltwlv"]
 [ext_resource type="Texture2D" uid="uid://dprrm413bb1e2" path="res://Escenas Estaticas/Acto I/3.jpg" id="2_v76rv"]
 [ext_resource type="PackedScene" uid="uid://dhjw7jblqk15w" path="res://Combat/player_1.tscn" id="3_tpw6x"]
 [ext_resource type="PackedScene" uid="uid://cda8enytduqoj" path="res://Combat/player_2.tscn" id="4_q3xt5"]
 [ext_resource type="PackedScene" uid="uid://xdyl0ij8b4or" path="res://Combat/Enemy.tscn" id="5_els5o"]
+[ext_resource type="FontFile" uid="uid://c405i12ltp3y5" path="res://fonts/pixelmix.ttf" id="6_18rkj"]
 [ext_resource type="AudioStream" uid="uid://c7hp57vq1wavu" path="res://music/Pokémon Sword & Shield_ The Crown Tundra - Battle_ Galarian Zapdos (Fanmade Theme) [atk4dB0ytYE].mp3" id="6_v76rv"]
 
 [node name="SDC" type="Node2D"]
@@ -48,10 +49,10 @@ anchor_left = -0.202
 anchor_top = 0.004
 anchor_right = 1.36
 anchor_bottom = 2.821
-offset_left = -22.090515
-offset_top = -0.23905873
+offset_left = -22.0905
+offset_top = -155.53319
 offset_right = -14.665161
-offset_bottom = 0.22729492
+offset_bottom = -155.06677
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -68,14 +69,17 @@ scale = Vector2(2.0321295, 2.4322405)
 
 [node name="TurnLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18rkj")
 
 [node name="AttackButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18rkj")
 text = "Attack
 "
 
 [node name="HealButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18rkj")
 text = "Heal
 "
 
@@ -86,6 +90,7 @@ offset_left = 748.0
 offset_top = 566.0
 offset_right = 807.0
 offset_bottom = 589.0
+theme_override_fonts/font = ExtResource("6_18rkj")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_v76rv")

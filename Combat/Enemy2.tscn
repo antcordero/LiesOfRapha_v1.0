@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1t5o0lbu3rfb"]
+[gd_scene load_steps=15 format=3 uid="uid://b1t5o0lbu3rfb"]
 
 [ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_vm7hs"]
 [ext_resource type="Texture2D" uid="uid://bvnfp0vdrut7v" path="res://Scenes/personajes/Jhonaidel/ataque.png" id="2_h2xgy"]
 [ext_resource type="Texture2D" uid="uid://bx1x6tbtyqkep" path="res://Scenes/personajes/Jhonaidel/muerte.png" id="3_ebpve"]
 [ext_resource type="Texture2D" uid="uid://pj58lqemliyq" path="res://Scenes/personajes/Jhonaidel/assetDerecha.png" id="4_h2xgy"]
+[ext_resource type="FontFile" uid="uid://c405i12ltp3y5" path="res://fonts/pixelmix.ttf" id="5_ebpve"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0hgy"]
 atlas = ExtResource("2_h2xgy")
@@ -111,6 +112,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ebpve")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -120,4 +122,5 @@ offset_top = -217.0
 offset_right = -118.0
 offset_bottom = -194.0
 scale = Vector2(3.4887516, 2.6540644)
+theme_override_fonts/font = ExtResource("5_ebpve")
 text = "Enemigo"

@@ -117,7 +117,7 @@ func next_turn() -> void:
 			next_turn()
 			return
 
-		turn_label.text = "Turno: " + current_player.character_name
+		turn_label.text = "Turn: " + current_player.character_name
 		attack_btn.visible = true
 		attack_btn.disabled = false
 
@@ -128,7 +128,7 @@ func next_turn() -> void:
 		attack_btn.grab_focus()
 		return
 
-	turn_label.text = "Turno: " + enemy.character_name
+	turn_label.text = "Turn: " + enemy.character_name
 	attack_btn.visible = false
 	if heal_btn: heal_btn.visible = false
 
