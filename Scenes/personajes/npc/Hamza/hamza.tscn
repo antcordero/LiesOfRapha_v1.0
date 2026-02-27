@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://da3s24bhpod8m"]
+
+[ext_resource type="Script" uid="uid://bcr48l28el83a" path="res://Scenes/personajes/npc/Hamza/hamza.gd" id="1_7r63n"]
+[ext_resource type="Texture2D" uid="uid://c4qfhhedmwyfs" path="res://Scenes/personajes/npc/Hamza/idle_right_down.png" id="2_ckxsd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1sl3"]
+atlas = ExtResource("2_ckxsd")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbqj1"]
+atlas = ExtResource("2_ckxsd")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yg5y"]
+atlas = ExtResource("2_ckxsd")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2ci4"]
+atlas = ExtResource("2_ckxsd")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_74rt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1sl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbqj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yg5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2ci4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7r63n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7r63n"]
+radius = 37.215588
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_7r63n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_74rt5")
+animation = &"idle"
+frame_progress = 0.27556476
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7r63n")
+
+[node name="areahablar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areahablar"]
+shape = SubResource("CircleShape2D_7r63n")
