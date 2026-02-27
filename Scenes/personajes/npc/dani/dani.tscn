@@ -3,12 +3,6 @@
 [ext_resource type="Script" uid="uid://buj8tnrgq5jci" path="res://Scenes/personajes/npc/dani/dani.gd" id="1_jh5mp"]
 [ext_resource type="Texture2D" uid="uid://di77o0nxlnkgd" path="res://Scenes/personajes/npc/dani/frente e izquierda.png" id="2_enauy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6r0yg"]
-radius = 25.019993
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6a86"]
-height = 32.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_x8r67"]
 atlas = ExtResource("2_enauy")
 region = Rect2(0, 64, 48, 64)
@@ -45,21 +39,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6r0yg"]
+radius = 25.019993
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6a86"]
+radius = 6.0
+height = 24.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_jh5mp")
-
-[node name="areaHablar" type="Area2D" parent="." groups=["player"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areaHablar"]
-position = Vector2(49, 33)
-shape = SubResource("CircleShape2D_6r0yg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(49, 32)
-shape = SubResource("CapsuleShape2D_n6a86")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(47.999985, 29.625)
 scale = Vector2(0.9375001, 0.95703125)
 sprite_frames = SubResource("SpriteFrames_7c47b")
 animation = &"idle"
+
+[node name="areaHablar" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaHablar"]
+position = Vector2(48, 29)
+shape = SubResource("CircleShape2D_6r0yg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, 28)
+shape = SubResource("CapsuleShape2D_n6a86")

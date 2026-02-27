@@ -4615,7 +4615,7 @@ tile_map_data = PackedByteArray("AAAXAPz/BAAGAAcAAAAXAP3/BAAGAAgAAAAXAP7/BAAGAAk
 tile_set = SubResource("TileSet_ks8c5")
 
 [node name="Marthea" parent="." instance=ExtResource("19_nu20o")]
-position = Vector2(407, -27)
+position = Vector2(125, -13)
 
 [node name="guardia_idle_left" parent="." instance=ExtResource("16_uyt30")]
 position = Vector2(434, -145)

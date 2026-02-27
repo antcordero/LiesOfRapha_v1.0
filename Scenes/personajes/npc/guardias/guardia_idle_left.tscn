@@ -13,20 +13,20 @@ radius = 8.0
 script = ExtResource("1_ajkq6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(34, 33)
+position = Vector2(32, 32)
 sprite_frames = ExtResource("1_oclmo")
-animation = &"idle_left"
+animation = &"idle"
 autoplay = "idle_left"
-frame_progress = 0.053436104
 
 [node name="areaHablar" type="Area2D" parent="."]
+position = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaHablar"]
-position = Vector2(34, 51)
+position = Vector2(30, 47)
 shape = SubResource("CircleShape2D_ajkq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(34, 51)
+position = Vector2(31, 49)
 shape = SubResource("CapsuleShape2D_oclmo")
 
 [connection signal="body_entered" from="areaHablar" to="." method="_on_area_body_entered"]

@@ -1,33 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgqh0v6k5jqo6"]
+[gd_scene load_steps=10 format=3 uid="uid://ddnabymnvftb3"]
 
-[ext_resource type="Script" uid="uid://dv4oiv14hui8m" path="res://Scenes/personajes/npc/rocio/rocio.gd" id="1_xnffv"]
-[ext_resource type="SpriteFrames" uid="uid://dfabdxcbc71qp" path="res://Scenes/personajes/npc/guardias/guardia_idle_left.tres" id="2_akhe5"]
+[ext_resource type="Texture2D" uid="uid://dwe611onu37rr" path="res://Scenes/personajes/npc/rocio/Girl-Sheet.png" id="1_bv0ij"]
+[ext_resource type="Script" uid="uid://djicd8i365pv1" path="res://Scenes/personajes/npc/rocio/rocio.gd" id="1_xnffv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ajkq6"]
-radius = 19.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnffv"]
+atlas = ExtResource("1_bv0ij")
+region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oclmo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3ciu"]
+atlas = ExtResource("1_bv0ij")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w2ma"]
+atlas = ExtResource("1_bv0ij")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc76e"]
+atlas = ExtResource("1_bv0ij")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mw0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnffv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3ciu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w2ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc76e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bv0ij"]
+radius = 22.803509
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnffv"]
 radius = 6.0
-height = 26.0
+height = 22.0
 
-[node name="guardia_idle_left" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_xnffv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(33, 38)
-scale = Vector2(0.91666657, 0.99999994)
-sprite_frames = ExtResource("2_akhe5")
-animation = &"idle"
-frame_progress = 0.82408744
+position = Vector2(12, 12)
+sprite_frames = SubResource("SpriteFrames_0mw0j")
 
-[node name="areaHablar" type="Area2D" parent="." groups=["player"]]
+[node name="areaHablar" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaHablar"]
-position = Vector2(33, 39)
-shape = SubResource("CircleShape2D_ajkq6")
+position = Vector2(12, 13)
+shape = SubResource("CircleShape2D_bv0ij")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(33, 39)
-shape = SubResource("CapsuleShape2D_oclmo")
-
-[connection signal="body_entered" from="areaHablar" to="." method="_on_area_body_entered"]
+position = Vector2(12, 13)
+shape = SubResource("CapsuleShape2D_xnffv")

@@ -1,11 +1,13 @@
-[gd_scene load_steps=30 format=3 uid="uid://ioxc7wb28gwd"]
+[gd_scene load_steps=36 format=3 uid="uid://ioxc7wb28gwd"]
 
 [ext_resource type="Script" uid="uid://raircbd3yb3l" path="res://Scenes/personajes/marthea/marthea.gd" id="1_qvn45"]
 [ext_resource type="Resource" uid="uid://cg6creo3pa2y" path="res://inventory/bag.tres" id="2_8a22d"]
 [ext_resource type="Texture2D" uid="uid://c4raaf7ey3t0k" path="res://Scenes/personajes/marthea/Idle_Down_4.png" id="3_qvn45"]
+[ext_resource type="Texture2D" uid="uid://djyk3ph1x4wxg" path="res://Scenes/personajes/marthea/Idle_Right_Down_4.png" id="4_8a22d"]
 [ext_resource type="Texture2D" uid="uid://cl5y7vfct733c" path="res://Scenes/personajes/marthea/Idle_Up_4.png" id="4_j662p"]
 [ext_resource type="Texture2D" uid="uid://bs5qa8erh1rc4" path="res://Scenes/personajes/marthea/walk_Right_Down.png" id="5_8a22d"]
 [ext_resource type="Texture2D" uid="uid://dkgegsn8nogmq" path="res://Scenes/personajes/marthea/walk_Up.png" id="6_4eymf"]
+[ext_resource type="Texture2D" uid="uid://c2hd77m1m8q3t" path="res://Scenes/personajes/marthea/walk_Down.png" id="6_8a22d"]
 [ext_resource type="PackedScene" uid="uid://c4atvoan1h8no" path="res://ui_inventario/ui_inventario.tscn" id="8_j662p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_240dr"]
@@ -24,6 +26,22 @@ region = Rect2(96, 0, 48, 64)
 atlas = ExtResource("3_qvn45")
 region = Rect2(144, 0, 48, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eymf"]
+atlas = ExtResource("4_8a22d")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m8gx"]
+atlas = ExtResource("4_8a22d")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkc0u"]
+atlas = ExtResource("4_8a22d")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2syh"]
+atlas = ExtResource("4_8a22d")
+region = Rect2(144, 0, 48, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_naan1"]
 atlas = ExtResource("4_j662p")
 region = Rect2(0, 0, 48, 64)
@@ -40,20 +58,20 @@ region = Rect2(96, 0, 48, 64)
 atlas = ExtResource("4_j662p")
 region = Rect2(144, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3w3jb"]
-atlas = ExtResource("3_qvn45")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h5qx"]
+atlas = ExtResource("6_8a22d")
 region = Rect2(0, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k45rs"]
-atlas = ExtResource("3_qvn45")
+[sub_resource type="AtlasTexture" id="AtlasTexture_eprih"]
+atlas = ExtResource("6_8a22d")
 region = Rect2(48, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d27f8"]
-atlas = ExtResource("3_qvn45")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aikpk"]
+atlas = ExtResource("6_8a22d")
 region = Rect2(96, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m146t"]
-atlas = ExtResource("3_qvn45")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u74b"]
+atlas = ExtResource("6_8a22d")
 region = Rect2(144, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxeer"]
@@ -109,6 +127,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4eymf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m8gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkc0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2syh")
+}],
+"loop": true,
+"name": &"idle_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_naan1")
 }, {
 "duration": 1.0,
@@ -126,16 +161,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3w3jb")
+"texture": SubResource("AtlasTexture_1h5qx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k45rs")
+"texture": SubResource("AtlasTexture_eprih")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d27f8")
+"texture": SubResource("AtlasTexture_aikpk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m146t")
+"texture": SubResource("AtlasTexture_3u74b")
 }],
 "loop": true,
 "name": &"walk_down",
@@ -188,9 +223,7 @@ bag = ExtResource("2_8a22d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(283, -21)
 sprite_frames = SubResource("SpriteFrames_a863f")
-animation = &"idle_down"
-frame = 1
-frame_progress = 0.6597136
+animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(284, -20)
@@ -206,6 +239,6 @@ drag_vertical_enabled = true
 
 [node name="Control" parent="CanvasLayer" groups=["inventory_ui"] instance=ExtResource("8_j662p")]
 offset_left = 2.0
-offset_top = 12.0
+offset_top = 10.0
 offset_right = 2.0
-offset_bottom = 12.0
+offset_bottom = 10.0
