@@ -29,7 +29,7 @@ El archivo comprimido incluye:
 
 **Versión estable – Release Final**
 
-⬇️ **[Descargar Lies of Rapha (MediaFire)](AQUI_TU_ENLACE_DE_MEDIAFIRE)**
+⬇️ **[Descargar Lies of Rapha (MediaFire)](https://www.mediafire.com/file/ou0hlyygc7fa3hp/The_Lies_of_Rapha.zip/file)**
 
 ---
 
