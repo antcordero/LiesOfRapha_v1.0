@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dc3pjhbuyl1yj"
+path="res://.godot/imported/hamza.dialogue-0713cc45fb35199da3bc9bc91b3dd20d.tres"
+
+[deps]
+
+source_file="res://Dialogues/hamza.dialogue"
+dest_files=["res://.godot/imported/hamza.dialogue-0713cc45fb35199da3bc9bc91b3dd20d.tres"]
+
+[params]
+
+defaults=true

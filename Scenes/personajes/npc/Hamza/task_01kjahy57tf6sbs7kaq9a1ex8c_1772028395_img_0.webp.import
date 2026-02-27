@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvtg4bfx50au3"
-path="res://.godot/imported/Idle_Up_4.png-5195abef3bb67fc6d3950c0781236a5b.ctex"
+uid="uid://bckhfmlglyhr3"
+path="res://.godot/imported/task_01kjahy57tf6sbs7kaq9a1ex8c_1772028395_img_0.webp-10f876ab91c6b3b41f5166712f940e69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/personajes/marthea/Idle_Up_4.png"
-dest_files=["res://.godot/imported/Idle_Up_4.png-5195abef3bb67fc6d3950c0781236a5b.ctex"]
+source_file="res://Scenes/personajes/npc/Hamza/task_01kjahy57tf6sbs7kaq9a1ex8c_1772028395_img_0.webp"
+dest_files=["res://.godot/imported/task_01kjahy57tf6sbs7kaq9a1ex8c_1772028395_img_0.webp-10f876ab91c6b3b41f5166712f940e69.ctex"]
 
 [params]
 

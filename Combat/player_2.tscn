@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cda8enytduqoj"]
+[gd_scene load_steps=14 format=3 uid="uid://cda8enytduqoj"]
 
 [ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_8xjnt"]
 [ext_resource type="Texture2D" uid="uid://c6u3iajuxw44" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/Idle_Right_Down_4.png" id="2_8xjnt"]
 [ext_resource type="Texture2D" uid="uid://dmsybpnxec00w" path="res://Assets_mapas/Characters/Edited Characters Assets/Marthea/Marta_attack.png" id="2_ufh5k"]
+[ext_resource type="FontFile" uid="uid://c405i12ltp3y5" path="res://fonts/pixelmix.ttf" id="4_e7p0n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0jhxp"]
 atlas = ExtResource("2_ufh5k")
@@ -107,6 +108,7 @@ offset_right = 1.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_e7p0n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -116,4 +118,5 @@ offset_top = -158.0
 offset_right = 78.0
 offset_bottom = -135.0
 scale = Vector2(1.3169128, 1.5251343)
+theme_override_fonts/font = ExtResource("4_e7p0n")
 text = "Marthea"

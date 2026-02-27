@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://dhjw7jblqk15w"]
+[gd_scene load_steps=22 format=3 uid="uid://dhjw7jblqk15w"]
 
 [ext_resource type="Script" uid="uid://b5cektcrunjei" path="res://Character.gd" id="1_squ5q"]
 [ext_resource type="Texture2D" uid="uid://cvosp0nkbg8oi" path="res://Assets_mapas/Characters/Edited Characters Assets/Anton/idle.png" id="2_bxx23"]
 [ext_resource type="Texture2D" uid="uid://cjr060kgmd0wk" path="res://Assets_mapas/Characters/Edited Characters Assets/Anton/attack_axe.png" id="2_qh3su"]
+[ext_resource type="FontFile" uid="uid://c405i12ltp3y5" path="res://fonts/pixelmix.ttf" id="4_bfhr1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72vom"]
 atlas = ExtResource("2_qh3su")
@@ -161,6 +162,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_bfhr1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -170,4 +172,5 @@ offset_top = -174.0
 offset_right = 126.0
 offset_bottom = -134.0
 scale = Vector2(1.5434521, 1.8104703)
+theme_override_fonts/font = ExtResource("4_bfhr1")
 text = "Anton"

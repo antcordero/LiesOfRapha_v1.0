@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddo4up7q8cmx2"]
+[gd_scene load_steps=8 format=3 uid="uid://ddo4up7q8cmx2"]
 
 [ext_resource type="Script" uid="uid://by6kfg6fupkv4" path="res://battleManager.gd" id="1_ff5lm"]
 [ext_resource type="Texture2D" uid="uid://83subbau6trp" path="res://Escenas Estaticas/Acto II/church_pixel.png" id="2_sith4"]
@@ -71,14 +71,17 @@ scale = Vector2(2.0321295, 2.4322405)
 
 [node name="TurnLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_wbl37")
 
 [node name="AttackButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_wbl37")
 text = "Attack
 "
 
 [node name="HealButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_wbl37")
 text = "Heal
 "
 
@@ -89,9 +92,10 @@ offset_left = 748.0
 offset_top = 566.0
 offset_right = 807.0
 offset_bottom = 589.0
+theme_override_fonts/font = ExtResource("6_wbl37")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_sith4")
-volume_db = -18.127
-pitch_scale = 1.25
+volume_db = -24.013
+pitch_scale = 1.03
 autoplay = true
