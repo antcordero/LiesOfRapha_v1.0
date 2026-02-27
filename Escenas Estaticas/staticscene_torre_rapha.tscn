@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://ci24m4g842mxk" path="res://Escenas Estaticas/Acto III/torre_Marta_Rafa.png" id="1_knv5n"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="CanvasLayer"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(579, 325)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(572.00006, 326)
-scale = Vector2(1.0086805, 1.0092593)
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.008
+offset_left = -9.0
+offset_right = 6.0
+offset_bottom = -0.184021
 texture = ExtResource("1_knv5n")
-
-[node name="Node2D" type="Node2D" parent="."]
+expand_mode = 1

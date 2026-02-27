@@ -2,11 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://c5njb1h87b0n6" path="res://Escenas Estaticas/Acto I/martaFrancisco.png" id="1_xdvfo"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="CanvasLayer"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(579, 322)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(580, 324)
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 0.9990001
+anchor_bottom = 1.003
+offset_right = 0.15185547
+offset_bottom = 8.055969
 texture = ExtResource("1_xdvfo")
+expand_mode = 1
