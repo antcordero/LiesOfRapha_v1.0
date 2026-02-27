@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dndxt4th2keq6"]
+
+[ext_resource type="Texture2D" uid="uid://cvfimhn1ryyia" path="res://Escenas Estaticas/Acto II/martaJhonaider.png" id="1_vja6k"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(581, 325)
+texture = ExtResource("1_vja6k")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 328)

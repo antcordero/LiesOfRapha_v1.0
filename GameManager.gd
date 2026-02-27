@@ -161,7 +161,10 @@ func show_static_scene(static_scene_id: int) -> void:
 		1: scene_path = "res://Escenas Estaticas/escenas_estaticas.tscn"
 		2: scene_path = "res://Escenas Estaticas/staticScene_2.tscn"
 		3: scene_path = "res://Escenas Estaticas/staticScene_3.tscn"
-		4: scene_path = "res://Escenas Estaticas/staticScene_rapha_tower.tscn"
+		4: scene_path = "res://Escenas Estaticas/staticscene_torre_rapha.tscn"
+		5: scene_path = "res://Escenas Estaticas/library_scene.tscn"
+		6: scene_path = "res://Escenas Estaticas/church_scene.tscn"
+		7: scene_path = "res://Escenas Estaticas/rapha_defeated.tscn"
 		_:
 			print("ERROR: ID de escena estática no encontrado:", static_scene_id)
 			return
@@ -190,6 +193,11 @@ func show_boss1_defeated_dialogue() -> void:
 		return
 
 	boss1_dialogue_active = true
+
+	# --- NUEVO: Mostrar escena estática de victoria para el Boss 1 ---
+	# Ponemos el ID 1 (o el número que corresponda a la imagen que quieras de fondo)
+	show_static_scene(5)
+
 	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
 	DialogueManager.show_dialogue_balloon(boss1_defeated_dialogue, boss1_defeated_start)
@@ -203,6 +211,10 @@ func show_boss2_defeated_dialogue() -> void:
 		return
 
 	boss2_dialogue_active = true
+
+	# --- AÑADIMOS LA ESCENA ESTÁTICA DE LA IGLESIA (ID 6) ---
+	show_static_scene(6)
+
 	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
 	DialogueManager.show_dialogue_balloon(boss2_defeated_dialogue, boss2_defeated_start)
@@ -217,8 +229,8 @@ func show_boss3_defeated_dialogue() -> void:
 
 	boss3_dialogue_active = true
 
-	# --- Mostrar escena estática final (Victoria) ---
-	show_static_scene(3) 
+	# --- LLAMAMOS A LA ESCENA DE RAPHA DERROTADO (ID 7) ---
+	show_static_scene(7) 
 
 	if not DialogueManager.dialogue_ended.is_connected(_on_global_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_global_dialogue_ended)
@@ -237,17 +249,18 @@ func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
 		start_level(2)
 		return
 	
-	# ==============================
+# ==============================
 	# BOSS 2: Jhonaidel (Se queda en el sitio)
 	# ==============================
 	if boss2_dialogue_active:
 		boss2_dialogue_active = false
 		print("DEBUG: Jhonaidel derrotado. El jugador se queda en el nivel 2.")
 		
-		if current_level:
-			current_level.process_mode = Node.PROCESS_MODE_INHERIT
+		# --- NUEVO: Limpiamos la escena estática 6 y reactivamos el mapa ---
+		return_to_level() 
 		get_tree().paused = false
-		return 
+		
+		return
 
 	# ==============================
 	# BOSS 3: Final

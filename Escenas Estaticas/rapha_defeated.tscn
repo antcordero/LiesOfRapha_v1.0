@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://caiehk2ev6fam"]
+
+[ext_resource type="Texture2D" uid="uid://c07otmwuyk0b0" path="res://Escenas Estaticas/Acto III/torre_Marta_Rafa_2.png" id="1_4gky6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(578, 324)
+texture = ExtResource("1_4gky6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 322)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dddcnbyl63j7a"]
+
+[ext_resource type="Texture2D" uid="uid://c5njb1h87b0n6" path="res://Escenas Estaticas/Acto I/martaFrancisco.png" id="1_xdvfo"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 322)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(580, 324)
+texture = ExtResource("1_xdvfo")
