@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Configuración del Diálogo
-@export var dialogue_resource: DialogueResource = preload("res://dialogues/beatrix.dialogue")
+@export var dialogue_resource: DialogueResource = preload("res://Dialogues/beatrix.dialogue")
 @export var dialogue_start: String = "start"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D

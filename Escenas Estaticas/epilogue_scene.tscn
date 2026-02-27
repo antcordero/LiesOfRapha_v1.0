@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://b8dpecqn8memi"]
 
-[ext_resource type="Texture2D" uid="uid://bxaxhxe2c7kn" path="res://assets/imagen portada juego.webp" id="1_p4nnv"]
+[ext_resource type="Texture2D" uid="uid://cbqkxwxsgon0u" path="res://Escenas Estaticas/Acto III/finalpng.png" id="1_vhu63"]
 [ext_resource type="Texture2D" uid="uid://bvtg4bfx50au3" path="res://Scenes/personajes/marthea/Idle_Up_4.png" id="2_jg5vb"]
 [ext_resource type="AudioStream" uid="uid://dqef0fsirdvjw" path="res://music/22 - The Final of The Fantasy.wav" id="2_vhu63"]
 [ext_resource type="Texture2D" uid="uid://cvosp0nkbg8oi" path="res://Assets_mapas/Characters/Edited Characters Assets/Anton/idle.png" id="3_moc7f"]
@@ -113,19 +113,19 @@ anchor_bottom = 1.003
 offset_left = -4.0
 offset_top = -260.0
 offset_right = -3.0
-offset_bottom = 378.05597
-texture = ExtResource("1_p4nnv")
+offset_bottom = 417.05597
+texture = ExtResource("1_vhu63")
 expand_mode = 1
 
 [node name="marthea" type="AnimatedSprite2D" parent="."]
-position = Vector2(471, 437)
-scale = Vector2(5.5208325, 5.8906245)
+position = Vector2(501, 393)
+scale = Vector2(5.1562495, 5.8906245)
 sprite_frames = SubResource("SpriteFrames_dee7c")
 animation = &"idle"
 script = ExtResource("4_jmq60")
 
 [node name="anton" type="AnimatedSprite2D" parent="."]
-position = Vector2(658, 436)
+position = Vector2(658.00006, 390)
 scale = Vector2(5.5208325, 5.8906245)
 sprite_frames = SubResource("SpriteFrames_dee7c")
 animation = &"idle_anton"

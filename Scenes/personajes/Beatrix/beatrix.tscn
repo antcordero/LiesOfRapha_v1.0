@@ -54,7 +54,7 @@ script = ExtResource("1_f5bop")
 position = Vector2(16, 20)
 sprite_frames = SubResource("SpriteFrames_pekgr")
 animation = &"front_idle_beatrix"
-frame_progress = 0.36630723
+frame_progress = 0.4976059
 
 [node name="speakArea" type="Area2D" parent="."]
 

@@ -125,12 +125,19 @@ func start_level(level_number: int) -> void:
 			print("❌ ERROR: Nivel no encontrado:", level_number)
 			return
 
-	# --- 4. INSTANCIACIÓN ---
-	var level_scene = load(scene_path).instantiate()
+	# --- 4. CARGA SEGURA ---
+	print("DEBUG scene_path:", scene_path)
+	print("DEBUG exists:", ResourceLoader.exists(scene_path))
+	
+	var packed := load(scene_path)
+	if packed == null:
+		push_error("❌ NO SE PUDO CARGAR: " + scene_path)
+		return
+	
+	var level_scene = packed.instantiate()
 	add_child(level_scene)
 	current_level = level_scene
 	current_level.process_mode = Node.PROCESS_MODE_INHERIT
-	
 	get_tree().paused = false
 
 func restart_current_level() -> void:
@@ -253,6 +260,8 @@ func _on_global_dialogue_ended(_resource: DialogueResource) -> void:
 	if boss1_dialogue_active:
 		boss1_dialogue_active = false
 		print("DEBUG: Boss 1 derrotado. Pasando al Nivel 2")
+	
+		last_level_change_time = 0.0   #  AQUÍ
 		start_level(2)
 		return
 	
